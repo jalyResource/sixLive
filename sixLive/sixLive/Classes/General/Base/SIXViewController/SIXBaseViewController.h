@@ -10,4 +10,9 @@
 
 @interface SIXBaseViewController : UIViewController
 
+/**
+ 状态栏
+ */
+@property (strong, nonatomic) UIView *customStatusBar;
+
 @end

@@ -7,9 +7,14 @@
 //
 
 #import "SIXMainViewController.h"
+#import "SIXLiveViewController.h"
+#import "SIXBaseViewController.h"
+
 
 @interface SIXMainViewController ()
+@property (strong, nonatomic) NSMutableArray<SIXNavigationController *> *arrSubControllers;
 
+@property (strong, nonatomic) SIXNavigationController *navControllerCurrent;
 @end
 
 @implementation SIXMainViewController
@@ -17,23 +22,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor orangeColor];
-    DLog(@"%s", __func__);
+    [self addChildControllers];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+/**
+ 添加子控制器
+ */
+- (void)addChildControllers {
+    self.arrSubControllers = @[].mutableCopy;
+    
+    SIXLiveViewController *liveViewController = [[SIXLiveViewController alloc] init];
+    SIXNavigationController *navController = [[SIXNavigationController alloc] initWithRootViewController:liveViewController];
+    
+    [self.arrSubControllers addObject:navController];
+    [self addChildViewController:navController];
+    [self.view addSubview:navController.view];
+    
+    self.navControllerCurrent = navController;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT - 45);
+    self.navControllerCurrent.view.frame = rect;
 }
-*/
+
+
+
+
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
