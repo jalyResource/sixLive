@@ -1,0 +1,21 @@
+//
+//  sixLive.pch
+//  sixLive
+//
+//  Created by li’Pro on 2017/6/27.
+//  Copyright © 2017年 li’Pro. All rights reserved.
+//
+
+#ifndef sixLive_pch
+#define sixLive_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+#import "SixLive.h"
+
+
+#endif
+#endif /* sixLive_pch */
