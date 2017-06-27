@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0716521ED1A5E3F7EBCA1769 /* libPods-sixLive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AA5A9E32D8FF2CE233CD6E /* libPods-sixLive.a */; };
 		0A91E6691F0242B1003A0CE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6681F0242B1003A0CE0 /* main.m */; };
 		0A91E6741F0242B1003A0CE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A91E6731F0242B1003A0CE0 /* Assets.xcassets */; };
 		0A91E6771F0242B1003A0CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A91E6751F0242B1003A0CE0 /* LaunchScreen.storyboard */; };
@@ -16,6 +17,8 @@
 		0A91E6AF1F024970003A0CE0 /* SIXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6AE1F024970003A0CE0 /* SIXMainViewController.m */; };
 		0A91E6B41F0249C1003A0CE0 /* SIXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6B31F0249C1003A0CE0 /* SIXBaseViewController.m */; };
 		0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6B61F0249D8003A0CE0 /* SIXNavigationController.m */; };
+		0E9B5CB2C23C2CB1F95559A3 /* libPods-sixLiveUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */; };
+		6FA7D6F86ACB6A78561589A8 /* libPods-sixLiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03AA5A9E32D8FF2CE233CD6E /* libPods-sixLive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0454E8E7247575BB69F73079 /* Pods-sixLiveUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLiveUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-sixLiveUITests/Pods-sixLiveUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0A91E6641F0242B1003A0CE0 /* sixLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sixLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A91E6681F0242B1003A0CE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0A91E6731F0242B1003A0CE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +62,13 @@
 		0A91E6B61F0249D8003A0CE0 /* SIXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXNavigationController.m; sourceTree = "<group>"; };
 		0A91E6B81F024A69003A0CE0 /* sixLive-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sixLive-Prefix.pch"; sourceTree = "<group>"; };
 		0A91E6B91F024AD1003A0CE0 /* SixLive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SixLive.h; sourceTree = "<group>"; };
+		0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLiveUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4568E60061EF9207DA530B2C /* Pods-sixLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-sixLive/Pods-sixLive.release.xcconfig"; sourceTree = "<group>"; };
+		58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A6A382D7F3A5F39F2B008F /* Pods-sixLiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLiveTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-sixLiveTests/Pods-sixLiveTests.release.xcconfig"; sourceTree = "<group>"; };
+		96DC62775FAF1D5598C0689B /* Pods-sixLiveUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLiveUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sixLiveUITests/Pods-sixLiveUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9EA043FDA3E164AEDE4B2E37 /* Pods-sixLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sixLive/Pods-sixLive.debug.xcconfig"; sourceTree = "<group>"; };
+		C623720BD74546C22E3004C8 /* Pods-sixLiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLiveTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sixLiveTests/Pods-sixLiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0716521ED1A5E3F7EBCA1769 /* libPods-sixLive.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA7D6F86ACB6A78561589A8 /* libPods-sixLiveTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E9B5CB2C23C2CB1F95559A3 /* libPods-sixLiveUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +106,8 @@
 				0A91E6801F0242B1003A0CE0 /* sixLiveTests */,
 				0A91E68B1F0242B1003A0CE0 /* sixLiveUITests */,
 				0A91E6651F0242B1003A0CE0 /* Products */,
+				C3DD1D146D32886D72239E5E /* Pods */,
+				715763FF270FC32C6E4057F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,6 +288,29 @@
 			path = SIXViewController;
 			sourceTree = "<group>";
 		};
+		715763FF270FC32C6E4057F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03AA5A9E32D8FF2CE233CD6E /* libPods-sixLive.a */,
+				58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */,
+				0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3DD1D146D32886D72239E5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EA043FDA3E164AEDE4B2E37 /* Pods-sixLive.debug.xcconfig */,
+				4568E60061EF9207DA530B2C /* Pods-sixLive.release.xcconfig */,
+				C623720BD74546C22E3004C8 /* Pods-sixLiveTests.debug.xcconfig */,
+				64A6A382D7F3A5F39F2B008F /* Pods-sixLiveTests.release.xcconfig */,
+				96DC62775FAF1D5598C0689B /* Pods-sixLiveUITests.debug.xcconfig */,
+				0454E8E7247575BB69F73079 /* Pods-sixLiveUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -278,9 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A91E6911F0242B1003A0CE0 /* Build configuration list for PBXNativeTarget "sixLive" */;
 			buildPhases = (
+				8956EA29D584C097B5AFBE18 /* [CP] Check Pods Manifest.lock */,
 				0A91E6601F0242B1003A0CE0 /* Sources */,
 				0A91E6611F0242B1003A0CE0 /* Frameworks */,
 				0A91E6621F0242B1003A0CE0 /* Resources */,
+				868CE42F08458D71173C67C1 /* [CP] Embed Pods Frameworks */,
+				B703FC88CCB5BFFFFC1F8C26 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,9 +338,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A91E6941F0242B1003A0CE0 /* Build configuration list for PBXNativeTarget "sixLiveTests" */;
 			buildPhases = (
+				DA99D24F8C8FA5132A54298E /* [CP] Check Pods Manifest.lock */,
 				0A91E6791F0242B1003A0CE0 /* Sources */,
 				0A91E67A1F0242B1003A0CE0 /* Frameworks */,
 				0A91E67B1F0242B1003A0CE0 /* Resources */,
+				5B814005087FA81FE606ED94 /* [CP] Embed Pods Frameworks */,
+				9F19A3BADB0826F70527D080 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -313,9 +359,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A91E6971F0242B1003A0CE0 /* Build configuration list for PBXNativeTarget "sixLiveUITests" */;
 			buildPhases = (
+				DBAE5122F07B07C76953B73D /* [CP] Check Pods Manifest.lock */,
 				0A91E6841F0242B1003A0CE0 /* Sources */,
 				0A91E6851F0242B1003A0CE0 /* Frameworks */,
 				0A91E6861F0242B1003A0CE0 /* Resources */,
+				9707518CC4ED3BD39160A352 /* [CP] Embed Pods Frameworks */,
+				FAA58818CF34802B10B8CB17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,6 +450,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B814005087FA81FE606ED94 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sixLiveTests/Pods-sixLiveTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		868CE42F08458D71173C67C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sixLive/Pods-sixLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8956EA29D584C097B5AFBE18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9707518CC4ED3BD39160A352 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sixLiveUITests/Pods-sixLiveUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F19A3BADB0826F70527D080 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sixLiveTests/Pods-sixLiveTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B703FC88CCB5BFFFFC1F8C26 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sixLive/Pods-sixLive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA99D24F8C8FA5132A54298E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBAE5122F07B07C76953B73D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FAA58818CF34802B10B8CB17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sixLiveUITests/Pods-sixLiveUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0A91E6601F0242B1003A0CE0 /* Sources */ = {
@@ -552,6 +739,7 @@
 		};
 		0A91E6921F0242B1003A0CE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EA043FDA3E164AEDE4B2E37 /* Pods-sixLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y49U8RX2F5;
@@ -565,6 +753,7 @@
 		};
 		0A91E6931F0242B1003A0CE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4568E60061EF9207DA530B2C /* Pods-sixLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y49U8RX2F5;
@@ -578,6 +767,7 @@
 		};
 		0A91E6951F0242B1003A0CE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C623720BD74546C22E3004C8 /* Pods-sixLiveTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = Y49U8RX2F5;
@@ -591,6 +781,7 @@
 		};
 		0A91E6961F0242B1003A0CE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64A6A382D7F3A5F39F2B008F /* Pods-sixLiveTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = Y49U8RX2F5;
@@ -604,6 +795,7 @@
 		};
 		0A91E6981F0242B1003A0CE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96DC62775FAF1D5598C0689B /* Pods-sixLiveUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = Y49U8RX2F5;
 				INFOPLIST_FILE = sixLiveUITests/Info.plist;
@@ -616,6 +808,7 @@
 		};
 		0A91E6991F0242B1003A0CE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0454E8E7247575BB69F73079 /* Pods-sixLiveUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = Y49U8RX2F5;
 				INFOPLIST_FILE = sixLiveUITests/Info.plist;
