@@ -18,8 +18,8 @@
         self.minimumLineSpacing = margin;
         self.minimumInteritemSpacing = margin;
         
-        CGFloat itemWidth = (SIX_SCREEN_WIDTH - margin) / 2.0 ;
-        self.itemSize = CGSizeMake(itemWidth, itemWidth);
+//        CGFloat itemWidth = (SIX_SCREEN_WIDTH - margin) / 2.0 ;
+//        self.itemSize = CGSizeMake(itemWidth, itemWidth);
     }
     return self;
 }
