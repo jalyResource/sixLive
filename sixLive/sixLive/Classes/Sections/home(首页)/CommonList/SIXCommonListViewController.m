@@ -21,13 +21,20 @@
 
 @implementation SIXCommonListViewController
 
+- (instancetype)initWithParams:(NSDictionary *)params {
+    if (self = [super init]) {
+        self.params = params;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setUpHeaderBar];
     [self addSubviews];
     [self loadData];
     
+    [self setUpHeaderBar];
     DLog(@"---- 开始刷新  --");
 }
 
@@ -39,27 +46,11 @@
     [self.view addSubview:self.collectionView];
     self.collectionView.frame = self.view.bounds;
     self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.collectionView.backgroundColor = [UIColor orangeColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)loadData {
-    NSDictionary *dicParams = @{
-                                @"av" : @(2.1),
-                                @"p"  : @(0),
-                                @"rate": @1,
-                                @"size" : @0,
-                                @"type" : @"mlive",
-                                @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                };
-    /*
-     av:2.1
-     p : 0
-     rate : 1
-     size ： 0
-     type : ""
-     // 说明 type： 热门 ："", 手机红人：mlive
-     */
-    [self.commonListModel fetchUserListWithParam:dicParams completedCallBack:^(EnumTttpCode code, NSString *infoString) {
+    [self.commonListModel fetchUserListWithParam:self.params completedCallBack:^(EnumTttpCode code, NSString *infoString) {
         DLog(@"---- 结束 刷新  --");
         
         [self.collectionView reloadData];
@@ -95,6 +86,7 @@
         [_collectionView registerClass:[SIXListCollectionViewCell class] forCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier]];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+        _collectionView.contentInset = UIEdgeInsetsMake(SIX_STATUSBAR_HEIGHT + SIX_NAVIGATIONBAR_HEIGHT, 0, SIX_TABBAR_HEIGHT, 0);
     }
     return _collectionView;
 }

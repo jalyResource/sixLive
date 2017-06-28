@@ -16,6 +16,7 @@
 		0A457BF71F035025003FD0E2 /* SIXCommonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BF61F035025003FD0E2 /* SIXCommonListModel.m */; };
 		0A457BFC1F0350FA003FD0E2 /* SIXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BFB1F0350FA003FD0E2 /* SIXUser.m */; };
 		0A457BFF1F0379DF003FD0E2 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BFE1F0379DF003FD0E2 /* NSString+Addition.m */; };
+		0A457C031F038952003FD0E2 /* SIXTitleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457C021F038952003FD0E2 /* SIXTitleListView.m */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
 		0A68BE941F0260410094141A /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE931F0260410094141A /* SIXViewController.m */; };
@@ -71,6 +72,8 @@
 		0A457BFB1F0350FA003FD0E2 /* SIXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXUser.m; sourceTree = "<group>"; };
 		0A457BFD1F0379DF003FD0E2 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		0A457BFE1F0379DF003FD0E2 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
+		0A457C011F038952003FD0E2 /* SIXTitleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXTitleListView.h; sourceTree = "<group>"; };
+		0A457C021F038952003FD0E2 /* SIXTitleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXTitleListView.m; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		0A68BE641F024FF50094141A /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		0A68BE8C1F0254ED0094141A /* SIXGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
@@ -199,6 +202,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0A457C001F038823003FD0E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A457C011F038952003FD0E2 /* SIXTitleListView.h */,
+				0A457C021F038952003FD0E2 /* SIXTitleListView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0A68BE8E1F02586D0094141A /* SIXNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +225,7 @@
 			children = (
 				0A68BE991F0267410094141A /* SIXHomeViewController.h */,
 				0A68BE9A1F0267410094141A /* SIXHomeViewController.m */,
+				0A457C001F038823003FD0E2 /* View */,
 				0A457BF91F0350EB003FD0E2 /* Model */,
 				0A457BDE1F033E2F003FD0E2 /* CommonList */,
 				0A68BE9C1F026D2D0094141A /* MobileRedList */,
@@ -750,6 +763,7 @@
 				0A91E6691F0242B1003A0CE0 /* main.m in Sources */,
 				0A457BE51F033E96003FD0E2 /* SIXCollectionView.m in Sources */,
 				0A68BEA31F026E0D0094141A /* SIXCollectionViewListLayout.m in Sources */,
+				0A457C031F038952003FD0E2 /* SIXTitleListView.m in Sources */,
 				0A457BE91F0340D9003FD0E2 /* SIXHttpRequest.m in Sources */,
 				0A68BE9F1F026D600094141A /* SIXMobileRedViewController.m in Sources */,
 				0A457BF01F034836003FD0E2 /* UIView+Addition.m in Sources */,

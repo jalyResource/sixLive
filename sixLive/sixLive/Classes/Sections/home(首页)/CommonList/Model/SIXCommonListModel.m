@@ -24,7 +24,8 @@
 - (void)fetchUserListWithParam:(NSDictionary *)dicParams completedCallBack:(RequestCallBackBlock)callBack {
     [[SIXHttpRequest shareHttpRequest] POST:@"/coop/mobile/index.php" paramaters:dicParams success:^(NSDictionary *responseObject) {
         // 手机红人  content.mlive
-        NSArray<NSDictionary *> *array = [responseObject[@"content"] objectForKey:@"mlive"];
+        NSDictionary *dicContent = responseObject[@"content"];
+        NSArray<NSDictionary *> *array = [dicContent objectForKey:dicParams[@"type"]];
         self.arrOfUser = [SIXUser userArrayWithJSONArray:array];
         
         callBack(EnumTttpCodeSuccess, nil);
