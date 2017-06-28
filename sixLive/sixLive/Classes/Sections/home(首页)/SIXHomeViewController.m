@@ -114,8 +114,7 @@
 //    NSArray<NSDictionary *> *arrParams = @[dicParamsHot, dicParamsMobileRed, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
     NSArray<NSDictionary *> *arrParams = @[dicParamsHot];
     NSArray<NSString *> *arrVCClass = @[@"SIXHotTopicListViewController", @"SIXCommonListViewController"];
-    
-    
+
     /*
      // 说明 type： 热门 ："", 手机红人：mlive   , 舞蹈：u1，搞笑：u2，唠嗑：u3，男神：male，
      好声音 type：
