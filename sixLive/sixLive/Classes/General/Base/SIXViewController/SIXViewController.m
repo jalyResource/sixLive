@@ -20,13 +20,8 @@
 }
 
 - (void)setUp {
-    [self.view addSubview:self.navigationBar];
-    WS
-    [self.navigationBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.customStatusBar.mas_bottom);
-        make.left.right.equalTo(ws.view);
-        make.height.equalTo(@([SIXNavigationBar navigatonBarHeight]));
-    }];
+    [self.view addSubview:self.headerBar];
+    self.headerBar.frame = CGRectMake(0, SIX_STATUSBAR_HEIGHT, SIX_SCREEN_WIDTH, SIX_NAVIGATIONBAR_HEIGHT);
 }
 
 #pragma -mark 
@@ -50,12 +45,12 @@
 
 #pragma -mark 
 #pragma -mark getters
-- (SIXNavigationBar *)navigationBar {
-    if (!_navigationBar) {
-        _navigationBar = [[SIXNavigationBar alloc] init];
-        _navigationBar.delegate = self;
+- (SIXNavigationBar *)headerBar {
+    if (!_headerBar) {
+        _headerBar = [[SIXNavigationBar alloc] init];
+        _headerBar.delegate = self;
     }
-    return _navigationBar;
+    return _headerBar;
 }
 
 @end

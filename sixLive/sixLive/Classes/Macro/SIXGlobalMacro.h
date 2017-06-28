@@ -34,6 +34,11 @@
  */
 #define SIX_NAVIGATIONBAR_HEIGHT 45.0
 
+/*
+ *  底部 tabBar 高度  
+ */
+#define SIX_TABBAR_HEIGHT 45.0
+
 
 
 /** 自定义 log */

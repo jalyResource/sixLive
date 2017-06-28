@@ -25,24 +25,17 @@
 - (void)setUp {
     CGFloat barHeight = [[self class] navigatonBarHeight];
     
-    WS
     [self addSubview:self.btnLeft];
-    [self.btnLeft mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(ws);
-        make.width.height.equalTo(@(barHeight));
-    }];
+    self.btnLeft.frame = CGRectMake(0, 0, barHeight, barHeight);
+   
     
     [self addSubview:self.btnRight];
-    [self.btnRight mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.equalTo(ws);
-        make.width.height.equalTo(@(barHeight));
-    }];
+    self.btnRight.frame = CGRectMake(SIX_SCREEN_WIDTH - barHeight, 0, barHeight, barHeight);
+    
     
     [self addSubview:self.lblLine];
-    [self.lblLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(ws);
-        make.height.equalTo(@(1));
-    }];
+    self.lblLine.frame = CGRectMake(0, barHeight-1, SIX_SCREEN_WIDTH, 1);
+    
 }
 
 + (CGFloat)navigatonBarHeight {

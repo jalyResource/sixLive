@@ -29,40 +29,17 @@
     _customStatusBar = [[UIView alloc] init];
     _customStatusBar.backgroundColor = SIX_BACKGROUND_COLOR;
     [self.view addSubview:_customStatusBar];
-    WS
-    [_customStatusBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(ws.view);
-        make.top.equalTo(ws.view);
-        make.width.equalTo(ws.view);
-        make.height.mas_equalTo(SIX_STATUSBAR_HEIGHT);
-    }];
+   
     
     self.view.backgroundColor = SIX_BACKGROUND_COLOR;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (self.customStatusBar) {
+        self.customStatusBar.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_STATUSBAR_HEIGHT);
+    }
 }
-
-//对应旋转
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return  NO;
-}
-
-// 是否支持屏幕旋转
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
-
-// 支持的旋转方向
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
 
 @end
 

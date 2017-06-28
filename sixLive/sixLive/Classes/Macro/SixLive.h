@@ -13,17 +13,24 @@
 /** 公共基类 */
 #import "SIXBaseViewController.h"
 #import "SIXNavigationController.h"
-
+#import "SIXCollectionView.h"
+#import "SIXUser.h"
 
 /** 第三方框架 */
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
-#import "Masonry.h"
+
+
 
 
 /** 分类 */
 #import "UIColor+Addition.h"
+#import "UIView+Addition.h"
+#import "NSString+Addition.h"
 
+
+
+/** Macro */
 #import "SIXGlobalMacro.h"
 #import "SIXColorMacro.h"
 

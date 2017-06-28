@@ -7,7 +7,7 @@
 //
 
 #import "SIXMainViewController.h"
-#import "SIXLiveViewController.h"
+#import "SIXHomeViewController.h"
 #import "SIXBaseViewController.h"
 
 
@@ -32,7 +32,7 @@
 - (void)addChildControllers {
     self.arrSubControllers = @[].mutableCopy;
     
-    SIXLiveViewController *liveViewController = [[SIXLiveViewController alloc] init];
+    SIXHomeViewController *liveViewController = [[SIXHomeViewController alloc] init];
     SIXNavigationController *navController = [[SIXNavigationController alloc] initWithRootViewController:liveViewController];
     
     [self.arrSubControllers addObject:navController];
@@ -44,7 +44,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT - 45);
+    CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     self.navControllerCurrent.view.frame = rect;
 }
 

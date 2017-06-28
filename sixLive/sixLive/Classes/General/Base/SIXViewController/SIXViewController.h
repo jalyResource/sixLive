@@ -11,7 +11,7 @@
 
 @interface SIXViewController : SIXBaseViewController<SIXNavigationBarDelegate>
 
-@property (strong, nonatomic) SIXNavigationBar *navigationBar;
+@property (strong, nonatomic) SIXNavigationBar *headerBar;
 
 
 - (void)back ;
