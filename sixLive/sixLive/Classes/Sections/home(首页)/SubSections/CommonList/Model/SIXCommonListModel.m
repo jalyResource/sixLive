@@ -7,11 +7,10 @@
 //
 
 #import "SIXCommonListModel.h"
-#import "SIXHttpRequest.h"
+
 
 @interface SIXCommonListModel ()
 
-@property (strong, nonatomic) NSArray<SIXUser *> *arrOfUser;
 
 
 @end
@@ -25,7 +24,13 @@
     [[SIXHttpRequest shareHttpRequest] POST:@"/coop/mobile/index.php" paramaters:dicParams success:^(NSDictionary *responseObject) {
         // 手机红人  content.mlive
         NSDictionary *dicContent = responseObject[@"content"];
-        NSArray<NSDictionary *> *array = [dicContent objectForKey:dicParams[@"type"]];
+        
+        NSString *keyOfDicArray = dicParams[@"type"];
+        if (keyOfDicArray.length == 0) { // 热门
+            keyOfDicArray = @"roomList";
+        }
+        //roomList
+        NSArray<NSDictionary *> *array = [dicContent objectForKey:keyOfDicArray];
         self.arrOfUser = [SIXUser userArrayWithJSONArray:array];
         
         callBack(EnumTttpCodeSuccess, nil);
@@ -37,10 +42,8 @@
 
 
 
-
-/**
- 
- */
+#pragma -mark 
+#pragma -mark public ，为 collectionView dataSource 提供数据
 - (SIXUser *)userForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.arrOfUser.count > indexPath.item) {
         return self.arrOfUser[indexPath.item];
@@ -57,3 +60,15 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+

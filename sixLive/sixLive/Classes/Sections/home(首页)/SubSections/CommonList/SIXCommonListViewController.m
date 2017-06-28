@@ -7,15 +7,10 @@
 //  先做手机红人
 
 #import "SIXCommonListViewController.h"
-#import "SIXCommonListModel.h"
 
 
 @interface SIXCommonListViewController ()
 
-/** UI */
-@property (strong, nonatomic) SIXCollectionView *collectionView;
-
-@property (strong, nonatomic) SIXCommonListModel *commonListModel;
 
 @end
 
@@ -50,7 +45,7 @@
 }
 
 - (void)loadData {
-    [self.commonListModel fetchUserListWithParam:self.params completedCallBack:^(EnumTttpCode code, NSString *infoString) {
+    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumTttpCode code, NSString *infoString) {
         DLog(@"---- 结束 刷新  --");
         
         [self.collectionView reloadData];
@@ -60,19 +55,30 @@
 #pragma -mark 
 #pragma -mark UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.commonListModel numberOfItemsInSection:section];
+    NSInteger num = [self.listModel numberOfItemsInSection:section];
+    DLog(@"numberOfItemsInSection: %ld", num);
+    return num;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SIXListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier] forIndexPath:indexPath];
     
-    cell.user = [self.commonListModel userForItemAtIndexPath:indexPath];
+    cell.user = [self.listModel userForItemAtIndexPath:indexPath];
     
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.commonListModel numberOfSections];
+    NSInteger num = [self.listModel numberOfSections];
+    DLog(@"numberOfSectionsInCollectionView: %ld", num);
+    return num;
+}
+
+#pragma -mark 
+#pragma -mark UICollectionViewDelegateFlowLayout - collectionView:layout:sizeForItemAtIndexPath:
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat itemWidth = (SIX_SCREEN_WIDTH - 3) / 2.0 ;
+    return CGSizeMake(itemWidth, itemWidth);
 }
 
 
@@ -83,19 +89,22 @@
         SIXCollectionViewListLayout *layout = [[SIXCollectionViewListLayout alloc] init];
         
         _collectionView = [[SIXCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        [_collectionView registerClass:[SIXListCollectionViewCell class] forCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier]];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.contentInset = UIEdgeInsetsMake(SIX_STATUSBAR_HEIGHT + SIX_NAVIGATIONBAR_HEIGHT, 0, SIX_TABBAR_HEIGHT, 0);
+        
+        [_collectionView registerClass:[SIXListCollectionViewCell class] forCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier]];
+        [_collectionView registerClass:[SIXRecCollectionViewCell class] forCellWithReuseIdentifier:[SIXRecCollectionViewCell cellReuseIdentifier]];
+        [_collectionView registerClass:[SIXBannerCollectionViewCell class] forCellWithReuseIdentifier:[SIXBannerCollectionViewCell cellReuseIdentifier]];
     }
     return _collectionView;
 }
 
-- (SIXCommonListModel *)commonListModel {
-    if (!_commonListModel) {
-        _commonListModel = [[SIXCommonListModel alloc] init];
+- (SIXCommonListModel *)listModel {
+    if (!_listModel) {
+        _listModel = [[SIXCommonListModel alloc] init];
     }
-    return _commonListModel;
+    return _listModel;
 }
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import "SIXViewController.h"
+#import "SIXHotListModel.h"
 
 @interface SIXHomeViewController : SIXViewController
+
+@property (strong, nonatomic) SIXHotListModel *listModel;
 
 @end

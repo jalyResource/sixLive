@@ -8,6 +8,7 @@
 
 #import "SIXHomeViewController.h"
 #import "SIXCommonListViewController.h"
+#import "SIXHotTopicListViewController.h"
 #import "SIXTitleListView.h"
 
 @interface SIXHomeViewController ()<UIScrollViewDelegate>
@@ -36,7 +37,7 @@
     [self.view bringSubviewToFront:self.headerBar];
     [self.view bringSubviewToFront:self.customStatusBar];
     
-    NSArray<NSString *> *arrTitle = @[@"手机红人", @"好声音（全部）", @"舞蹈", @"搞笑", @"唠嗑", @"男神"];
+    NSArray<NSString *> *arrTitle = @[@"热门", @"手机红人", @"好声音（全部）", @"舞蹈", @"搞笑", @"唠嗑", @"男神"];
     self.viewTopTitle.arrTitle = arrTitle;
     [self.headerBar addSubview:self.viewTopTitle];
     
@@ -50,12 +51,20 @@
 }
 
 - (void)configSubControllers {
+    NSDictionary *dicParamsHot = @{
+                                         @"av" : @(2.1),
+                                         @"p"  : @(0),
+                                         @"rate": @1,
+                                         @"size" : @0,
+                                         @"type" : @"", // 热门
+                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                         };
     NSDictionary *dicParamsMobileRed = @{
                                 @"av" : @(2.1),
                                 @"p"  : @(0),
                                 @"rate": @1,
                                 @"size" : @0,
-                                @"type" : @"mlive",
+                                @"type" : @"mlive", // 手机红人
                                 @"padapi" : @"coop-mobile-getlivelistnew.php"
                                 };
     /*
@@ -102,8 +111,9 @@
                                      @"type" : @"male",  // 男神
                                      @"padapi" : @"coop-mobile-getlivelistnew.php"
                                      };
-    NSArray<NSDictionary *> *arrParams = @[dicParamsMobileRed, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
-    
+//    NSArray<NSDictionary *> *arrParams = @[dicParamsHot, dicParamsMobileRed, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
+    NSArray<NSDictionary *> *arrParams = @[dicParamsHot];
+    NSArray<NSString *> *arrVCClass = @[@"SIXHotTopicListViewController", @"SIXCommonListViewController"];
     /*
      // 说明 type： 热门 ："", 手机红人：mlive   , 舞蹈：u1，搞笑：u2，唠嗑：u3，男神：male，
      好声音 type：
@@ -120,7 +130,12 @@
     
     for (NSUInteger i = 0; i<arrParams.count; i++) {
         NSDictionary *dicParam = arrParams[i];
-        SIXCommonListViewController *commonListViewController = [[SIXCommonListViewController alloc] initWithParams:dicParam];
+//        Class c = NSClassFromString(arrVCClass[i]);
+//        id target = [c alloc];
+        
+        SIXHotTopicListViewController *commonListViewController = [[SIXHotTopicListViewController alloc] initWithParams:dicParam];
+        
+//        SIXCommonListViewController *commonListViewController = [self getVCWithTarget:target param:dicParam];
         [self addChildViewController:commonListViewController];
         [self.view addSubview:commonListViewController.view];
         
@@ -130,6 +145,23 @@
     }
     
     self.scrollView.contentSize = CGSizeMake(arrParams.count * SIX_SCREEN_WIDTH, SIX_TABBAR_HEIGHT);
+}
+
+- (__kindof SIXCommonListViewController *)getVCWithTarget:(Class)target param:(NSDictionary *)param {
+    
+    NSMethodSignature *sig = [target methodSignatureForSelector:@selector(initWithParams:)];
+    
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+    invocation.target = target;
+    invocation.selector = @selector(initWithParams:);
+    [invocation setArgument:&param atIndex:2];
+    [invocation invoke];
+    
+    id retVC = nil;
+    if ( sig.methodReturnLength) {
+        [invocation getReturnValue:&retVC];
+    }
+    return retVC;
 }
 
 
