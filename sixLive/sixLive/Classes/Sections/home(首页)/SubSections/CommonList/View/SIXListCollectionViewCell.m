@@ -82,11 +82,6 @@
 
 
 
-#pragma -mark 
-#pragma -mark public
-+ (NSString *)cellReuseIdentifier {
-    return NSStringFromClass([self class]);
-}
 
 #pragma -mark 
 #pragma -mark getters

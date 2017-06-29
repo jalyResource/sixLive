@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>全部</string>
+        <key>image_normal</key>
+        <string>live_song_class_all_normal</string>
+        <key>image_selected</key>
+        <string>live_song_class_all_highlight</string>
+        <key>type</key>
+        <string>u0</string>
+	</dict>
+    <dict>
+        <key>title</key>
+        <string>炽星</string>
+        <key>image_normal</key>
+        <string>live_song_class_blazing_star_normal</string>
+        <key>image_selected</key>
+        <string>live_song_class_blazing_star_highlight</string>
+        <key>type</key>
+        <string>r10</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>超星</string>
+        <key>image_normal</key>
+        <string>live_song_class_super_star_normal</string>
+        <key>image_selected</key>
+        <string>live_song_class_super_star_highlight</string>
+        <key>type</key>
+        <string>r5</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>巨星</string>
+        <key>image_normal</key>
+        <string>live_song_class_big_star_normal</string>
+        <key>image_selected</key>
+        <string>live_song_class_big_star_highlight</string>
+        <key>type</key>
+        <string>r4</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>明星</string>
+        <key>image_normal</key>
+        <string>live_song_class_star_normal</string>
+        <key>image_selected</key>
+        <string>live_song_class_star_highlight</string>
+        <key>type</key>
+        <string>r1</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>红人</string>
+        <key>image_normal</key>
+        <string>live_song_class_little_star_normal</string>
+        <key>image_selected</key>
+        <string>live_song_class_little_star_highlight</string>
+        <key>type</key>
+        <string>r2</string>
+    </dict>
+</array>
+</plist>

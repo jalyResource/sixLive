@@ -6,12 +6,11 @@
 //  Copyright © 2017年 li’Pro. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SIXCollectionViewCell.h"
 
-@interface SIXListCollectionViewCell : UICollectionViewCell
+@interface SIXListCollectionViewCell : SIXCollectionViewCell
 
 @property (strong, nonatomic) SIXUser *user;
 
-/** 注册 cell 的 id  */
-+ (NSString *)cellReuseIdentifier ;
+
 @end

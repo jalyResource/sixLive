@@ -10,6 +10,7 @@
 #import "SIXCommonListViewController.h"
 #import "SIXHotTopicListViewController.h"
 #import "SIXLocalListViewController.h"
+#import "SIXSoundViewController.h"
 #import "SIXTitleListView.h"
 
 @interface SIXHomeViewController ()<UIScrollViewDelegate>
@@ -120,7 +121,7 @@
                                      @"padapi" : @"coop-mobile-getlivelistnew.php"
                                      };
 //    NSArray<NSDictionary *> *arrParams = @[dicParamsHot, dicParamsMobileRed, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
-    NSArray<NSDictionary *> *arrParams = @[dicParamsLocal];
+    NSArray<NSDictionary *> *arrParams = @[dicParamsGoodVoice];
     NSArray<NSString *> *arrVCClass = @[@"SIXHotTopicListViewController", @"SIXCommonListViewController"];
 
     /*
@@ -142,7 +143,7 @@
 //        Class c = NSClassFromString(arrVCClass[i]);
 //        id target = [c alloc];
         
-        SIXLocalListViewController *commonListViewController = [[SIXLocalListViewController alloc] initWithParams:dicParam];
+        SIXSoundViewController *commonListViewController = [[SIXSoundViewController alloc] initWithParams:dicParam];
         
 //        SIXCommonListViewController *commonListViewController = [[SIXCommonListViewController alloc] initWithParams:dicParam];
         [self addChildViewController:commonListViewController];
