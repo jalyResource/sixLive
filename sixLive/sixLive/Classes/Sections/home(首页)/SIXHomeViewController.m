@@ -136,7 +136,7 @@
         
         SIXHotTopicListViewController *commonListViewController = [[SIXHotTopicListViewController alloc] initWithParams:dicParam];
         
-//        SIXCommonListViewController *commonListViewController = [self getVCWithTarget:target param:dicParam];
+//        SIXCommonListViewController *commonListViewController = [[SIXCommonListViewController alloc] initWithParams:dicParam];
         [self addChildViewController:commonListViewController];
         [self.view addSubview:commonListViewController.view];
         

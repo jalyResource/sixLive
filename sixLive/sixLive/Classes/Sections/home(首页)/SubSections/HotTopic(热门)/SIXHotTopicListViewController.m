@@ -7,6 +7,8 @@
 //
 
 #import "SIXHotTopicListViewController.h"
+#import "SIXRecomendSupplementaryView.h"
+
 
 @interface SIXHotTopicListViewController ()
 
@@ -42,54 +44,32 @@
 
 
 #pragma -mark 
-#pragma -mark UICollectionViewDataSource
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = nil;
-    switch ([self.listModel cellTypeAtIndexPath:indexPath]) {
-        case EnumListCellTypeBanner: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SIXBannerCollectionViewCell cellReuseIdentifier] forIndexPath:indexPath];
-            NSArray<SIXEvent *> *arrEvent = [self.listModel eventArrayForItemAtIndexPath:indexPath];
-            ((SIXBannerCollectionViewCell *)cell).arrEvent = arrEvent;
-            break;
-        }
-        case EnumListCellTypeRecomand: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SIXRecCollectionViewCell cellReuseIdentifier] forIndexPath:indexPath];
-            NSArray<SIXEvent *> *arrEvent = [self.listModel eventArrayForItemAtIndexPath:indexPath];
-            ((SIXRecCollectionViewCell *)cell).arrEvent = arrEvent;
-            break;
-        }
-        case EnumListCellTypeNormal: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier] forIndexPath:indexPath];
-            
-            ((SIXListCollectionViewCell *)cell).user = [self.listModel userForItemAtIndexPath:indexPath];
-            break;
-        }
+#pragma -mark 设置 collectionView Supplementary
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    SIXRecomendSupplementaryView *view = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[SIXRecomendSupplementaryView viewReuseIdentifier] forIndexPath:indexPath];
     }
     
-    return cell;
+    return view;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    return [SIXRecomendSupplementaryView viewSize];
+}
+
+
+/**
+ 注册 cell
+ */
+- (void)registerCollectionViewCellWithCollection:(__kindof UICollectionView *)collectionView {
+    [super registerCollectionViewCellWithCollection:collectionView];
+   
+    [collectionView registerClass:[SIXRecomendSupplementaryView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[SIXRecomendSupplementaryView viewReuseIdentifier]];
 }
 
 #pragma -mark 
-#pragma -mark UICollectionViewDelegateFlowLayout - collectionView:layout:sizeForItemAtIndexPath:
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    switch ([self.listModel cellTypeAtIndexPath:indexPath]) {
-        case EnumListCellTypeBanner: {
-            return [SIXBannerCollectionViewCell cellSize];
-            break;
-        }
-        case EnumListCellTypeRecomand: {
-            return [SIXRecCollectionViewCell cellSize];
-            break;
-        }
-        case EnumListCellTypeNormal: {
-            CGFloat itemWidth = (SIX_SCREEN_WIDTH - 3) / 2.0 ;
-            return CGSizeMake(itemWidth, itemWidth);
-            break;
-        }
-    }
-    return CGSizeZero;
-}
-
+#pragma -mark getters
 - (SIXHotListModel *)listModel {
     if (!_listModel) {
         _listModel = [[SIXHotListModel alloc] init];

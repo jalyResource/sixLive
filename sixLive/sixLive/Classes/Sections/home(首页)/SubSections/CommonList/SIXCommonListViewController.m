@@ -74,12 +74,12 @@
     return num;
 }
 
-#pragma -mark 
-#pragma -mark UICollectionViewDelegateFlowLayout - collectionView:layout:sizeForItemAtIndexPath:
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat itemWidth = (SIX_SCREEN_WIDTH - 3) / 2.0 ;
-    return CGSizeMake(itemWidth, itemWidth);
-}
+//#pragma -mark 
+//#pragma -mark UICollectionViewDelegateFlowLayout - collectionView:layout:sizeForItemAtIndexPath:
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    CGFloat itemWidth = (SIX_SCREEN_WIDTH - 3) / 2.0 ;
+//    return CGSizeMake(itemWidth, itemWidth);
+//}
 
 
 #pragma -mark 
@@ -93,11 +93,13 @@
         _collectionView.dataSource = self;
         _collectionView.contentInset = UIEdgeInsetsMake(SIX_STATUSBAR_HEIGHT + SIX_NAVIGATIONBAR_HEIGHT, 0, SIX_TABBAR_HEIGHT, 0);
         
-        [_collectionView registerClass:[SIXListCollectionViewCell class] forCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier]];
-        [_collectionView registerClass:[SIXRecCollectionViewCell class] forCellWithReuseIdentifier:[SIXRecCollectionViewCell cellReuseIdentifier]];
-        [_collectionView registerClass:[SIXBannerCollectionViewCell class] forCellWithReuseIdentifier:[SIXBannerCollectionViewCell cellReuseIdentifier]];
+        [self registerCollectionViewCellWithCollection:_collectionView];
     }
     return _collectionView;
+}
+
+- (void)registerCollectionViewCellWithCollection:(__kindof UICollectionView *)collectionView {
+    [collectionView registerClass:[SIXListCollectionViewCell class] forCellWithReuseIdentifier:[SIXListCollectionViewCell cellReuseIdentifier]];
 }
 
 - (SIXCommonListModel *)listModel {

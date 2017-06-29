@@ -22,6 +22,9 @@
 		0A457C291F03A59D003FD0E2 /* SIXHotListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457C281F03A59D003FD0E2 /* SIXHotListModel.m */; };
 		0A457C2C1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457C2B1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m */; };
 		0A457C2F1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457C2E1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m */; };
+		0A46BE921F04955400E12CD6 /* SIXCollectionSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BE911F04955400E12CD6 /* SIXCollectionSupplementaryView.m */; };
+		0A46BE981F04982600E12CD6 /* SIXRecomendSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BE971F04982600E12CD6 /* SIXRecomendSupplementaryView.m */; };
+		0A46BEE01F04AC1000E12CD6 /* SIXRecomendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BEDF1F04AC1000E12CD6 /* SIXRecomendView.m */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
 		0A68BE941F0260410094141A /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE931F0260410094141A /* SIXViewController.m */; };
@@ -88,6 +91,12 @@
 		0A457C2B1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXBannerCollectionViewCell.m; sourceTree = "<group>"; };
 		0A457C2D1F03AB51003FD0E2 /* SIXRecCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXRecCollectionViewCell.h; sourceTree = "<group>"; };
 		0A457C2E1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXRecCollectionViewCell.m; sourceTree = "<group>"; };
+		0A46BE901F04955400E12CD6 /* SIXCollectionSupplementaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXCollectionSupplementaryView.h; sourceTree = "<group>"; };
+		0A46BE911F04955400E12CD6 /* SIXCollectionSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXCollectionSupplementaryView.m; sourceTree = "<group>"; };
+		0A46BE961F04982600E12CD6 /* SIXRecomendSupplementaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXRecomendSupplementaryView.h; sourceTree = "<group>"; };
+		0A46BE971F04982600E12CD6 /* SIXRecomendSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXRecomendSupplementaryView.m; sourceTree = "<group>"; };
+		0A46BEDE1F04AC1000E12CD6 /* SIXRecomendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXRecomendView.h; sourceTree = "<group>"; };
+		0A46BEDF1F04AC1000E12CD6 /* SIXRecomendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXRecomendView.m; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		0A68BE641F024FF50094141A /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		0A68BE8C1F0254ED0094141A /* SIXGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
@@ -261,8 +270,21 @@
 				0A457C2B1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m */,
 				0A457C2D1F03AB51003FD0E2 /* SIXRecCollectionViewCell.h */,
 				0A457C2E1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m */,
+				0A46BE961F04982600E12CD6 /* SIXRecomendSupplementaryView.h */,
+				0A46BE971F04982600E12CD6 /* SIXRecomendSupplementaryView.m */,
+				0A46BEDE1F04AC1000E12CD6 /* SIXRecomendView.h */,
+				0A46BEDF1F04AC1000E12CD6 /* SIXRecomendView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0A46BE8F1F04953100E12CD6 /* Cell&Supplementary */ = {
+			isa = PBXGroup;
+			children = (
+				0A46BE901F04955400E12CD6 /* SIXCollectionSupplementaryView.h */,
+				0A46BE911F04955400E12CD6 /* SIXCollectionSupplementaryView.m */,
+			);
+			path = "Cell&Supplementary";
 			sourceTree = "<group>";
 		};
 		0A68BE8E1F02586D0094141A /* SIXNavigationBar */ = {
@@ -465,6 +487,7 @@
 		0A91E6A91F0248F9003A0CE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A46BE8F1F04953100E12CD6 /* Cell&Supplementary */,
 				0A457BE21F033E84003FD0E2 /* SIXCollectionView */,
 				0A68BE8E1F02586D0094141A /* SIXNavigationBar */,
 			);
@@ -801,6 +824,7 @@
 				0A457C2C1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m in Sources */,
 				0A457C261F039C4A003FD0E2 /* SIXEvent.m in Sources */,
 				0A68BE9B1F0267410094141A /* SIXHomeViewController.m in Sources */,
+				0A46BE921F04955400E12CD6 /* SIXCollectionSupplementaryView.m in Sources */,
 				0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */,
 				0A457BFF1F0379DF003FD0E2 /* NSString+Addition.m in Sources */,
 				0A91E6B41F0249C1003A0CE0 /* SIXBaseViewController.m in Sources */,
@@ -810,6 +834,7 @@
 				0A68BEA31F026E0D0094141A /* SIXCollectionViewListLayout.m in Sources */,
 				0A457C031F038952003FD0E2 /* SIXTitleListView.m in Sources */,
 				0A457BE91F0340D9003FD0E2 /* SIXHttpRequest.m in Sources */,
+				0A46BE981F04982600E12CD6 /* SIXRecomendSupplementaryView.m in Sources */,
 				0A457BF01F034836003FD0E2 /* UIView+Addition.m in Sources */,
 				0A457C1D1F039991003FD0E2 /* SIXListCollectionViewCell.m in Sources */,
 				0A457C1C1F039991003FD0E2 /* SIXCommonListViewController.m in Sources */,
@@ -820,6 +845,7 @@
 				0A457C291F03A59D003FD0E2 /* SIXHotListModel.m in Sources */,
 				0A457BFC1F0350FA003FD0E2 /* SIXUser.m in Sources */,
 				0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */,
+				0A46BEE01F04AC1000E12CD6 /* SIXRecomendView.m in Sources */,
 				0A91E6AF1F024970003A0CE0 /* SIXMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

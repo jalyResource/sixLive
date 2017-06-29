@@ -23,12 +23,11 @@
 - (void)fetchEventListWithParam:(NSDictionary *)dicParams completedCallBack:(RequestCallBackBlock)callBack {
     NSDictionary *dic = @{
                           @"logiuid" : @"1899999999",
-                          @"av"      : @2.1,
-                          @"encpass" : [NSNull null],
-                          @"padapi"  : @"coop-mobile-getEventList.php"
+                          @"av"      : @"2.1",
+                          @"encpass" : @""
+//                          @"padapi"  : @"coop-mobile-getEventList.php"
                           };
-    
-    [[SIXHttpRequest shareHttpRequest] POST:@"/coop/mobile/index.php" paramaters:dic success:^(NSDictionary *responseObject) {
+    [[SIXHttpRequest shareHttpRequest] POST:@"/coop/mobile/index.php?padapi=coop-mobile-getEventList.php" paramaters:dic success:^(NSDictionary *responseObject) {
         //   arr :  content : []
         NSArray<NSDictionary *> *array = responseObject[@"content"];
         self.arrOfEvent = [SIXEvent eventArrayWithJSONArray:array];
@@ -57,32 +56,22 @@
  计算 banner 的数量
  */
 - (NSUInteger)bannerNumber {
-    __block int hasType1 = 0, hasType2 = 0;
-    
-    if (self.arrOfEventType_1.count) {
-        hasType1 = 1;
-    }
-    if (self.arrOfEventType_2.count) {
-        hasType2 = 1;
-    }
-    
-    return hasType1 + hasType2;
+    // 接口只返回 type=1 的数据，返回值写死
+    return 1;
+//    __block int hasType1 = 0, hasType2 = 0;
+//    
+//    if (self.arrOfEventType_1.count) {
+//        hasType1 = 1;
+//    }
+//    if (self.arrOfEventType_2.count) {
+//        hasType2 = 1;
+//    }
+//    
+//    return hasType1 + hasType2;
 }
 
 #pragma -mark 
 #pragma -mark public ，为 collectionView dataSource 提供数据
-- (EnumListCellType)cellTypeAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger bannerNum = [self bannerNumber];
-    if (indexPath.item < bannerNum) {
-        if (indexPath.item == 0) {
-            return EnumListCellTypeBanner;
-        } else {
-            return EnumListCellTypeRecomand;
-        }
-    }
-    
-    return EnumListCellTypeNormal;
-}
 
 - (NSArray<SIXEvent *> *)eventArrayForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item == 0) {
@@ -93,17 +82,6 @@
     return nil;
 }
 
-- (SIXUser *)userForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.arrOfUser.count > indexPath.item) {
-        return self.arrOfUser[indexPath.item];
-    }
-    return nil;
-}
-
-- (NSUInteger)numberOfItemsInSection:(NSInteger)section {
-    NSUInteger count = self.arrOfUser.count + [self bannerNumber];
-    return count;
-}
 
 
 @end

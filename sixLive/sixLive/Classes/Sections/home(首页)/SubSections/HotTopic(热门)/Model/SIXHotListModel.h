@@ -20,7 +20,7 @@
 
 
 
-- (EnumListCellType)cellTypeAtIndexPath:(NSIndexPath *)indexPath ;
+
 
 - (NSArray<SIXEvent *> *)eventArrayForItemAtIndexPath:(NSIndexPath *)indexPath ;
 
