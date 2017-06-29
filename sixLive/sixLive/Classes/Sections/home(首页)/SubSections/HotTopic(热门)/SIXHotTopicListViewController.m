@@ -16,6 +16,8 @@
 
 @implementation SIXHotTopicListViewController
 
+@dynamic listModel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -26,12 +28,12 @@
 - (void)loadData {
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumTttpCode code, NSString *infoString) {
+    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         dispatch_group_leave(group);
     }];
     
     dispatch_group_enter(group);
-    [self.listModel fetchEventListWithParam:nil completedCallBack:^(EnumTttpCode code, NSString *infoString) {
+    [self.listModel fetchEventListWithParam:nil completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         dispatch_group_leave(group);
     }];
     

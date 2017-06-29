@@ -56,7 +56,19 @@ static NSTimeInterval REQUEST_TIME_OUT = 15;
         ;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            successBlock((NSDictionary *)responseObject);
+            // 判断 flag
+            NSUInteger flag = [[((NSDictionary *)responseObject) objectForKey:@"flag"] integerValue];
+            
+            switch (flag) {
+                case EnumHttpCodeFaile: {
+                    NSError *error = [NSError errorWithDomain:link code:flag userInfo:responseObject];
+                    failureBlock(error);
+                    break;
+                }
+                default:
+                    successBlock((NSDictionary *)responseObject);
+                    break;
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failureBlock(error);
@@ -68,7 +80,20 @@ static NSTimeInterval REQUEST_TIME_OUT = 15;
         ;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            successBlock((NSDictionary *)responseObject);
+            // 判断 flag
+            NSUInteger flag = [[((NSDictionary *)responseObject) objectForKey:@"flag"] integerValue];
+            
+            switch (flag) {
+                case EnumHttpCodeFaile: {
+                    NSError *error = [NSError errorWithDomain:link code:flag userInfo:responseObject];
+                    failureBlock(error);
+                    break;
+                }
+                default:
+                    successBlock((NSDictionary *)responseObject);
+                    break;
+            }
+
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failureBlock(error);

@@ -9,6 +9,7 @@
 #import "SIXHomeViewController.h"
 #import "SIXCommonListViewController.h"
 #import "SIXHotTopicListViewController.h"
+#import "SIXLocalListViewController.h"
 #import "SIXTitleListView.h"
 
 @interface SIXHomeViewController ()<UIScrollViewDelegate>
@@ -59,14 +60,21 @@
                                          @"type" : @"", // 热门
                                          @"padapi" : @"coop-mobile-getlivelistnew.php"
                                          };
-    NSDictionary *dicParamsMobileRed = @{
-                                @"av" : @(2.1),
+    NSDictionary *dicParamsLocal = @{       // 附近
                                 @"p"  : @(0),
-                                @"rate": @1,
                                 @"size" : @0,
-                                @"type" : @"mlive", // 手机红人
-                                @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                @"padapi" : @"coop-mobile-getlivelistlocation.php",
+                                @"pid" : @""
                                 };
+    
+    NSDictionary *dicParamsMobileRed = @{
+                                         @"av" : @(2.1),
+                                         @"p"  : @(0),
+                                         @"rate": @1,
+                                         @"size" : @0,
+                                         @"type" : @"mlive", // 手机红人
+                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                         };
     /*
      好声音 type：
 					全部：u0 ,炽星 ： r10,   超星:r5,   巨星：r4, 明星 ： r1,  红人： r2
@@ -112,7 +120,7 @@
                                      @"padapi" : @"coop-mobile-getlivelistnew.php"
                                      };
 //    NSArray<NSDictionary *> *arrParams = @[dicParamsHot, dicParamsMobileRed, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
-    NSArray<NSDictionary *> *arrParams = @[dicParamsHot];
+    NSArray<NSDictionary *> *arrParams = @[dicParamsLocal];
     NSArray<NSString *> *arrVCClass = @[@"SIXHotTopicListViewController", @"SIXCommonListViewController"];
 
     /*
@@ -134,7 +142,7 @@
 //        Class c = NSClassFromString(arrVCClass[i]);
 //        id target = [c alloc];
         
-        SIXHotTopicListViewController *commonListViewController = [[SIXHotTopicListViewController alloc] initWithParams:dicParam];
+        SIXLocalListViewController *commonListViewController = [[SIXLocalListViewController alloc] initWithParams:dicParam];
         
 //        SIXCommonListViewController *commonListViewController = [[SIXCommonListViewController alloc] initWithParams:dicParam];
         [self addChildViewController:commonListViewController];

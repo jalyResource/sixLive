@@ -42,10 +42,10 @@
             }
         }
         
-        callBack(EnumTttpCodeSuccess, nil);
+        callBack(EnumHttpCodeSuccess, nil);
         
     } failure:^(NSError *error) {
-        callBack(EnumTttpCodeFaile, error.localizedDescription);
+        callBack(EnumHttpCodeFaile, error.localizedDescription);
     }];
 }
 

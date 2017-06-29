@@ -45,7 +45,7 @@
 }
 
 - (void)loadData {
-    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumTttpCode code, NSString *infoString) {
+    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         DLog(@"---- 结束 刷新  --");
         
         [self.collectionView reloadData];

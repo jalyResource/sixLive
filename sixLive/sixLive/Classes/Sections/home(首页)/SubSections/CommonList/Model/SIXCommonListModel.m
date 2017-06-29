@@ -33,10 +33,10 @@
         NSArray<NSDictionary *> *array = [dicContent objectForKey:keyOfDicArray];
         self.arrOfUser = [SIXUser userArrayWithJSONArray:array];
         
-        callBack(EnumTttpCodeSuccess, nil);
+        callBack(EnumHttpCodeSuccess, nil);
         
     } failure:^(NSError *error) {
-        callBack(EnumTttpCodeFaile, error.localizedDescription);
+        callBack(EnumHttpCodeFaile, error.localizedDescription);
     }];
 }
 

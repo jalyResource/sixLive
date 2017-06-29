@@ -19,7 +19,6 @@
         self.minimumInteritemSpacing = margin;
         
         
-        self.headerReferenceSize = CGSizeMake(100, 100);
         CGFloat itemWidth = (SIX_SCREEN_WIDTH - margin) / 2.0 ;
         self.itemSize = CGSizeMake(itemWidth, itemWidth);
     }

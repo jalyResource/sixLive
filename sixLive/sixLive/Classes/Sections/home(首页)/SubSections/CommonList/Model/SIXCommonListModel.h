@@ -10,10 +10,7 @@
 #import "SIXHttpRequest.h"
 #import "SIXEvent.h"
 
-typedef NS_ENUM(NSUInteger, EnumTttpCode) {
-    EnumTttpCodeSuccess = 200,
-    EnumTttpCodeFaile = 404
-};
+
 
 
 /**
@@ -26,7 +23,7 @@ typedef NS_ENUM(NSUInteger, EnumListCellType) {
 };
 
 
-typedef void(^RequestCallBackBlock)(EnumTttpCode code, NSString *infoString);
+typedef void(^RequestCallBackBlock)(EnumHttpCode code, NSString *infoString);
 
 @interface SIXCommonListModel : NSObject
 
