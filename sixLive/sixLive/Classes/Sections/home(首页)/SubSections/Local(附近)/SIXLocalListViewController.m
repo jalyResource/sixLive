@@ -83,6 +83,7 @@ static CGFloat const HeaderViewHeight = 55.;
         }];
     } else {
         self.provinceListVC.currentPId = self.listModel.currentProvinceId;
+        self.provinceListVC.arrProvince = self.listModel.provinceArray;
         
         CGRect frame = self.viewLocalSelect.frame;
         frame.origin.y = self.collectionView.contentInset.top + HeaderViewHeight;

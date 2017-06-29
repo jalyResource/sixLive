@@ -14,9 +14,9 @@ NSString *const CellReuseID = @"SIXProvinceListViewController.h";
 
 @interface SIXProvinceListViewController ()<UITableViewDelegate, UITableViewDataSource>
 /** UI */
+/** 顶部线条 */
 @property (strong, nonatomic) UILabel *lblTopLine;
 
-@property (copy, nonatomic) NSArray<SIXProvince *> *arrProvince;
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
@@ -25,7 +25,7 @@ NSString *const CellReuseID = @"SIXProvinceListViewController.h";
 
 - (instancetype)initWithProvinceArray:(NSArray<SIXProvince *> *)arrProvince {
     if (self = [super init]) {
-        self.arrProvince = arrProvince;
+        _arrProvince = arrProvince;
     }
     return self;
 }
@@ -75,8 +75,6 @@ NSString *const CellReuseID = @"SIXProvinceListViewController.h";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SIXProvince *province = self.arrProvince[indexPath.row];
     self.currentPId = province.pid;
-//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [tableView reloadData];
     
     if (self.blockRowClicked) {
         self.blockRowClicked(province);
@@ -108,6 +106,10 @@ NSString *const CellReuseID = @"SIXProvinceListViewController.h";
     return _tableView;
 }
 
+- (void)setArrProvince:(NSArray<SIXProvince *> *)arrProvince {
+    _arrProvince = arrProvince;
+    [self.tableView reloadData];
+}
 
 
 @end
