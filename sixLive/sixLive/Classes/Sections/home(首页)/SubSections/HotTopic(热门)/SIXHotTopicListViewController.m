@@ -28,7 +28,7 @@
 - (void)loadData {
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumHttpCode code, NSString *infoString) {
+    [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         dispatch_group_leave(group);
     }];
     

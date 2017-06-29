@@ -16,9 +16,9 @@
 
 @implementation SIXCommonListViewController
 
-- (instancetype)initWithParams:(NSDictionary *)params {
+- (instancetype)initWithParams:(NSDictionary *)dicParams {
     if (self = [super init]) {
-        self.params = params;
+        self.dicParams = dicParams.mutableCopy;
     }
     return self;
 }
@@ -45,7 +45,7 @@
 }
 
 - (void)loadData {
-    [self.listModel fetchUserListWithParam:self.params completedCallBack:^(EnumHttpCode code, NSString *infoString) {
+    [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         DLog(@"---- 结束 刷新  --");
         
         [self.collectionView reloadData];

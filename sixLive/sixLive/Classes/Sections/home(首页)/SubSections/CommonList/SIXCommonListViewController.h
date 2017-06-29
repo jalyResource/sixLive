@@ -25,9 +25,9 @@
 
 @property (strong, nonatomic) SIXCommonListModel *listModel;
 
-@property (strong, nonatomic) NSDictionary *params;
+@property (strong, nonatomic) NSMutableDictionary *dicParams;
 
-- (instancetype)initWithParams:(NSDictionary *)params ;
+- (instancetype)initWithParams:(NSDictionary *)dicParams ;
 
 
 

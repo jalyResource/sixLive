@@ -20,5 +20,7 @@
 - (NSString *)currentProvinceId ;
 - (NSArray<SIXProvince *> *)provinceArray ;
 
+- (void)setCurrentProvince:(SIXProvince *)province ;
+
 
 @end

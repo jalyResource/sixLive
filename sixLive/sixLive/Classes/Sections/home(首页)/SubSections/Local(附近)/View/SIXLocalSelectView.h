@@ -7,10 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SIXLocalSelectView;
+
+@protocol SIXLocalSelectViewDelegate <NSObject>
+
+@optional
+- (void)localSelectViewDidClicked ;
+
+@end
 
 @interface SIXLocalSelectView : UIView
 
+@property (weak, nonatomic) id<SIXLocalSelectViewDelegate> delegate;
 
 - (void)setPlaceName:(NSString *)placeName ;
+
+
+/**
+ view 的点击事件处理方法
+ */
+- (void)clickedAction ;
 
 @end

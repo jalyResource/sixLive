@@ -51,6 +51,11 @@
     return self.localContent.arrProvince;
 }
 
+- (void)setCurrentProvince:(SIXProvince *)province {
+    self.localContent.ptitle = province.title;
+    self.localContent.pid = province.pid;
+}
+
 @end
 
 

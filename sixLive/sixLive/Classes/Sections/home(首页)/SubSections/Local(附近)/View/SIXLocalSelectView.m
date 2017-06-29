@@ -46,6 +46,9 @@
         self.imgViewArrow.transform = CGAffineTransformRotate(self.imgViewArrow.transform, M_PI);
     }];
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(localSelectViewDidClicked)]) {
+        [self.delegate localSelectViewDidClicked];
+    }
     
 }
 

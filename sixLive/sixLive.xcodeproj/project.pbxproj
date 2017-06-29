@@ -30,6 +30,8 @@
 		0A46BEEF1F04AFC700E12CD6 /* SIXLocalContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BEEE1F04AFC700E12CD6 /* SIXLocalContent.m */; };
 		0A46BEF21F04BBAF00E12CD6 /* SIXBlankSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BEF11F04BBAF00E12CD6 /* SIXBlankSupplementaryView.m */; };
 		0A46BEF51F04D26900E12CD6 /* SIXLocalSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BEF41F04D26900E12CD6 /* SIXLocalSelectView.m */; };
+		0A46BF021F04E67700E12CD6 /* SIXProvinceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BF011F04E67700E12CD6 /* SIXProvinceListViewController.m */; };
+		0A46BF051F04F25100E12CD6 /* SIXProvinceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BF041F04F25100E12CD6 /* SIXProvinceCell.m */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
 		0A68BE941F0260410094141A /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE931F0260410094141A /* SIXViewController.m */; };
@@ -112,6 +114,10 @@
 		0A46BEF11F04BBAF00E12CD6 /* SIXBlankSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXBlankSupplementaryView.m; sourceTree = "<group>"; };
 		0A46BEF31F04D26900E12CD6 /* SIXLocalSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXLocalSelectView.h; sourceTree = "<group>"; };
 		0A46BEF41F04D26900E12CD6 /* SIXLocalSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXLocalSelectView.m; sourceTree = "<group>"; };
+		0A46BF001F04E67700E12CD6 /* SIXProvinceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXProvinceListViewController.h; sourceTree = "<group>"; };
+		0A46BF011F04E67700E12CD6 /* SIXProvinceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXProvinceListViewController.m; sourceTree = "<group>"; };
+		0A46BF031F04F25100E12CD6 /* SIXProvinceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXProvinceCell.h; sourceTree = "<group>"; };
+		0A46BF041F04F25100E12CD6 /* SIXProvinceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXProvinceCell.m; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		0A68BE641F024FF50094141A /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		0A68BE8C1F0254ED0094141A /* SIXGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
@@ -334,6 +340,7 @@
 			children = (
 				0A46BEE71F04ADF700E12CD6 /* SIXLocalListViewController.h */,
 				0A46BEE81F04ADF700E12CD6 /* SIXLocalListViewController.m */,
+				0A46BEFF1F04E67700E12CD6 /* Other */,
 				0A46BEE51F04AD8100E12CD6 /* Model */,
 				0A46BEE61F04AD8100E12CD6 /* View */,
 			);
@@ -356,8 +363,26 @@
 			children = (
 				0A46BEF31F04D26900E12CD6 /* SIXLocalSelectView.h */,
 				0A46BEF41F04D26900E12CD6 /* SIXLocalSelectView.m */,
+				0A46BF031F04F25100E12CD6 /* SIXProvinceCell.h */,
+				0A46BF041F04F25100E12CD6 /* SIXProvinceCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0A46BEFD1F04E22900E12CD6 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		0A46BEFF1F04E67700E12CD6 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				0A46BF001F04E67700E12CD6 /* SIXProvinceListViewController.h */,
+				0A46BF011F04E67700E12CD6 /* SIXProvinceListViewController.m */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		0A68BE8E1F02586D0094141A /* SIXNavigationBar */ = {
@@ -468,7 +493,7 @@
 				0A91E6A01F024569003A0CE0 /* Helpers */,
 				0A91E6A11F024569003A0CE0 /* Macro */,
 				0A91E6A21F024569003A0CE0 /* Sections */,
-				0A91E6A31F024569003A0CE0 /* Verdors */,
+				0A46BEFD1F04E22900E12CD6 /* Vendors */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -509,13 +534,6 @@
 				0A91E6A61F024721003A0CE0 /* Main */,
 			);
 			path = Sections;
-			sourceTree = "<group>";
-		};
-		0A91E6A31F024569003A0CE0 /* Verdors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Verdors;
 			sourceTree = "<group>";
 		};
 		0A91E6A41F02456F003A0CE0 /* Resources */ = {
@@ -916,8 +934,10 @@
 				0A457C1D1F039991003FD0E2 /* SIXListCollectionViewCell.m in Sources */,
 				0A457C1C1F039991003FD0E2 /* SIXCommonListViewController.m in Sources */,
 				0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */,
+				0A46BF021F04E67700E12CD6 /* SIXProvinceListViewController.m in Sources */,
 				0A457C231F039A81003FD0E2 /* SIXHotTopicListViewController.m in Sources */,
 				0A457C2F1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m in Sources */,
+				0A46BF051F04F25100E12CD6 /* SIXProvinceCell.m in Sources */,
 				0A457C1B1F039991003FD0E2 /* SIXCommonListModel.m in Sources */,
 				0A457C291F03A59D003FD0E2 /* SIXHotListModel.m in Sources */,
 				0A457BFC1F0350FA003FD0E2 /* SIXUser.m in Sources */,
