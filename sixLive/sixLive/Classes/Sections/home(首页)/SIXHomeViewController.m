@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
     EnumLiveListTypeMale  = 7  // 男神
 };
 
-@interface SIXHomeViewController ()<UIScrollViewDelegate>
+@interface SIXHomeViewController ()<UIScrollViewDelegate, SIXTitleListViewDelagate>
 /** UI */
 @property (strong, nonatomic) SIXTitleListView *viewTopTitle;
 
