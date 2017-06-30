@@ -69,6 +69,19 @@
     self.scrollView.contentSize = CGSizeMake(x, btnHeight);
 }
 
+
+/**
+ 标题按钮点击事件
+
+ @param sender  点击的按钮
+ */
+- (void)titleButtonClicked:(UIButton *)sender {
+    NSUInteger index = sender.tag % 100;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(titleListView:didClickedAtIndex:)]) {
+        [self.delegate titleListView:self didClickedAtIndex:index];
+    }
+}
+
 #pragma -mark 
 #pragma -mark setters
 - (void)setContentOffset:(CGPoint)contentOffset {
@@ -80,7 +93,7 @@
     CGFloat slideRate = (contentOffset.x - currentPageX) / SIX_SCREEN_WIDTH;
     
     // 找到当前 title 的宽度
-    NSString *currentTitle = self.arrTitle[self.currentIndex];
+//    NSString *currentTitle = self.arrTitle[self.currentIndex];
     NSUInteger nextIndex = 0;
     if (slideRate > 0) {
         nextIndex = self.currentIndex + 1;
@@ -90,8 +103,8 @@
         nextIndex = self.currentIndex - 1;
         slideRate = -slideRate;
     }
-    NSString *nextTitle = self.arrTitle[nextIndex];
-    DLog(@"current:%@   next:%@", currentTitle, nextTitle);
+//    NSString *nextTitle = self.arrTitle[nextIndex];
+//DLog(@"current:%@   next:%@", currentTitle, nextTitle);
     UIButton *btnCurrent = self.arrBtnTitle[self.currentIndex];
     UIButton *btnNext = self.arrBtnTitle[nextIndex];
     
@@ -138,6 +151,7 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn setTitle:arrTitle[i] forState:UIControlStateNormal];
         btn.tag = i + 100;
+        [btn addTarget:self action:@selector(titleButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.scrollView addSubview:btn];
         [self.arrBtnTitle addObject:btn];

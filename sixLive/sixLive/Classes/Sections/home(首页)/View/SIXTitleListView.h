@@ -7,8 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SIXTitleListView;
+
+@protocol SIXTitleListViewDelagate <NSObject>
+
+@optional
+- (void)titleListView:(SIXTitleListView *)titleListView didClickedAtIndex:(NSUInteger)index ;
+
+@end
+
 
 @interface SIXTitleListView : UIView
+
+@property (weak, nonatomic) id<SIXTitleListViewDelagate> delegate;
 
 @property (strong, nonatomic) NSArray<NSString *> *arrTitle;
 

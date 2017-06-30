@@ -253,6 +253,17 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
 }
 
 #pragma -mark 
+#pragma -mark SIXTitleListViewDelagate
+- (void)titleListView:(SIXTitleListView *)titleListView didClickedAtIndex:(NSUInteger)index {
+    self.scrollView.contentOffset = CGPointMake(index * SIX_SCREEN_WIDTH, 0);
+//    CGRect rect = self.scrollView.bounds;
+//    rect.origin.x = index * rect.size.width;
+//    [self.scrollView scrollRectToVisible:rect animated:YES];
+    [self scrollViewDidEndDecelerating:self.scrollView];
+}
+
+
+#pragma -mark 
 #pragma -mark getters
 // EnumLiveListTypeRed   = 1, // 手机红人
 //@property (strong, nonatomic) SIXCommonListViewController *redViewController;
@@ -339,6 +350,7 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
         CGFloat width = SIX_SCREEN_WIDTH - 2 * SIX_NAVIGATIONBAR_HEIGHT;
         CGRect frame = CGRectMake(SIX_NAVIGATIONBAR_HEIGHT, 12, width, 25);
         _viewTopTitle = [[SIXTitleListView alloc] initWithFrame:frame];
+        _viewTopTitle.delegate = self;
         
     }
     return _viewTopTitle;
