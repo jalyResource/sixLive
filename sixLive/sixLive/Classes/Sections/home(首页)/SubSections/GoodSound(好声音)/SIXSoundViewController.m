@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    DLog(@"SIXSoundViewController -------   %s", __func__);
 }
 
 #pragma -mark 

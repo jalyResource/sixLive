@@ -49,6 +49,9 @@
     self.lblTag.text = user.tagname;
     self.lblName.text = user.username;
     self.lblCount.text = [NSString stringWithFormat:@"%lu人", user.count];
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 /**
@@ -80,7 +83,6 @@
     
     // name
     labWidth = self.lblCount.frame.origin.x - 7 - 3;
-    DLog(@"nameWidth : %lf", labWidth);
     self.lblName.frame = CGRectMake(7, self.contentView.height - 7 - 16, labWidth, 16);
 }
 

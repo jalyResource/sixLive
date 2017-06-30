@@ -13,13 +13,42 @@
 #import "SIXSoundViewController.h"
 #import "SIXTitleListView.h"
 
+
+typedef NS_ENUM(NSUInteger, EnumLiveListType) {
+    EnumLiveListTypeHot   = 0, // 热门
+    EnumLiveListTypeRed   = 1, // 手机红人
+    EnumLiveListTypeLocal = 2, // 附近
+    EnumLiveListTypeSound = 3, // 好声音
+    EnumLiveListTypeDance = 4, // 舞蹈
+    EnumLiveListTypeFunny = 5, // 搞笑
+    EnumLiveListTypeChat  = 6, // 唠嗑
+    EnumLiveListTypeMale  = 7  // 男神
+};
+
 @interface SIXHomeViewController ()<UIScrollViewDelegate>
 /** UI */
 @property (strong, nonatomic) SIXTitleListView *viewTopTitle;
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 
-//@property (strong, nonatomic) SIXCommonListViewController *commonListViewController;
+/** data */
+@property (strong, nonatomic) NSArray<NSDictionary *> *arrDicParams;
+/// EnumLiveListTypeHot   = 0, // 热门
+@property (strong, nonatomic) SIXHotTopicListViewController *hotTopicViewController;
+/// EnumLiveListTypeRed   = 1, // 手机红人
+@property (strong, nonatomic) SIXCommonListViewController *redViewController;
+/// EnumLiveListTypeLocal = 2, // 附近
+@property (strong, nonatomic) SIXLocalListViewController *localViewController;
+/// EnumLiveListTypeSound = 3, // 好声音
+@property (strong, nonatomic) SIXSoundViewController *soundViewController;
+/// EnumLiveListTypeDance = 4, // 舞蹈
+@property (strong, nonatomic) SIXCommonListViewController *danceViewController;
+/// EnumLiveListTypeFunny = 5, // 搞笑
+@property (strong, nonatomic) SIXCommonListViewController *funnyViewController;
+/// EnumLiveListTypeChat  = 6, // 唠嗑
+@property (strong, nonatomic) SIXCommonListViewController *chatViewController;
+/// EnumLiveListTypeMale  = 7  // 男神
+@property (strong, nonatomic) SIXCommonListViewController *maleViewController;
 
 @end
 
@@ -28,7 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor lightGrayColor];
+//    self.view.backgroundColor = [UIColor lightGrayColor];
     
     [self addSubviews];
     [self configSubControllers];
@@ -120,9 +149,8 @@
                                      @"type" : @"male",  // 男神
                                      @"padapi" : @"coop-mobile-getlivelistnew.php"
                                      };
-//    NSArray<NSDictionary *> *arrParams = @[dicParamsHot, dicParamsMobileRed, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
-    NSArray<NSDictionary *> *arrParams = @[dicParamsGoodVoice];
-    NSArray<NSString *> *arrVCClass = @[@"SIXHotTopicListViewController", @"SIXCommonListViewController"];
+    // 热门，手机红人，附近，好声音，舞蹈，搞笑，唠嗑，男神
+    self.arrDicParams = @[dicParamsHot, dicParamsMobileRed, dicParamsLocal, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
 
     /*
      // 说明 type： 热门 ："", 手机红人：mlive   , 舞蹈：u1，搞笑：u2，唠嗑：u3，男神：male，
@@ -137,24 +165,14 @@
      type : ""
      // 说明 type： 热门 ："", 手机红人：mlive
      */
+    // 默认将“热门”添加到第一页
+    SIXHotTopicListViewController *hotTopicVC = [[SIXHotTopicListViewController alloc] initWithParams:dicParamsHot];
+    hotTopicVC.view.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    [self.scrollView addSubview:hotTopicVC.view];
+    [self addChildViewController:hotTopicVC];
+    self.hotTopicViewController = hotTopicVC;
     
-    for (NSUInteger i = 0; i<arrParams.count; i++) {
-        NSDictionary *dicParam = arrParams[i];
-//        Class c = NSClassFromString(arrVCClass[i]);
-//        id target = [c alloc];
-        
-        SIXSoundViewController *commonListViewController = [[SIXSoundViewController alloc] initWithParams:dicParam];
-        
-//        SIXCommonListViewController *commonListViewController = [[SIXCommonListViewController alloc] initWithParams:dicParam];
-        [self addChildViewController:commonListViewController];
-        [self.view addSubview:commonListViewController.view];
-        
-        CGRect frame = CGRectMake(i * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
-        commonListViewController.view.frame = frame;
-        [self.scrollView addSubview:commonListViewController.view];
-    }
-    
-    self.scrollView.contentSize = CGSizeMake(arrParams.count * SIX_SCREEN_WIDTH, SIX_TABBAR_HEIGHT);
+    self.scrollView.contentSize = CGSizeMake(self.arrDicParams.count * SIX_SCREEN_WIDTH, SIX_TABBAR_HEIGHT);
 }
 
 - (__kindof SIXCommonListViewController *)getVCWithTarget:(Class)target param:(NSDictionary *)param {
@@ -168,7 +186,7 @@
     [invocation invoke];
     
     id retVC = nil;
-    if ( sig.methodReturnLength) {
+    if ( sig.methodReturnLength ) {
         [invocation getReturnValue:&retVC];
     }
     return retVC;
@@ -176,9 +194,71 @@
 
 
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    self.scrollView.frame = self.view.bounds;
+#pragma -mark 
+#pragma -mark UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    NSUInteger index = scrollView.contentOffset.x/scrollView.width;
+    DLog(@"index : %lu  %s",index,  __func__);
+    [self addSubListViewToScrollViewAtIndex:index];
+}
+
+
+
+
+
+/**
+ 将指定下表的 列表添加到 scrollView
+ 
+ @param index 
+         EnumLiveListTypeHot   = 0, // 热门
+         EnumLiveListTypeRed   = 1, // 手机红人
+         EnumLiveListTypeLocal = 2, // 附近
+         EnumLiveListTypeSound = 3, // 好声音
+         EnumLiveListTypeDance = 4, // 舞蹈
+         EnumLiveListTypeFunny = 5, // 搞笑
+         EnumLiveListTypeChat  = 6, // 唠嗑
+         EnumLiveListTypeMale  = 7  // 男神
+ */
+- (void)addSubListViewToScrollViewAtIndex:(NSUInteger)index {
+    switch (index) {
+        case EnumLiveListTypeHot:   { // 热门
+            [self.scrollView addSubview:self.hotTopicViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeRed:   { // 手机红人
+            [self.scrollView addSubview:self.redViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeLocal: { // 附近
+            [self.scrollView addSubview:self.localViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeSound: { // 好声音
+            [self.scrollView addSubview:self.soundViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeDance: { // 舞蹈
+            [self.scrollView addSubview:self.danceViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeFunny: { // 搞笑
+            [self.scrollView addSubview:self.funnyViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeChat:  { // 唠嗑
+            [self.scrollView addSubview:self.chatViewController.view];
+            break;
+        } 
+        case EnumLiveListTypeMale:  { // 男神
+            [self.scrollView addSubview:self.maleViewController.view];
+            break;
+        } 
+    }
 }
 
 
@@ -194,8 +274,93 @@
     DLog(@"%s", __func__);
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.scrollView.frame = self.view.bounds;
+}
+
 #pragma -mark 
 #pragma -mark getters
+// EnumLiveListTypeRed   = 1, // 手机红人
+//@property (strong, nonatomic) SIXCommonListViewController *redViewController;
+- (SIXCommonListViewController *)redViewController {
+    if (!_redViewController) {
+        NSUInteger index = EnumLiveListTypeRed;
+        _redViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_redViewController];
+        _redViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _redViewController;
+}
+// EnumLiveListTypeLocal = 2, // 附近
+//@property (strong, nonatomic) SIXLocalListViewController *localViewController;
+- (SIXLocalListViewController *)localViewController {
+    if (!_localViewController) {
+        NSUInteger index = EnumLiveListTypeLocal;
+        _localViewController = [[SIXLocalListViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_localViewController];
+        _localViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _localViewController;
+}
+// EnumLiveListTypeSound = 3, // 好声音
+//@property (strong, nonatomic) SIXSoundViewController *soundViewController;
+- (SIXSoundViewController *)soundViewController {
+    if (!_soundViewController) {
+        NSUInteger index = EnumLiveListTypeSound;
+        _soundViewController = [[SIXSoundViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_soundViewController];
+        _soundViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _soundViewController;
+}
+
+// EnumLiveListTypeDance = 4, // 舞蹈
+//@property (strong, nonatomic) SIXCommonListViewController *danceViewController;
+- (SIXCommonListViewController *)danceViewController {
+    if (!_danceViewController) {
+        NSUInteger index = EnumLiveListTypeDance;
+        _danceViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_danceViewController];
+        _danceViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _danceViewController;
+}
+// EnumLiveListTypeFunny = 5, // 搞笑
+//@property (strong, nonatomic) SIXCommonListViewController *funnyViewController;
+- (SIXCommonListViewController *)funnyViewController {
+    if (!_funnyViewController) {
+        NSUInteger index = EnumLiveListTypeFunny;
+        _funnyViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_funnyViewController];
+        _funnyViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _funnyViewController;
+}
+// EnumLiveListTypeChat  = 6, // 唠嗑
+//@property (strong, nonatomic) SIXCommonListViewController *chatViewController;
+- (SIXCommonListViewController *)chatViewController {
+    if (!_chatViewController) {
+        NSUInteger index = EnumLiveListTypeChat;
+        _chatViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_chatViewController];
+        _chatViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _chatViewController;
+}
+// EnumLiveListTypeMale  = 7  // 男神
+//@property (strong, nonatomic) SIXCommonListViewController *maleViewController;
+- (SIXCommonListViewController *)maleViewController {
+    if (!_maleViewController) {
+        NSUInteger index = EnumLiveListTypeMale;
+        _maleViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
+        [self addChildViewController:_maleViewController];
+        _maleViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    }
+    return _maleViewController;
+}
+
+
 - (SIXTitleListView *)viewTopTitle {
     if (!_viewTopTitle) {
         CGFloat width = SIX_SCREEN_WIDTH - 2 * SIX_NAVIGATIONBAR_HEIGHT;

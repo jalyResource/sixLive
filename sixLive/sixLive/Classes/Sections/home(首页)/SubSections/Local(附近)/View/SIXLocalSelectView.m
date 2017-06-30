@@ -80,6 +80,7 @@
         _lblPlace.textColor = [UIColor colorWithHex:0xdd0000];
         _lblPlace.font = [UIFont systemFontOfSize:16];
         _lblPlace.textAlignment = NSTextAlignmentLeft;
+        _lblPlace.text = @"正在定位...";
     }
     return _lblPlace;
 }
