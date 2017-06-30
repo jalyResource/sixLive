@@ -13,11 +13,14 @@
 @property (copy, nonatomic) NSString *uid;
 
 @property (copy, nonatomic) NSString *username;
+/** 大于 1 为手机直播，需添加“手机直播”标签 */
+@property (assign, nonatomic) NSUInteger recordtype;
+
 /** 直播列表图片 */
-@property (copy, nonatomic) NSString *pic;
+@property (copy, nonatomic) NSString *pospic;
 /** 用户头像 */
 @property (copy, nonatomic) NSString *picuser;
-/** 右上角 标签 */
+/** 右上角 标签,为空则没有特色标签，为“头条”时，优先显示“头条” */
 @property (copy, nonatomic) NSString *tagname;
 /** 在线人数 */
 @property (assign, nonatomic) NSUInteger count;

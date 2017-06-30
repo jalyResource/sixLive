@@ -45,7 +45,7 @@
 - (void)setUser:(SIXUser *)user {
     _user = user;
     
-    [self.imgViewBackground sd_setImageWithURL:[NSURL URLWithString:user.pic] placeholderImage:[self getPlaceholderImage]];
+    [self.imgViewBackground sd_setImageWithURL:[NSURL URLWithString:user.pospic] placeholderImage:[self getPlaceholderImage]];
     self.lblTag.text = user.tagname;
     self.lblName.text = user.username;
     self.lblCount.text = [NSString stringWithFormat:@"%lu人", user.count];
@@ -72,12 +72,16 @@
     
     CGFloat labWidth = [self.lblTag.text textWidthWithFont:self.lblTag.font height:20] + 4;
     self.lblTag.frame = CGRectMake(self.contentView.width - labWidth - 5, 6, labWidth, 20);
+    self.lblTag.hidden = self.lblTag.text.length == 0;
     
-    labWidth = [self.lblName.text textWidthWithFont:self.lblName.font height:16];
-    self.lblName.frame = CGRectMake(7, self.contentView.height - 7 - 16, labWidth, 16);
-    
+    // count
     labWidth = [self.lblCount.text textWidthWithFont:self.lblCount.font height:14];
     self.lblCount.frame = CGRectMake(self.contentView.width - 5 - labWidth, self.contentView.height - 23, labWidth, 17);
+    
+    // name
+    labWidth = self.lblCount.frame.origin.x - 7 - 3;
+    DLog(@"nameWidth : %lf", labWidth);
+    self.lblName.frame = CGRectMake(7, self.contentView.height - 7 - 16, labWidth, 16);
 }
 
 
