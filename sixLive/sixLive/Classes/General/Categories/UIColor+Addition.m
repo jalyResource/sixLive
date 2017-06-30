@@ -16,4 +16,12 @@
                             blue:((float)(hex & 0xFF))/255.0 alpha:1.0]; 
 }
 
++ (UIColor *)randomColor {
+    NSUInteger r = arc4random_uniform(256);
+    NSUInteger g = arc4random_uniform(256);
+    NSUInteger b = arc4random_uniform(256);
+    
+    return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.];
+}
+
 @end

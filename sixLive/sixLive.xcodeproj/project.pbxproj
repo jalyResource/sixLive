@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0716521ED1A5E3F7EBCA1769 /* libPods-sixLive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AA5A9E32D8FF2CE233CD6E /* libPods-sixLive.a */; };
+		0A27766A1F0645EB00010A80 /* SIXSelectTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2776691F0645EB00010A80 /* SIXSelectTypeViewController.m */; };
+		0A27766E1F0646A400010A80 /* SIXSelectTypeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A27766D1F0646A400010A80 /* SIXSelectTypeLayout.m */; };
+		0A2776711F06474300010A80 /* SIXSelectTypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2776701F06474300010A80 /* SIXSelectTypeCollectionViewCell.m */; };
+		0A2776741F064C4E00010A80 /* SIXSelectTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2776731F064C4E00010A80 /* SIXSelectTypeModel.m */; };
+		0A2776771F0650A900010A80 /* SIXSelectTypeBtnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2776761F0650A900010A80 /* SIXSelectTypeBtnModel.m */; };
+		0A2776791F06512B00010A80 /* lobby_live_select_type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A2776781F06512B00010A80 /* lobby_live_select_type.plist */; };
+		0A27767C1F06639700010A80 /* SIXSelecTypeSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A27767B1F06639700010A80 /* SIXSelecTypeSupplementaryView.m */; };
 		0A457BE51F033E96003FD0E2 /* SIXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BE41F033E96003FD0E2 /* SIXCollectionView.m */; };
 		0A457BE91F0340D9003FD0E2 /* SIXHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BE81F0340D9003FD0E2 /* SIXHttpRequest.m */; };
 		0A457BF01F034836003FD0E2 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BEF1F034836003FD0E2 /* UIView+Addition.m */; };
@@ -74,6 +81,19 @@
 /* Begin PBXFileReference section */
 		03AA5A9E32D8FF2CE233CD6E /* libPods-sixLive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0454E8E7247575BB69F73079 /* Pods-sixLiveUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLiveUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-sixLiveUITests/Pods-sixLiveUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0A2776681F0645EB00010A80 /* SIXSelectTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelectTypeViewController.h; sourceTree = "<group>"; };
+		0A2776691F0645EB00010A80 /* SIXSelectTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypeViewController.m; sourceTree = "<group>"; };
+		0A27766C1F0646A400010A80 /* SIXSelectTypeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelectTypeLayout.h; sourceTree = "<group>"; };
+		0A27766D1F0646A400010A80 /* SIXSelectTypeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypeLayout.m; sourceTree = "<group>"; };
+		0A27766F1F06474300010A80 /* SIXSelectTypeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelectTypeCollectionViewCell.h; sourceTree = "<group>"; };
+		0A2776701F06474300010A80 /* SIXSelectTypeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypeCollectionViewCell.m; sourceTree = "<group>"; };
+		0A2776721F064C4E00010A80 /* SIXSelectTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelectTypeModel.h; sourceTree = "<group>"; };
+		0A2776731F064C4E00010A80 /* SIXSelectTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypeModel.m; sourceTree = "<group>"; };
+		0A2776751F0650A900010A80 /* SIXSelectTypeBtnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelectTypeBtnModel.h; sourceTree = "<group>"; };
+		0A2776761F0650A900010A80 /* SIXSelectTypeBtnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypeBtnModel.m; sourceTree = "<group>"; };
+		0A2776781F06512B00010A80 /* lobby_live_select_type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lobby_live_select_type.plist; sourceTree = "<group>"; };
+		0A27767A1F06639700010A80 /* SIXSelecTypeSupplementaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelecTypeSupplementaryView.h; sourceTree = "<group>"; };
+		0A27767B1F06639700010A80 /* SIXSelecTypeSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelecTypeSupplementaryView.m; sourceTree = "<group>"; };
 		0A457BE31F033E96003FD0E2 /* SIXCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXCollectionView.h; sourceTree = "<group>"; };
 		0A457BE41F033E96003FD0E2 /* SIXCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXCollectionView.m; sourceTree = "<group>"; };
 		0A457BE71F0340D9003FD0E2 /* SIXHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXHttpRequest.h; sourceTree = "<group>"; };
@@ -199,6 +219,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2776651F0645DB00010A80 /* SelectTypePage(筛选类型) */ = {
+			isa = PBXGroup;
+			children = (
+				0A2776681F0645EB00010A80 /* SIXSelectTypeViewController.h */,
+				0A2776691F0645EB00010A80 /* SIXSelectTypeViewController.m */,
+				0A27766B1F06468500010A80 /* Other */,
+				0A2776661F0645DB00010A80 /* Model */,
+				0A2776671F0645DB00010A80 /* View */,
+			);
+			path = "SelectTypePage(筛选类型)";
+			sourceTree = "<group>";
+		};
+		0A2776661F0645DB00010A80 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A2776721F064C4E00010A80 /* SIXSelectTypeModel.h */,
+				0A2776731F064C4E00010A80 /* SIXSelectTypeModel.m */,
+				0A2776751F0650A900010A80 /* SIXSelectTypeBtnModel.h */,
+				0A2776761F0650A900010A80 /* SIXSelectTypeBtnModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A2776671F0645DB00010A80 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A27766F1F06474300010A80 /* SIXSelectTypeCollectionViewCell.h */,
+				0A2776701F06474300010A80 /* SIXSelectTypeCollectionViewCell.m */,
+				0A27767A1F06639700010A80 /* SIXSelecTypeSupplementaryView.h */,
+				0A27767B1F06639700010A80 /* SIXSelecTypeSupplementaryView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A27766B1F06468500010A80 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				0A27766C1F0646A400010A80 /* SIXSelectTypeLayout.h */,
+				0A27766D1F0646A400010A80 /* SIXSelectTypeLayout.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		0A457BE21F033E84003FD0E2 /* SIXCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +305,7 @@
 		0A457C111F039991003FD0E2 /* SubSections */ = {
 			isa = PBXGroup;
 			children = (
+				0A2776651F0645DB00010A80 /* SelectTypePage(筛选类型) */,
 				0A46BEE41F04AD8100E12CD6 /* Local(附近) */,
 				0A46BEE11F04AD7B00E12CD6 /* GoodSound(好声音) */,
 				0A457C1E1F0399E3003FD0E2 /* HotTopic(热门) */,
@@ -558,6 +622,7 @@
 			children = (
 				0A91E6B81F024A69003A0CE0 /* sixLive-Prefix.pch */,
 				0A46BF0F1F05059800E12CD6 /* lobby_live_sound_btn_kind.plist */,
+				0A2776781F06512B00010A80 /* lobby_live_select_type.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -766,6 +831,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A91E6771F0242B1003A0CE0 /* LaunchScreen.storyboard in Resources */,
+				0A2776791F06512B00010A80 /* lobby_live_select_type.plist in Resources */,
 				0A46BF101F05059800E12CD6 /* lobby_live_sound_btn_kind.plist in Resources */,
 				0A91E6741F0242B1003A0CE0 /* Assets.xcassets in Resources */,
 			);
@@ -931,14 +997,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A68BE941F0260410094141A /* SIXViewController.m in Sources */,
+				0A2776741F064C4E00010A80 /* SIXSelectTypeModel.m in Sources */,
 				0A46BEE91F04ADF700E12CD6 /* SIXLocalListViewController.m in Sources */,
 				0A457C2C1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m in Sources */,
 				0A457C261F039C4A003FD0E2 /* SIXEvent.m in Sources */,
+				0A2776771F0650A900010A80 /* SIXSelectTypeBtnModel.m in Sources */,
 				0A46BEEF1F04AFC700E12CD6 /* SIXLocalContent.m in Sources */,
 				0A68BE9B1F0267410094141A /* SIXHomeViewController.m in Sources */,
 				0A46BE921F04955400E12CD6 /* SIXCollectionSupplementaryView.m in Sources */,
 				0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */,
 				0A457BFF1F0379DF003FD0E2 /* NSString+Addition.m in Sources */,
+				0A27766A1F0645EB00010A80 /* SIXSelectTypeViewController.m in Sources */,
 				0A46BEF51F04D26900E12CD6 /* SIXLocalSelectView.m in Sources */,
 				0A91E6B41F0249C1003A0CE0 /* SIXBaseViewController.m in Sources */,
 				0A91E69D1F02455F003A0CE0 /* AppDelegate.m in Sources */,
@@ -950,6 +1019,7 @@
 				0A46BF0B1F05006700E12CD6 /* SIXCollectionViewCell.m in Sources */,
 				0A46BEEC1F04AE1C00E12CD6 /* SIXLocalListModel.m in Sources */,
 				0A46BF0E1F05013400E12CD6 /* SIXSoundHeaderSupplementaryView.m in Sources */,
+				0A27766E1F0646A400010A80 /* SIXSelectTypeLayout.m in Sources */,
 				0A457BE91F0340D9003FD0E2 /* SIXHttpRequest.m in Sources */,
 				0A46BE981F04982600E12CD6 /* SIXRecomendSupplementaryView.m in Sources */,
 				0A457BF01F034836003FD0E2 /* UIView+Addition.m in Sources */,
@@ -963,7 +1033,9 @@
 				0A457C1B1F039991003FD0E2 /* SIXCommonListModel.m in Sources */,
 				0A457C291F03A59D003FD0E2 /* SIXHotListModel.m in Sources */,
 				0A457BFC1F0350FA003FD0E2 /* SIXUser.m in Sources */,
+				0A2776711F06474300010A80 /* SIXSelectTypeCollectionViewCell.m in Sources */,
 				0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */,
+				0A27767C1F06639700010A80 /* SIXSelecTypeSupplementaryView.m in Sources */,
 				0A46BEE01F04AC1000E12CD6 /* SIXRecomendView.m in Sources */,
 				0A46BEF21F04BBAF00E12CD6 /* SIXBlankSupplementaryView.m in Sources */,
 				0A91E6AF1F024970003A0CE0 /* SIXMainViewController.m in Sources */,

@@ -20,6 +20,13 @@
 
 @implementation SIXCollectionView
 
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+    if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 - (void)showTipText:(NSString *)text {
     if (self.lblTip.superview) {
         [self.lblTip removeFromSuperview];

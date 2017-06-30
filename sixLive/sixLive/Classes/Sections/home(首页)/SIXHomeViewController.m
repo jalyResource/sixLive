@@ -11,19 +11,9 @@
 #import "SIXHotTopicListViewController.h"
 #import "SIXLocalListViewController.h"
 #import "SIXSoundViewController.h"
+#import "SIXSelectTypeViewController.h"
 #import "SIXTitleListView.h"
 
-
-typedef NS_ENUM(NSUInteger, EnumLiveListType) {
-    EnumLiveListTypeHot   = 0, // 热门
-    EnumLiveListTypeRed   = 1, // 手机红人
-    EnumLiveListTypeLocal = 2, // 附近
-    EnumLiveListTypeSound = 3, // 好声音
-    EnumLiveListTypeDance = 4, // 舞蹈
-    EnumLiveListTypeFunny = 5, // 搞笑
-    EnumLiveListTypeChat  = 6, // 唠嗑
-    EnumLiveListTypeMale  = 7  // 男神
-};
 
 @interface SIXHomeViewController ()<UIScrollViewDelegate, SIXTitleListViewDelagate>
 /** UI */
@@ -49,6 +39,12 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
 @property (strong, nonatomic) SIXCommonListViewController *chatViewController;
 /// EnumLiveListTypeMale  = 7  // 男神
 @property (strong, nonatomic) SIXCommonListViewController *maleViewController;
+
+
+/**
+ 通过右上角按钮，进入选择类型界面
+ */
+@property (strong, nonatomic) SIXSelectTypeViewController *selectTypeViewController;
 
 @end
 
@@ -244,7 +240,7 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
     DLog(@"点击搜索");
 }
 - (void)headerRightButtonClicked {
-    DLog(@"%s", __func__);
+    [self.navigationController presentViewController:self.selectTypeViewController animated:YES completion:nil];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -342,6 +338,13 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
         _maleViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _maleViewController;
+}
+
+- (SIXSelectTypeViewController *)selectTypeViewController {
+    if (!_selectTypeViewController) {
+        _selectTypeViewController = [[SIXSelectTypeViewController alloc] init];
+    }
+    return _selectTypeViewController;
 }
 
 
