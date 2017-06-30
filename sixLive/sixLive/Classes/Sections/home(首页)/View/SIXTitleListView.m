@@ -8,6 +8,7 @@
 
 #import "SIXTitleListView.h"
 
+#define TitleFontMax [UIFont systemFontOfSize:18]
 
 @interface SIXTitleListView ()<UIScrollViewDelegate>
 /**
@@ -50,19 +51,19 @@
     [super layoutSubviews];
     
     self.scrollView.frame = self.bounds;
-    
-    CGFloat x = 0, btnHeight = self.height - self.viewIndicatorHeight;
+    // 90 - >152
+    CGFloat x = 30, btnHeight = self.height - self.viewIndicatorHeight;
     for (NSUInteger i = 0; i<self.arrBtnTitle.count; i++) {
         UIButton *btn = self.arrBtnTitle[i];
         
-        CGFloat textWidth = [btn.currentTitle textWidthWithFont:btn.titleLabel.font height:btnHeight];
+        CGFloat textWidth = [btn.currentTitle textWidthWithFont:TitleFontMax height:btnHeight];
         btn.frame = CGRectMake(x, 0, textWidth, btnHeight);
         
 //        if (i == self.currentIndex) {
 //            self.viewIndicator.frame = CGRectMake(x, btnHeight, textWidth, self.viewIndicatorHeight);
 //        }
-        
-        x += textWidth  + 28;
+        // 55  -> 66
+        x += textWidth  + 27;
     }
     
     self.scrollView.contentSize = CGSizeMake(x, btnHeight);
@@ -108,8 +109,13 @@
 }
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex {
+    UIButton *btn = self.arrBtnTitle[_currentIndex];
+    btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    
     _currentIndex = currentIndex;
-    UIButton *btn = self.arrBtnTitle[currentIndex];
+    btn = self.arrBtnTitle[currentIndex];
+    btn.titleLabel.font = TitleFontMax;
+    
     self.viewIndicator.x = btn.x;
     self.viewIndicator.width = btn.width;
     // 将当前选中按钮滚动到中间
@@ -138,8 +144,9 @@
     }
     
     UIButton *btnFirst = [self.arrBtnTitle firstObject];
-    CGFloat textWidth = [btnFirst.currentTitle textWidthWithFont:btnFirst.titleLabel.font height:self.height - self.viewIndicatorHeight];
-    self.viewIndicator.frame = CGRectMake(0, self.height - self.viewIndicatorHeight, textWidth, self.viewIndicatorHeight);
+    btnFirst.titleLabel.font = TitleFontMax;
+    CGFloat textWidth = [btnFirst.currentTitle textWidthWithFont:TitleFontMax height:self.height - self.viewIndicatorHeight];
+    self.viewIndicator.frame = CGRectMake(30, self.height - self.viewIndicatorHeight, textWidth, self.viewIndicatorHeight);
 }
 
 
