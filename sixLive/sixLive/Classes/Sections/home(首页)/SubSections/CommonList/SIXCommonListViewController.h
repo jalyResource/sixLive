@@ -17,13 +17,13 @@
 /// 默认 URL 为 /coop/mobile/index.php，外界只需传入 params
 @interface SIXCommonListViewController : SIXViewController<UICollectionViewDelegate, UICollectionViewDataSource> {
     @protected
-    SIXCommonListModel *_listModel;
+    id _listModel;
 }
 
 /** UI */
 @property (strong, nonatomic) SIXCollectionView *collectionView;
 
-@property (strong, nonatomic) SIXCommonListModel *listModel;
+//@property (strong, nonatomic) SIXCommonListModel *listModel;
 
 @property (strong, nonatomic) NSMutableDictionary *dicParams;
 

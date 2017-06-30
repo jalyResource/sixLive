@@ -26,7 +26,8 @@ static CGFloat const HeaderViewHeight = 55.;
 @end
 
 @implementation SIXLocalListViewController
-@dynamic listModel;
+@synthesize listModel;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

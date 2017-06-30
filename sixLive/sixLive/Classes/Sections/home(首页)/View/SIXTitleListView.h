@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic) NSArray<NSString *> *arrTitle;
 
+@property (assign, nonatomic) CGPoint contentOffset;
+
+@property (assign, nonatomic) NSUInteger currentIndex;
 
 /**
  指示条的高度

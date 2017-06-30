@@ -68,11 +68,11 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
     [self.view bringSubviewToFront:self.headerBar];
     [self.view bringSubviewToFront:self.customStatusBar];
     
-    NSArray<NSString *> *arrTitle = @[@"热门", @"手机红人", @"好声音（全部）", @"舞蹈", @"搞笑", @"唠嗑", @"男神"];
+    NSArray<NSString *> *arrTitle = @[@"热门", @"手机红人", @"附近", @"好声音", @"舞蹈", @"搞笑", @"唠嗑", @"男神"];
     self.viewTopTitle.arrTitle = arrTitle;
     [self.headerBar addSubview:self.viewTopTitle];
     
-    UIColor *colorBg = [[UIColor redColor] colorWithAlphaComponent:0.85];
+    UIColor *colorBg = [[UIColor colorWithHex:0xdd0000] colorWithAlphaComponent:0.9];
     self.headerBar.backgroundColor = colorBg;
     self.customStatusBar.backgroundColor = colorBg;
 }
@@ -152,19 +152,6 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
     // 热门，手机红人，附近，好声音，舞蹈，搞笑，唠嗑，男神
     self.arrDicParams = @[dicParamsHot, dicParamsMobileRed, dicParamsLocal, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
 
-    /*
-     // 说明 type： 热门 ："", 手机红人：mlive   , 舞蹈：u1，搞笑：u2，唠嗑：u3，男神：male，
-     好声音 type：
-					全部：u0 ,炽星 ： r10,   超星:r5,   巨星：r4, 明星 ： r1,  红人： r2
-     
-     -----------
-     av:2.1
-     p : 0
-     rate : 1
-     size ： 0
-     type : ""
-     // 说明 type： 热门 ："", 手机红人：mlive
-     */
     // 默认将“热门”添加到第一页
     SIXHotTopicListViewController *hotTopicVC = [[SIXHotTopicListViewController alloc] initWithParams:dicParamsHot];
     hotTopicVC.view.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
@@ -175,28 +162,13 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
     self.scrollView.contentSize = CGSizeMake(self.arrDicParams.count * SIX_SCREEN_WIDTH, SIX_TABBAR_HEIGHT);
 }
 
-- (__kindof SIXCommonListViewController *)getVCWithTarget:(Class)target param:(NSDictionary *)param {
-    
-    NSMethodSignature *sig = [target methodSignatureForSelector:@selector(initWithParams:)];
-    
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
-    invocation.target = target;
-    invocation.selector = @selector(initWithParams:);
-    [invocation setArgument:&param atIndex:2];
-    [invocation invoke];
-    
-    id retVC = nil;
-    if ( sig.methodReturnLength ) {
-        [invocation getReturnValue:&retVC];
-    }
-    return retVC;
-}
-
 
 
 #pragma -mark 
 #pragma -mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    CGFloat offsetX = scrollView.contentOffset.x;
+    self.viewTopTitle.contentOffset = scrollView.contentOffset;
     
 }
 
@@ -205,6 +177,7 @@ typedef NS_ENUM(NSUInteger, EnumLiveListType) {
     NSUInteger index = scrollView.contentOffset.x/scrollView.width;
     DLog(@"index : %lu  %s",index,  __func__);
     [self addSubListViewToScrollViewAtIndex:index];
+    self.viewTopTitle.currentIndex = index;
 }
 
 
