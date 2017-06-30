@@ -30,7 +30,10 @@
 - (instancetype)initWithParams:(NSDictionary *)dicParams ;
 
 
-
+/**
+ 调用接口，获取数据
+ */
+- (void)loadData ;
 /**
  注册 collectionView 的cell，子类重写时必须调用父类方法
  */

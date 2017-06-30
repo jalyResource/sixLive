@@ -10,13 +10,13 @@
 
 
 @interface SIXSoundHeaderSupplementaryView ()
-
+/** 所有 btn 放在此数组中  */
 @property (strong, nonatomic) NSMutableArray<UIButton *> *arrOfBtn;
-
+/** 分割线 */
 @property (strong, nonatomic) UILabel *lblHorizentalLine;
 @property (strong, nonatomic) UILabel *lblVerticalLeft;
 @property (strong, nonatomic) UILabel *lblVerticalRight;
-
+/** 按钮对应接口参数中 type 值数组 */
 @property (strong, nonatomic) NSArray<NSString *> *arrOfType;
 
 @end
@@ -32,10 +32,12 @@
     return self;
 }
 - (void)setUp {
-    self.arrOfType = @[@"u0", @"r10", @"r5", @"r4", @"r1", @"r2"];
     self.arrOfBtn = [[NSMutableArray alloc] initWithCapacity:6];
     // 添加 6 个按钮
     NSArray<SIXSoundHeaderBtnModel *> *arrOfBtnModel = [SIXSoundHeaderBtnModel defaultArrayOfModel];
+    // @[@"u0", @"r10", @"r5", @"r4", @"r1", @"r2"];
+    self.arrOfType = [arrOfBtnModel valueForKey:@"type"];
+    
     for (NSUInteger i = 0; i<arrOfBtnModel.count; i++) {
         SIXSoundHeaderBtnModel *model = arrOfBtnModel[i];
         
@@ -66,7 +68,12 @@
     
     NSString *type = self.arrOfType[index];
     [self setType:type];
-    self.dicParams[@"type"] = type;
+    
+    
+//     明日任务：添加代理方法，通知 VC loadData 刷新界面
+    if (self.delegate && [self.delegate respondsToSelector:@selector(soundHeaderSupplementaryView:didClickedBtnType:)]) {
+        [self.delegate soundHeaderSupplementaryView:self didClickedBtnType:type];
+    }
 }
 
 - (void)layoutSubviews {

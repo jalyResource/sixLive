@@ -9,7 +9,7 @@
 #import "SIXSoundViewController.h"
 #import "SIXSoundHeaderSupplementaryView.h"
 
-@interface SIXSoundViewController ()
+@interface SIXSoundViewController ()<SIXSoundHeaderSupplementaryViewDelegate>
 
 @end
 
@@ -20,6 +20,19 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma -mark 
+#pragma -mark SIXSoundHeaderSupplementaryViewDelegate
+/**
+ 点击 好声音 顶部分类按钮的回调方法
+ 
+ @param headerView 顶部分类工具条
+ @param type 新选择的 type 类型
+ */
+- (void)soundHeaderSupplementaryView:(SIXSoundHeaderSupplementaryView *)headerView didClickedBtnType:(NSString *)type {
+    self.dicParams[@"type"] = type;
+    [self loadData];
+}
+
 
 #pragma -mark 
 #pragma -mark 设置 collectionView Supplementary
@@ -28,6 +41,7 @@
     if (kind == UICollectionElementKindSectionHeader) {
         view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[SIXSoundHeaderSupplementaryView viewReuseIdentifier] forIndexPath:indexPath];
         view.dicParams = self.dicParams;
+        view.delegate = self;
     }
     
     return view;
@@ -51,3 +65,19 @@
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

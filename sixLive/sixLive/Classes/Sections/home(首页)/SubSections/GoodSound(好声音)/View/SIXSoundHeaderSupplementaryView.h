@@ -7,8 +7,25 @@
 //
 
 #import "SIXCollectionSupplementaryView.h"
+@class SIXSoundHeaderSupplementaryView;
+
+@protocol SIXSoundHeaderSupplementaryViewDelegate <NSObject>
+
+@optional
+/**
+ 点击 好声音 顶部分类按钮的回调方法
+
+ @param headerView 顶部分类工具条
+ @param type 新选择的 type 类型
+ */
+- (void)soundHeaderSupplementaryView:(SIXSoundHeaderSupplementaryView *)headerView didClickedBtnType:(NSString *)type ;
+
+@end
+
 
 @interface SIXSoundHeaderSupplementaryView : SIXCollectionSupplementaryView
+
+@property (weak, nonatomic) id<SIXSoundHeaderSupplementaryViewDelegate> delegate;
 
 @property (strong, nonatomic) NSMutableDictionary *dicParams;
 @property (copy, nonatomic) NSString *type;
