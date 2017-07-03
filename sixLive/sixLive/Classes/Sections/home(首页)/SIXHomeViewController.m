@@ -15,7 +15,7 @@
 #import "SIXTitleListView.h"
 
 
-@interface SIXHomeViewController ()<UIScrollViewDelegate, SIXTitleListViewDelagate>
+@interface SIXHomeViewController ()<UIScrollViewDelegate, SIXTitleListViewDelagate, SIXSelectTypeViewControllerDelegate>
 /** UI */
 @property (strong, nonatomic) SIXTitleListView *viewTopTitle;
 
@@ -240,6 +240,7 @@
     DLog(@"点击搜索");
 }
 - (void)headerRightButtonClicked {
+    self.selectTypeViewController.currentIndex = self.scrollView.contentOffset.x / self.scrollView.width;
     [self.navigationController presentViewController:self.selectTypeViewController animated:NO completion:nil];
 }
 
@@ -257,6 +258,23 @@
 //    [self.scrollView scrollRectToVisible:rect animated:YES];
     [self scrollViewDidEndDecelerating:self.scrollView];
 }
+
+#pragma -mark 
+#pragma -mark SIXSelectTypeViewControllerDelegate
+/**
+ * 点击 section 0，选择 某个 分类类型
+ */
+- (void)selectTypeViewController:(SIXSelectTypeViewController *)viewController didSelectLiveListType:(EnumLiveListType)type {
+    [self titleListView:self.viewTopTitle didClickedAtIndex:type];
+}
+/**
+ * 点击 section 1，选中好声音的 某个具体类型
+ */
+- (void)selectTypeViewController:(SIXSelectTypeViewController *)viewController didSelectSoundType:(NSString *)type {
+    [self titleListView:self.viewTopTitle didClickedAtIndex:EnumLiveListTypeSound];
+    [self.soundViewController soundHeaderSupplementaryView:nil didClickedBtnType:type];
+}
+
 
 
 #pragma -mark 
@@ -347,6 +365,7 @@
 - (SIXSelectTypeViewController *)selectTypeViewController {
     if (!_selectTypeViewController) {
         _selectTypeViewController = [[SIXSelectTypeViewController alloc] init];
+        _selectTypeViewController.delegate = self;
     }
     return _selectTypeViewController;
 }

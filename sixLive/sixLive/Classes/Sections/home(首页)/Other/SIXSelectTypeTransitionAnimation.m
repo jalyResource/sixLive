@@ -22,7 +22,7 @@
     
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     if ([fromVC isKindOfClass:[SIXSelectTypeViewController class]]) {
-        SIXSelectTypeViewController *selectTypeVC = (SIXSelectTypeViewController *)fromVC;
+//        SIXSelectTypeViewController *selectTypeVC = (SIXSelectTypeViewController *)fromVC;
         
         // 将控件添加到 collectionView
         UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];

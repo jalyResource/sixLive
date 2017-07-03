@@ -38,6 +38,7 @@
     return model;
 }
 
+
 @end
 
 
@@ -69,6 +70,7 @@
     
     model.imageName = [NSString stringWithFormat:@"%@", dic[@"imageName"]];
     model.title = [NSString stringWithFormat:@"%@", dic[@"title"]];
+    model.type = [NSString stringWithFormat:@"%@", dic[@"type"]];
     
     return model;
 }

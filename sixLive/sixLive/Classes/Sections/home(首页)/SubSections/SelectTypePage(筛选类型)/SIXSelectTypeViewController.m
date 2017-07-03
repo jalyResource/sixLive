@@ -44,6 +44,10 @@
     [self.view addSubview:self.collectionView];
     [self setUpHeaderBar];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.collectionView reloadData];
+}
 
 - (void)setUpHeaderBar {
     self.customStatusBar.hidden = YES;
@@ -79,7 +83,9 @@
     SIXSelectTypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SIXSelectTypeCollectionViewCell cellReuseIdentifier] forIndexPath:indexPath];
     
     if (0 == indexPath.section) {
-        cell.model = [self.selectTypeModel selectTypeBtnModelAtIndexPath:indexPath];
+        SIXSelectTypeBtnModel *model = [self.selectTypeModel selectTypeBtnModelAtIndexPath:indexPath];
+        model.selected = indexPath.item == self.currentIndex; 
+        cell.model = model;
     } else {
         cell.model = [self.selectTypeModel selectLevelBtnModelAtIndexPath:indexPath];
     }
@@ -90,6 +96,25 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return [self.selectTypeModel numberOfSections];
+}
+
+#pragma -mark 
+#pragma -mark UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.delegate) {
+        if (0 == indexPath.section) {
+            if ([self.delegate respondsToSelector:@selector(selectTypeViewController:didSelectLiveListType:)]) {
+                [self.delegate selectTypeViewController:self didSelectLiveListType:indexPath.item];
+            }
+        } else {
+            if ([self.delegate respondsToSelector:@selector(selectTypeViewController:didSelectSoundType:)]) {
+                SIXSelectLevelBtnModel *model = [self.selectTypeModel selectLevelBtnModelAtIndexPath:indexPath];
+                [self.delegate selectTypeViewController:self didSelectSoundType:model.type];
+            }
+        }
+    }
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 #pragma -mark 

@@ -27,11 +27,8 @@
 /** 按 主播等级分类 模型 */
 @interface SIXSelectLevelBtnModel : SIXSelectTypeBtnModel
 
-//@property (copy, nonatomic) NSString *imageName;
-//
-//@property (copy, nonatomic) NSString *title;
-//
-//@property (assign, nonatomic, getter=isSelected) BOOL selected;
+@property (copy, nonatomic) NSString *type;
+
 
 + (NSArray<SIXSelectLevelBtnModel *> *)defaultLevelBtnModelArray ;
 

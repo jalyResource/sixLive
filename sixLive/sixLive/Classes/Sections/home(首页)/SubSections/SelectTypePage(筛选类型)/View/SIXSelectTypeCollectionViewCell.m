@@ -69,7 +69,7 @@
     self.btnContent.backgroundColor = [UIColor clearColor];
     
     if (model.isSelected) {
-        self.btnContent.backgroundColor = [UIColor colorWithRed:252/255.f green:13/255.f blue:27/255.f alpha:1.];
+        self.btnContent.backgroundColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.];
     }
 }
 
@@ -80,6 +80,7 @@
         _btnContent = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnContent.layer.cornerRadius = 5;
         _btnContent.layer.masksToBounds = YES;
+        _btnContent.userInteractionEnabled = NO;
     }
     return _btnContent;
 }

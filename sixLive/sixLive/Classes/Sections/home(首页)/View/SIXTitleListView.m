@@ -114,6 +114,7 @@
     viewIndicatorFrame.origin.x = btnCurrent.x + viewXOffset;
     viewIndicatorFrame.size.width = btnCurrent.width + viewWOffset;
     
+    [self.viewIndicator.layer removeAllAnimations];
     [UIView animateWithDuration:0.1 animations:^{
         self.viewIndicator.frame = viewIndicatorFrame;
     }];
