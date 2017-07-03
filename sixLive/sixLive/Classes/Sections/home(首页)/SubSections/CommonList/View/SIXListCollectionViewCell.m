@@ -11,6 +11,7 @@
 @interface SIXListCollectionViewCell ()
 /** 背景图 */
 @property (strong, nonatomic) UIImageView *imgViewBackground;
+@property (strong, nonatomic) UIImageView *imgViewShadow;
 /** 右上角 标签 */
 @property (strong, nonatomic) UILabel *lblTag;
 
@@ -34,6 +35,8 @@
 #pragma -mark privete
 - (void)setUp {
     [self.contentView addSubview:self.imgViewBackground];
+    
+    [self.contentView addSubview:self.imgViewShadow];
     
     [self.contentView addSubview:self.lblTag];
     
@@ -73,6 +76,11 @@
     [super layoutSubviews];
     self.imgViewBackground.frame = self.contentView.bounds;
     
+    CGFloat shadowH = 40;
+    CGFloat shadowY = self.contentView.height - shadowH;
+
+    self.imgViewShadow.frame = CGRectMake(0, shadowY, self.width, shadowH);
+    
     CGFloat labWidth = [self.lblTag.text textWidthWithFont:self.lblTag.font height:23] + 10;
     self.lblTag.frame = CGRectMake(self.contentView.width - labWidth - 5, 5, labWidth, 23);
     self.lblTag.hidden = self.lblTag.text.length == 0;
@@ -99,6 +107,16 @@
         _imgViewBackground.layer.masksToBounds = YES;
     }
     return _imgViewBackground;
+}
+- (UIImageView *)imgViewShadow {
+    if (!_imgViewShadow) {
+        _imgViewShadow = [[UIImageView alloc] init];
+        _imgViewShadow.backgroundColor = [UIColor clearColor];
+        _imgViewShadow.contentMode = UIViewContentModeScaleToFill;
+        _imgViewShadow.image = [UIImage imageNamed:@"live_lobby_image_anchor_shadow"];
+        _imgViewShadow.layer.masksToBounds = YES;
+    }
+    return _imgViewShadow;
 }
 
 - (UILabel *)lblTag {
