@@ -40,7 +40,7 @@
 //    dispatch_time_t time = dispat
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.collectionView reloadData];
-        DLog(@"加载 结束");
+        [self hiddenLoading];
     });
 }
 

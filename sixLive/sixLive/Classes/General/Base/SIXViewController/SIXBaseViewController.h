@@ -15,4 +15,7 @@
  */
 @property (strong, nonatomic) UIView *customStatusBar;
 
+- (void)showLoading ;
+- (void)hiddenLoading ;
+
 @end

@@ -9,6 +9,8 @@
 #import "SIXBaseViewController.h"
 
 @interface SIXBaseViewController ()
+/** 等待指示器 */
+@property (strong, nonatomic) UIActivityIndicatorView *viewLoading;
 
 @end
 
@@ -39,9 +41,52 @@
     if (self.customStatusBar) {
         self.customStatusBar.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_STATUSBAR_HEIGHT);
     }
+    // viewLoading
+    CGFloat width = 20;
+    CGFloat x = (self.view.width - width) / 2.0;
+    CGFloat y = (self.view.height - width) / 2.0;
+    self.viewLoading.frame = CGRectMake(x, y, 20, 20);
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+//    [self setNeedsStatusBarAppearanceUpdate];
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma -mark 
+#pragma -mark public
+- (void)showLoading {
+    [self.view addSubview:self.viewLoading];
+    [self.view bringSubviewToFront:self.viewLoading];
+    
+    
+    [self.viewLoading startAnimating];
+}
+- (void)hiddenLoading {
+    [self.viewLoading stopAnimating];
+}
+
+#pragma -mark 
+#pragma -mark getters
+- (UIActivityIndicatorView *)viewLoading {
+    if (!_viewLoading) {
+        _viewLoading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _viewLoading.hidesWhenStopped = YES;
+    }
+    return _viewLoading;
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -27,6 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self addSubviews];
+    
+    [self showLoading];
     [self loadData];
     
     [self setUpHeaderBar];
@@ -47,6 +49,7 @@
 - (void)loadData {
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         DLog(@"---- 结束 刷新  --");
+        [self hiddenLoading];
         
         [self.collectionView reloadData];
     }];
