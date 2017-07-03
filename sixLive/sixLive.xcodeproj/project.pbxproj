@@ -63,6 +63,7 @@
 		0A91E6AF1F024970003A0CE0 /* SIXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6AE1F024970003A0CE0 /* SIXMainViewController.m */; };
 		0A91E6B41F0249C1003A0CE0 /* SIXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6B31F0249C1003A0CE0 /* SIXBaseViewController.m */; };
 		0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6B61F0249D8003A0CE0 /* SIXNavigationController.m */; };
+		0ADA43E41F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA43E31F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m */; };
 		0E9B5CB2C23C2CB1F95559A3 /* libPods-sixLiveUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */; };
 		6FA7D6F86ACB6A78561589A8 /* libPods-sixLiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */; };
 /* End PBXBuildFile section */
@@ -198,6 +199,10 @@
 		0A91E6B61F0249D8003A0CE0 /* SIXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXNavigationController.m; sourceTree = "<group>"; };
 		0A91E6B81F024A69003A0CE0 /* sixLive-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sixLive-Prefix.pch"; sourceTree = "<group>"; };
 		0A91E6B91F024AD1003A0CE0 /* SixLive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SixLive.h; sourceTree = "<group>"; };
+		0ADA43E21F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SIXRefresh.h"; sourceTree = "<group>"; };
+		0ADA43E31F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SIXRefresh.m"; sourceTree = "<group>"; };
+		0ADA43E51F0A41A10067BE49 /* SIXPullRefreshMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXPullRefreshMacro.h; sourceTree = "<group>"; };
+		0ADA43E61F0A424F0067BE49 /* SIXPullRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXPullRefresh.h; sourceTree = "<group>"; };
 		0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLiveUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4568E60061EF9207DA530B2C /* Pods-sixLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-sixLive/Pods-sixLive.release.xcconfig"; sourceTree = "<group>"; };
 		58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -469,6 +474,7 @@
 		0A46BEFD1F04E22900E12CD6 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				0ADA43E11F0A3F3F0067BE49 /* SIXPullRefresh */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -720,6 +726,17 @@
 				0A68BE931F0260410094141A /* SIXViewController.m */,
 			);
 			path = SIXViewController;
+			sourceTree = "<group>";
+		};
+		0ADA43E11F0A3F3F0067BE49 /* SIXPullRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				0ADA43E21F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.h */,
+				0ADA43E31F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m */,
+				0ADA43E51F0A41A10067BE49 /* SIXPullRefreshMacro.h */,
+				0ADA43E61F0A424F0067BE49 /* SIXPullRefresh.h */,
+			);
+			path = SIXPullRefresh;
 			sourceTree = "<group>";
 		};
 		715763FF270FC32C6E4057F5 /* Frameworks */ = {
@@ -1074,6 +1091,7 @@
 				0A2776711F06474300010A80 /* SIXSelectTypeCollectionViewCell.m in Sources */,
 				0A56D14D1F09F4CF0032CB9D /* SIXTabBar.m in Sources */,
 				0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */,
+				0ADA43E41F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m in Sources */,
 				0A27767C1F06639700010A80 /* SIXSelecTypeSupplementaryView.m in Sources */,
 				0A56D14A1F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m in Sources */,
 				0A46BEE01F04AC1000E12CD6 /* SIXRecomendView.m in Sources */,

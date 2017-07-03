@@ -7,6 +7,7 @@
 //  先做手机红人
 
 #import "SIXCommonListViewController.h"
+#import "SIXPullRefresh.h"
 
 
 @interface SIXCommonListViewController ()
@@ -110,6 +111,10 @@
         _collectionView.contentInset = UIEdgeInsetsMake(SIX_STATUSBAR_HEIGHT + SIX_NAVIGATIONBAR_HEIGHT, 0, SIX_TABBAR_HEIGHT, 0);
         
         [self registerCollectionViewCellWithCollection:_collectionView];
+        
+        UIView *header = [[UIView alloc] init];
+        header.backgroundColor = [UIColor redColor];
+        _collectionView.six_header = header;
     }
     return _collectionView;
 }
