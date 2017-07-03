@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>image</key>
-		<string>live_list_icon_local</string>
+		<string>tabbar_button_home_selected</string>
 		<key>imageSelected</key>
 		<string>tabbar_button_home_selected</string>
 	</dict>

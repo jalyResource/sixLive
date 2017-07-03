@@ -32,16 +32,16 @@
     for (NSUInteger i = 0; i<arrTabBarModel.count; i++) {
         SIXTabBarModel *model = arrTabBarModel[i];
         
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-        UIImage *normalImg = [UIImage imageNamed:@"live_list_icon_local"];
-//        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.adjustsImageWhenHighlighted = NO;
+
+        UIImage *normalImg = [UIImage imageNamed:model.image];        
         [btn setImage:normalImg forState:UIControlStateNormal];
-//        [btn setImage:[UIImage imageNamed:model.imageSelected] forState:UIControlStateSelected];
-//        [btn setBackgroundImage:normalImg forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:model.imageSelected] forState:UIControlStateSelected];
+        btn.backgroundColor = [UIColor clearColor];
         
-        
-//        btn.backgroundColor = [UIColor randomColor];
+        btn.exclusiveTouch = YES;
+        [btn addTarget:self action:@selector(btnTabBarClicked:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:btn];
         [self.arrTabBarButton addObject:btn];
@@ -51,11 +51,28 @@
     [self layoutIfNeeded];
 }
 
+- (void)btnTabBarClicked:(UIButton *)sender {
+    sender.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:0.12 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        sender.transform = CGAffineTransformMakeScale(1.25, 1.25);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.32 delay:0 usingSpringWithDamping:0.18 initialSpringVelocity:5. options:UIViewAnimationOptionCurveEaseOut animations:^{
+            sender.transform = CGAffineTransformMakeScale(0.95, 0.95);
+            
+        } completion:^(BOOL finished) {
+            
+            sender.transform = CGAffineTransformIdentity;
+            sender.userInteractionEnabled = YES;
+        }];
+    }];
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     UIButton *btn = nil;
-    CGFloat x = 0, y = 0, w = self.width / self.arrTabBarButton.count, h = self.width;
+    CGFloat x = 0, y = 0, w = self.width / self.arrTabBarButton.count, h = self.height;
     
     for (NSUInteger i = 0; i < self.arrTabBarButton.count; i++) {
         btn = self.arrTabBarButton[i];
@@ -68,7 +85,7 @@
 
 - (NSMutableArray<UIButton *> *)arrTabBarButton {
     if (!_arrTabBarButton) {
-        _arrTabBarButton = [NSMutableArray new];
+        _arrTabBarButton = [[NSMutableArray alloc] init];
     }
     return _arrTabBarButton;
 }

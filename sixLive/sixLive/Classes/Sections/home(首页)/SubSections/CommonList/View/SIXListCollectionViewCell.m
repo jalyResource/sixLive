@@ -73,8 +73,8 @@
     [super layoutSubviews];
     self.imgViewBackground.frame = self.contentView.bounds;
     
-    CGFloat labWidth = [self.lblTag.text textWidthWithFont:self.lblTag.font height:22] + 8;
-    self.lblTag.frame = CGRectMake(self.contentView.width - labWidth - 5, 6, labWidth, 22);
+    CGFloat labWidth = [self.lblTag.text textWidthWithFont:self.lblTag.font height:23] + 8;
+    self.lblTag.frame = CGRectMake(self.contentView.width - labWidth - 5, 5, labWidth, 23);
     self.lblTag.hidden = self.lblTag.text.length == 0;
     
     // count
