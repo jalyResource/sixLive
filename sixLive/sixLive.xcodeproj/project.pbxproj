@@ -43,6 +43,7 @@
 		0A46BF0B1F05006700E12CD6 /* SIXCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BF0A1F05006700E12CD6 /* SIXCollectionViewCell.m */; };
 		0A46BF0E1F05013400E12CD6 /* SIXSoundHeaderSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46BF0D1F05013400E12CD6 /* SIXSoundHeaderSupplementaryView.m */; };
 		0A46BF101F05059800E12CD6 /* lobby_live_sound_btn_kind.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A46BF0F1F05059800E12CD6 /* lobby_live_sound_btn_kind.plist */; };
+		0A56D13D1F09DABE0032CB9D /* lobby_live_select_level.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D13C1F09DABE0032CB9D /* lobby_live_select_level.plist */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
 		0A68BE941F0260410094141A /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE931F0260410094141A /* SIXViewController.m */; };
@@ -149,6 +150,7 @@
 		0A46BF0C1F05013400E12CD6 /* SIXSoundHeaderSupplementaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSoundHeaderSupplementaryView.h; sourceTree = "<group>"; };
 		0A46BF0D1F05013400E12CD6 /* SIXSoundHeaderSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSoundHeaderSupplementaryView.m; sourceTree = "<group>"; };
 		0A46BF0F1F05059800E12CD6 /* lobby_live_sound_btn_kind.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lobby_live_sound_btn_kind.plist; sourceTree = "<group>"; };
+		0A56D13C1F09DABE0032CB9D /* lobby_live_select_level.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lobby_live_select_level.plist; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		0A68BE641F024FF50094141A /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		0A68BE8C1F0254ED0094141A /* SIXGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				0A91E6B81F024A69003A0CE0 /* sixLive-Prefix.pch */,
 				0A46BF0F1F05059800E12CD6 /* lobby_live_sound_btn_kind.plist */,
 				0A2776781F06512B00010A80 /* lobby_live_select_type.plist */,
+				0A56D13C1F09DABE0032CB9D /* lobby_live_select_level.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				0A91E6771F0242B1003A0CE0 /* LaunchScreen.storyboard in Resources */,
 				0A2776791F06512B00010A80 /* lobby_live_select_type.plist in Resources */,
 				0A46BF101F05059800E12CD6 /* lobby_live_sound_btn_kind.plist in Resources */,
+				0A56D13D1F09DABE0032CB9D /* lobby_live_select_level.plist in Resources */,
 				0A91E6741F0242B1003A0CE0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

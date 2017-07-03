@@ -61,13 +61,18 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SIXSelectTypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SIXSelectTypeCollectionViewCell cellReuseIdentifier] forIndexPath:indexPath];
     
-    cell.model = [self.selectTypeModel selectTypeBtnModelAtIndexPath:indexPath];
+    if (0 == indexPath.section) {
+        cell.model = [self.selectTypeModel selectTypeBtnModelAtIndexPath:indexPath];
+    } else {
+        cell.model = [self.selectTypeModel selectLevelBtnModelAtIndexPath:indexPath];
+    }
+    
     
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1; // [self.selectTypeModel numberOfSections];
+    return [self.selectTypeModel numberOfSections];
 }
 
 #pragma -mark 

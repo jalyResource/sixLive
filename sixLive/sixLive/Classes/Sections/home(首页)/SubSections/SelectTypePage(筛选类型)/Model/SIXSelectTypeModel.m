@@ -11,7 +11,11 @@
 
 @interface SIXSelectTypeModel ()
 
+/** 按表演类型分类 模型 */
 @property (strong, nonatomic) NSArray<SIXSelectTypeBtnModel *> *arrSelectTypeBtnModel;
+
+/** 按 主播等级分类 模型 */
+@property (strong, nonatomic) NSArray<SIXSelectLevelBtnModel *> *arrSelectLevelBtnModel;
 
 @end
 
@@ -32,6 +36,7 @@
     self = [super init];
     if (self) {
         self.arrSelectTypeBtnModel = [SIXSelectTypeBtnModel defaultTypeBtnModelArray];
+        self.arrSelectLevelBtnModel = [SIXSelectLevelBtnModel defaultLevelBtnModelArray];
     }
     return self;
 }
@@ -43,12 +48,18 @@
     }
     return self.arrSelectTypeBtnModel[indexPath.item];
 }
+- (SIXSelectLevelBtnModel *)selectLevelBtnModelAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.item >= self.arrSelectLevelBtnModel.count) {
+        return nil;
+    }
+    return self.arrSelectLevelBtnModel[indexPath.item];
+}
 
 - (NSUInteger)numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
         return self.arrSelectTypeBtnModel.count;
     }
-    return 5;
+    return self.arrSelectLevelBtnModel.count;;
 }
 
 - (NSUInteger)numberOfSections {

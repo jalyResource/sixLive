@@ -14,6 +14,7 @@
 +(instancetype)shareTypeModel ;
 
 - (SIXSelectTypeBtnModel *)selectTypeBtnModelAtIndexPath:(NSIndexPath *)indexPath ;
+- (SIXSelectLevelBtnModel *)selectLevelBtnModelAtIndexPath:(NSIndexPath *)indexPath ;
 
 - (NSUInteger)numberOfItemsInSection:(NSInteger)section ;
 

@@ -57,6 +57,7 @@ static CGFloat const HeaderViewHeight = 55.;
     if (NO == [keyPath isEqualToString:@"contentOffset"]) {
         return;
     }
+//    DLog(@"%f", self.collectionView.contentOffset.y);
     // - 65
     if (self.collectionView.contentOffset.y > -self.collectionView.contentInset.top) {
         self.viewLocalSelect.y = self.collectionView.contentInset.top;

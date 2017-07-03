@@ -37,6 +37,6 @@
 /**
  注册 collectionView 的cell，子类重写时必须调用父类方法
  */
-- (void)registerCollectionViewCellWithCollection:(__kindof UICollectionView *)collectionView ;
+- (void)registerCollectionViewCellWithCollection:(__kindof UICollectionView *)collectionView NS_REQUIRES_SUPER;
 
 @end
