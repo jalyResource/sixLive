@@ -10,4 +10,9 @@
 
 @interface SIXSelectTypeViewController : SIXViewController
 
+/**
+ * 获取 collectionView 的高度
+ */
+- (CGFloat)collectionViewHeight ;
+
 @end

@@ -240,7 +240,7 @@
     DLog(@"点击搜索");
 }
 - (void)headerRightButtonClicked {
-    [self.navigationController presentViewController:self.selectTypeViewController animated:YES completion:nil];
+    [self.navigationController presentViewController:self.selectTypeViewController animated:NO completion:nil];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -340,6 +340,10 @@
     return _maleViewController;
 }
 
+
+/**
+ * 进入选择类型界面 VC 
+ */
 - (SIXSelectTypeViewController *)selectTypeViewController {
     if (!_selectTypeViewController) {
         _selectTypeViewController = [[SIXSelectTypeViewController alloc] init];

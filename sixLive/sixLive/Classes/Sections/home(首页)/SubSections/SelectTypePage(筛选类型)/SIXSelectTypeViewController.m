@@ -11,9 +11,13 @@
 #import "SIXSelectTypeCollectionViewCell.h"
 #import "SIXSelectTypeModel.h"
 #import "SIXSelecTypeSupplementaryView.h"
+#import "SIXSelectTypeTransition.h"
 
 
 @interface SIXSelectTypeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+
+/** 自定义 present 动画 */
+@property (strong, nonatomic) SIXSelectTypeTransition *myTransition;
 
 @property (strong, nonatomic) SIXCollectionView *collectionView;
 
@@ -23,16 +27,26 @@
 
 @implementation SIXSelectTypeViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.modalPresentationStyle = UIModalPresentationCustom;
+        self.transitioningDelegate = self.myTransition;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     [self.view addSubview:self.collectionView];
     [self setUpHeaderBar];
 }
 
 - (void)setUpHeaderBar {
-    self.customStatusBar.hidden = NO;
+    self.customStatusBar.hidden = YES;
     [self.view bringSubviewToFront:self.headerBar];
     self.headerBar.btnLeft.hidden = YES;
 }
@@ -41,7 +55,7 @@
     [super viewDidLayoutSubviews];
     CGRect frame = self.view.bounds;
     frame.origin.y = CGRectGetMaxY(self.headerBar.frame);
-    frame.size.height = frame.size.height - frame.origin.y - 140;
+    frame.size.height = self.collectionViewHeight;
     self.collectionView.frame = frame; // bottom 140
 }
 
@@ -49,6 +63,9 @@
 #pragma -mark  SIXNavigationBarDelegate methods
 - (void)headerRightButtonClicked {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self headerRightButtonClicked];
 }
 
 #pragma -mark 
@@ -93,10 +110,22 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     return [SIXSelecTypeSupplementaryView viewSize];
 }
+#pragma -mark 
+#pragma -mark public
+- (CGFloat)collectionViewHeight {
+    return SIX_SCREEN_HEIGHT - 140 - SIX_STATUSBAR_HEIGHT - SIX_NAVIGATIONBAR_HEIGHT;
+}
 
 
 #pragma -mark 
 #pragma -mark getters
+- (SIXSelectTypeTransition *)myTransition {
+    if (!_myTransition) {
+        _myTransition = [[SIXSelectTypeTransition alloc] init];
+    }
+    return _myTransition;
+}
+
 - (SIXSelectTypeModel *)selectTypeModel {
     if (!_selectTypeModel) {
         _selectTypeModel = [[SIXSelectTypeModel alloc] init];
@@ -109,6 +138,7 @@
         SIXSelectTypeLayout *layout = [[SIXSelectTypeLayout alloc] init];
         
         _collectionView = [[SIXCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _collectionView.backgroundColor = SIX_BACKGROUND_COLOR;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
 //        _collectionView.contentInset = UIEdgeInsetsMake(SIX_STATUSBAR_HEIGHT + SIX_NAVIGATIONBAR_HEIGHT, 0, SIX_TABBAR_HEIGHT, 0);

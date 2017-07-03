@@ -73,8 +73,8 @@
     [super layoutSubviews];
     self.imgViewBackground.frame = self.contentView.bounds;
     
-    CGFloat labWidth = [self.lblTag.text textWidthWithFont:self.lblTag.font height:20] + 4;
-    self.lblTag.frame = CGRectMake(self.contentView.width - labWidth - 5, 6, labWidth, 20);
+    CGFloat labWidth = [self.lblTag.text textWidthWithFont:self.lblTag.font height:22] + 8;
+    self.lblTag.frame = CGRectMake(self.contentView.width - labWidth - 5, 6, labWidth, 22);
     self.lblTag.hidden = self.lblTag.text.length == 0;
     
     // count
@@ -120,7 +120,7 @@
     if (!_lblName) {
         _lblName = [[UILabel alloc] init];
         _lblName.backgroundColor = [UIColor clearColor];
-        _lblName.font = [UIFont systemFontOfSize:14];
+        _lblName.font = [UIFont systemFontOfSize:13];
         _lblName.textColor = [UIColor whiteColor];
     }
     return _lblName;
@@ -130,7 +130,7 @@
     if (!_lblCount) {
         _lblCount = [[UILabel alloc] init];
         _lblCount.backgroundColor = [UIColor clearColor];
-        _lblCount.font = [UIFont systemFontOfSize:13];
+        _lblCount.font = [UIFont systemFontOfSize:12];
         _lblCount.textColor = [UIColor whiteColor];
     }
     return _lblCount;

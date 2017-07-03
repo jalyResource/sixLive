@@ -17,7 +17,7 @@
         self.minimumLineSpacing = 0;
         self.minimumInteritemSpacing = 0;
         
-        CGFloat width = SIX_SCREEN_WIDTH / 3.0;
+        CGFloat width = SIX_SCREEN_WIDTH / 4.0;
         self.itemSize = CGSizeMake(width, width);
         
         self.scrollDirection = UICollectionViewScrollDirectionVertical;

@@ -85,7 +85,7 @@
 #pragma -mark 
 #pragma -mark setters
 - (void)setContentOffset:(CGPoint)contentOffset {
-    if (contentOffset.x < 0 || contentOffset.x > self.arrTitle.count * SIX_SCREEN_WIDTH) {
+    if (contentOffset.x < 0 || contentOffset.x > (self.arrTitle.count - 1) * SIX_SCREEN_WIDTH) {
         return;
     }
     CGFloat currentPageX = SIX_SCREEN_WIDTH * self.currentIndex;

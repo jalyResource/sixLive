@@ -54,9 +54,10 @@
     x = 0;
     self.lblTitle.frame = CGRectMake(x, y, w, h);
     
-    // imgView 
+    // imgView
+    w = h = 44;
+    x = (self.btnContent.width - w) / 2.0;
     y = 0;
-    h = 69- h;
     self.imgViewIcon.frame = CGRectMake(x, y, w, h);
 }
 
@@ -85,7 +86,7 @@
 
 - (UIImageView *)imgViewIcon {
     if (!_imgViewIcon) {
-        _imgViewIcon = [UIImageView new];
+        _imgViewIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         _imgViewIcon.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imgViewIcon;
@@ -94,9 +95,9 @@
 - (UILabel *)lblTitle {
     if (!_lblTitle) {
         _lblTitle = [[UILabel alloc] init];
-        _lblTitle.textColor = [UIColor colorWithHex:0x333333]; // 929292
+        _lblTitle.textColor = [UIColor colorWithHex:0x666666]; // 929292
         _lblTitle.textAlignment = NSTextAlignmentCenter;
-        _lblTitle.font = [UIFont systemFontOfSize:14];
+        _lblTitle.font = [UIFont systemFontOfSize:13];
     }
     return _lblTitle;
 }
