@@ -47,6 +47,8 @@
 		0A56D1441F09DF670032CB9D /* SIXSelectTypeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D1431F09DF670032CB9D /* SIXSelectTypeTransition.m */; };
 		0A56D1471F09DFA80032CB9D /* SIXSelectTypePresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D1461F09DFA80032CB9D /* SIXSelectTypePresentationController.m */; };
 		0A56D14A1F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D1491F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m */; };
+		0A56D14D1F09F4CF0032CB9D /* SIXTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D14C1F09F4CF0032CB9D /* SIXTabBar.m */; };
+		0A56D14F1F09F6590032CB9D /* tabBar_button_info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
 		0A68BE941F0260410094141A /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE931F0260410094141A /* SIXViewController.m */; };
@@ -160,6 +162,9 @@
 		0A56D1461F09DFA80032CB9D /* SIXSelectTypePresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypePresentationController.m; sourceTree = "<group>"; };
 		0A56D1481F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelectTypeTransitionAnimation.h; sourceTree = "<group>"; };
 		0A56D1491F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelectTypeTransitionAnimation.m; sourceTree = "<group>"; };
+		0A56D14B1F09F4CF0032CB9D /* SIXTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXTabBar.h; sourceTree = "<group>"; };
+		0A56D14C1F09F4CF0032CB9D /* SIXTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXTabBar.m; sourceTree = "<group>"; };
+		0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tabBar_button_info.plist; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		0A68BE641F024FF50094141A /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		0A68BE8C1F0254ED0094141A /* SIXGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
@@ -495,6 +500,8 @@
 			children = (
 				0A68BE8F1F0258860094141A /* SIXNavigationBar.h */,
 				0A68BE901F0258860094141A /* SIXNavigationBar.m */,
+				0A56D14B1F09F4CF0032CB9D /* SIXTabBar.h */,
+				0A56D14C1F09F4CF0032CB9D /* SIXTabBar.m */,
 			);
 			path = SIXNavigationBar;
 			sourceTree = "<group>";
@@ -649,6 +656,7 @@
 				0A46BF0F1F05059800E12CD6 /* lobby_live_sound_btn_kind.plist */,
 				0A2776781F06512B00010A80 /* lobby_live_select_type.plist */,
 				0A56D13C1F09DABE0032CB9D /* lobby_live_select_level.plist */,
+				0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -856,6 +864,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A56D14F1F09F6590032CB9D /* tabBar_button_info.plist in Resources */,
 				0A91E6771F0242B1003A0CE0 /* LaunchScreen.storyboard in Resources */,
 				0A2776791F06512B00010A80 /* lobby_live_select_type.plist in Resources */,
 				0A46BF101F05059800E12CD6 /* lobby_live_sound_btn_kind.plist in Resources */,
@@ -1063,6 +1072,7 @@
 				0A457C291F03A59D003FD0E2 /* SIXHotListModel.m in Sources */,
 				0A457BFC1F0350FA003FD0E2 /* SIXUser.m in Sources */,
 				0A2776711F06474300010A80 /* SIXSelectTypeCollectionViewCell.m in Sources */,
+				0A56D14D1F09F4CF0032CB9D /* SIXTabBar.m in Sources */,
 				0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */,
 				0A27767C1F06639700010A80 /* SIXSelecTypeSupplementaryView.m in Sources */,
 				0A56D14A1F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m in Sources */,

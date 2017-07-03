@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>live_list_icon_local</string>
+		<key>imageSelected</key>
+		<string>tabbar_button_home_selected</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>tabbar_button_notice_normal</string>
+		<key>imageSelected</key>
+		<string>tabbar_button_notice_normal</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>tabbar_button_live_normal</string>
+		<key>imageSelected</key>
+		<string>tabbar_button_live_normal</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>tabbar_button_find_normal</string>
+		<key>imageSelected</key>
+		<string>tabbar_button_find_normal</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>tabbar_button_find_normal</string>
+		<key>imageSelected</key>
+		<string>tabbar_button_find_normal</string>
+	</dict>
+</array>
+</plist>

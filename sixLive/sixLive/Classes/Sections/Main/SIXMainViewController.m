@@ -9,12 +9,16 @@
 #import "SIXMainViewController.h"
 #import "SIXHomeViewController.h"
 #import "SIXBaseViewController.h"
+#import "SIXTabBar.h"
 
 
 @interface SIXMainViewController ()
 @property (strong, nonatomic) NSMutableArray<SIXNavigationController *> *arrSubControllers;
 
 @property (strong, nonatomic) SIXNavigationController *navControllerCurrent;
+
+@property (strong, nonatomic) SIXTabBar *viewTabBar;
+
 @end
 
 @implementation SIXMainViewController
@@ -23,6 +27,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self addChildControllers];
+    
+    [self addSubViews];
+}
+
+- (void)addSubViews {
+    [self.view addSubview:self.viewTabBar];
 }
 
 
@@ -46,11 +56,21 @@
     [super viewDidLayoutSubviews];
     CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     self.navControllerCurrent.view.frame = rect;
+    
+    // tabBar
+    self.viewTabBar.frame = CGRectMake(0, self.view.height - SIX_TABBAR_HEIGHT, self.view.width, SIX_TABBAR_HEIGHT);
 }
 
 
 
-
+#pragma -mark 
+#pragma -mark getters
+- (SIXTabBar *)viewTabBar {
+    if (!_viewTabBar) {
+        _viewTabBar = [SIXTabBar homeTabBar];
+    }
+    return _viewTabBar;
+}
 
 @end
 

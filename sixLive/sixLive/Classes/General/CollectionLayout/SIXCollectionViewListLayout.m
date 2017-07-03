@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        CGFloat margin = 3;
+        CGFloat margin = 2;
         self.minimumLineSpacing = margin;
         self.minimumInteritemSpacing = margin;
         

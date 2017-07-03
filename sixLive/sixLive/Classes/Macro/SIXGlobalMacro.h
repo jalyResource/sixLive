@@ -37,7 +37,7 @@
 /*
  *  底部 tabBar 高度  
  */
-#define SIX_TABBAR_HEIGHT 45.0
+#define SIX_TABBAR_HEIGHT 49.0
 
 
 

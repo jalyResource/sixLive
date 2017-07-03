@@ -74,6 +74,19 @@
     return num;
 }
 
+#pragma -mark 
+#pragma -mark UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SIXUser *user = [self.listModel userForItemAtIndexPath:indexPath];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"你点击了" message:user.username preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        ;
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 //#pragma -mark 
 //#pragma -mark UICollectionViewDelegateFlowLayout - collectionView:layout:sizeForItemAtIndexPath:
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

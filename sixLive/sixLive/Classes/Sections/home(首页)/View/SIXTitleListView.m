@@ -44,7 +44,7 @@
 
 
 - (CGFloat)viewIndicatorHeight {
-    return 3.;
+    return 2.;
 }
 
 - (void)layoutSubviews {
@@ -124,10 +124,12 @@
 - (void)setCurrentIndex:(NSUInteger)currentIndex {
     UIButton *btn = self.arrBtnTitle[_currentIndex];
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    btn.selected = NO;
     
     _currentIndex = currentIndex;
     btn = self.arrBtnTitle[currentIndex];
     btn.titleLabel.font = TitleFontMax;
+    btn.selected = YES;
     
     self.viewIndicator.x = btn.x;
     self.viewIndicator.width = btn.width;
@@ -148,7 +150,8 @@
         btn.backgroundColor = [UIColor clearColor];
         btn.titleLabel.font = [UIFont systemFontOfSize:16];
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor colorWithHex:0xefb2b2] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor colorWithHex:0xffffff] forState:UIControlStateSelected];
         [btn setTitle:arrTitle[i] forState:UIControlStateNormal];
         btn.tag = i + 100;
         [btn addTarget:self action:@selector(titleButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -159,6 +162,7 @@
     
     UIButton *btnFirst = [self.arrBtnTitle firstObject];
     btnFirst.titleLabel.font = TitleFontMax;
+    btnFirst.selected = YES;
     CGFloat textWidth = [btnFirst.currentTitle textWidthWithFont:TitleFontMax height:self.height - self.viewIndicatorHeight];
     self.viewIndicator.frame = CGRectMake(30, self.height - self.viewIndicatorHeight, textWidth, self.viewIndicatorHeight);
 }
