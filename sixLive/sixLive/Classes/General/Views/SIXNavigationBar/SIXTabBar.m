@@ -20,7 +20,7 @@
     SIXTabBar *tabBar = [[SIXTabBar alloc] init];
     
     tabBar.arrTabBarModel = [SIXTabBarModel defaultTabBarModelArray];
-    tabBar.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
+    tabBar.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.95];
     
     return tabBar;
 }
