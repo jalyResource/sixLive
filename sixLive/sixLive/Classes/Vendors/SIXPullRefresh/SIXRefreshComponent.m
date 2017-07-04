@@ -113,9 +113,11 @@
 
 - (void)setState:(EnumRefreshState)state {
     if (EnumRefreshStateRefreshEnd == state && EnumRefreshStateRefreshing == _state) { // 刷新 ---> 刷新结束
+        _superScrollView.userInteractionEnabled = NO;
         [UIView animateWithDuration:0.35 animations:^{
             _superScrollView.transform = CGAffineTransformMakeTranslation(0, -self.six_height);
         } completion:^(BOOL finished) {
+            _superScrollView.userInteractionEnabled = YES;
             _superScrollView.transform = CGAffineTransformIdentity;
             _superScrollView.contentInset = self.superScrollViewOriginInsets;
         }];
