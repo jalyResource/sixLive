@@ -25,19 +25,17 @@
     [super willMoveToSuperview:newSuperview];
     
     [self removeObserver];
-}
-
-- (void)didMoveToSuperview {
-    [super didMoveToSuperview];
     
-    if ([self.superview isKindOfClass:[UIScrollView class]]) {
-        _superScrollView = (UIScrollView *)self.superview;
+    if ([newSuperview isKindOfClass:[UIScrollView class]]) {
+        _superScrollView = (UIScrollView *)newSuperview;
         _superScrollView.alwaysBounceVertical = YES;
         self.superScrollViewOriginInsets = _superScrollView.contentInset;
         
         [self addObserver];
     }
 }
+
+
 
 #pragma -mark 
 #pragma -mark KVO
@@ -78,6 +76,10 @@
         
         return;
     }
+//    if (EnumRefreshStateRefreshEnd == self.state) {
+//        
+//        return;
+//    }
     self.hidden = -newContentOffset.y < self.superScrollViewOriginInsets.top + 20;
     
     if (_superScrollView.isDragging) {
@@ -110,15 +112,17 @@
 }
 
 - (void)setState:(EnumRefreshState)state {
-    _state = state;
-    
-    if (EnumRefreshStateRefreshEnd == state) { // 刷新 ---> 刷新结束
-         [UIView animateWithDuration:0.25 animations:^{
-             _superScrollView.contentInset = self.superScrollViewOriginInsets;
-         }];
+    if (EnumRefreshStateRefreshEnd == state && EnumRefreshStateRefreshing == _state) { // 刷新 ---> 刷新结束
+        [UIView animateWithDuration:0.35 animations:^{
+            _superScrollView.transform = CGAffineTransformMakeTranslation(0, -self.six_height);
+        } completion:^(BOOL finished) {
+            _superScrollView.transform = CGAffineTransformIdentity;
+            _superScrollView.contentInset = self.superScrollViewOriginInsets;
+        }];
+        self.state = EnumRefreshStateNormal;    
     }
     
-    
+    _state = state;
 }
 
 /**
