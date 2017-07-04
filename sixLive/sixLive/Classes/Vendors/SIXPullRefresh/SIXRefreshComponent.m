@@ -30,18 +30,19 @@
 - (void)didMoveToSuperview {
     [super didMoveToSuperview];
     
-    [self addObserver];
+    if ([self.superview isKindOfClass:[UIScrollView class]]) {
+        _superScrollView = (UIScrollView *)self.superview;
+        _superScrollView.alwaysBounceVertical = YES;
+        self.superScrollViewOriginInsets = _superScrollView.contentInset;
+        
+        [self addObserver];
+    }
 }
 
 #pragma -mark 
 #pragma -mark KVO
 - (void)addObserver {
-    if ([self.superview isKindOfClass:[UIScrollView class]]) {
-        _superScrollView = (UIScrollView *)self.superview;
-        self.superScrollViewOriginInsets = _superScrollView.contentInset;
-        
-        [_superScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    }
+    [_superScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 }
 - (void)removeObserver {
     if ( _superScrollView ) {

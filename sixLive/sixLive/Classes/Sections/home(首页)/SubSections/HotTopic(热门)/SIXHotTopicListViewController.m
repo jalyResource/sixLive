@@ -11,7 +11,8 @@
 
 
 @interface SIXHotTopicListViewController ()
-
+@property (assign, nonatomic) EnumHttpCode fetchUserListCode;
+@property (assign, nonatomic) EnumHttpCode fetchEventListCode;
 @end
 
 @implementation SIXHotTopicListViewController
@@ -26,20 +27,31 @@
 }
 
 - (void)loadData {
+    WS
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
+        ws.fetchUserListCode = code;
         dispatch_group_leave(group);
     }];
     
     dispatch_group_enter(group);
     [self.listModel fetchEventListWithParam:nil completedCallBack:^(EnumHttpCode code, NSString *infoString) {
+        ws.fetchEventListCode = code;
         dispatch_group_leave(group);
     }];
     
 //    dispatch_time_t time = dispat
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [self.collectionView reloadData];
+        if (EnumHttpCodeFaile == self.fetchEventListCode || EnumHttpCodeFaile == self.fetchUserListCode) {
+            if (nil == self.listModel.arrOfUser) {
+                [self.collectionView showRefreshTip];
+            }
+        } else {
+            [self.collectionView reloadData];
+            [self.collectionView removeTipText];
+        }
+        
         [self hiddenLoading];
         [self.collectionView.six_header endRefresh];
     });

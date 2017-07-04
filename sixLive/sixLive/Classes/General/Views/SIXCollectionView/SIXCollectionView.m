@@ -27,6 +27,13 @@
     return self;
 }
 
+/**
+ 显示 : 请下拉刷新试试
+ */
+- (void)showRefreshTip {
+    [self showTipText:@"请下拉刷新试试"];
+}
+
 - (void)showTipText:(NSString *)text {
     if (self.lblTip.superview) {
         [self.lblTip removeFromSuperview];
@@ -34,15 +41,17 @@
     }
     
     self.lblTip = [[UILabel alloc] init];
-    self.lblTip.textColor = [UIColor colorWithHex:0x333333];
-    self.lblTip.font = [UIFont systemFontOfSize:14];
+    self.lblTip.textColor = [UIColor colorWithHex:0x666666];
+    self.lblTip.font = [UIFont systemFontOfSize:18];
     self.lblTip.textAlignment = NSTextAlignmentCenter;
     self.lblTip.text = text;
-    
-    [self addSubview:self.lblTip];
+//    self.lblTip.userInteractionEnabled = NO;
 
-    self.lblTip.frame = self.bounds;
+    [self insertSubview:self.lblTip atIndex:0];
+
+    CGRect frame = self.bounds;
     
+    self.lblTip.frame = frame;
 }
 
 

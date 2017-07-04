@@ -13,7 +13,7 @@
 
 
 + (instancetype)refreshHeaderWithBlock:(SIXRefreshBlock)refreshBlock {
-    SIXRefreshHeader *header = [[self alloc] initWithFrame:CGRectMake(0, -55, REFRESH_SC_WIDTH, 55)];
+    SIXRefreshHeader *header = [[self alloc] initWithFrame:CGRectMake(0, -64, REFRESH_SC_WIDTH, 64)];
     header.refreshBlock = refreshBlock;
     return header;
 }

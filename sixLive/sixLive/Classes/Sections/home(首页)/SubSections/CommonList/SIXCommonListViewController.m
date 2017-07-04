@@ -50,8 +50,9 @@
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         if (EnumHttpCodeSuccess == code) {
             [self.collectionView reloadData];
+            [self.collectionView removeTipText];
         } else if (EnumHttpCodeFaile == code) {
-            // Toast
+            [self.collectionView showRefreshTip];
         }
         [self hiddenLoading];
         [self.collectionView.six_header endRefresh];

@@ -10,6 +10,10 @@
 
 @interface SIXCollectionView : UICollectionView
 
+/**
+ 显示 : 请下拉刷新试试
+ */
+- (void)showRefreshTip ;
 
 /**
  显示出错信息
