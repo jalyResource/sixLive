@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SIXRefreshComponent;
 
 @interface UIScrollView (SIXRefresh)
 
-@property (strong, nonatomic) UIView *six_header;
+@property (strong, nonatomic) SIXRefreshComponent *six_header;
 
 @end

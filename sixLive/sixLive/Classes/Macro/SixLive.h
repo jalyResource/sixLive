@@ -19,6 +19,7 @@
 /** 第三方框架 */
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
+#import "SIXPullRefresh.h"
 
 
 

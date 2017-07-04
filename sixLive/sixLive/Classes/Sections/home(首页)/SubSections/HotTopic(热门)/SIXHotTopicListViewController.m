@@ -41,6 +41,7 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.collectionView reloadData];
         [self hiddenLoading];
+        [self.collectionView.six_header endRefresh];
     });
 }
 

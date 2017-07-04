@@ -7,7 +7,6 @@
 //  先做手机红人
 
 #import "SIXCommonListViewController.h"
-#import "SIXPullRefresh.h"
 
 
 @interface SIXCommonListViewController ()
@@ -51,8 +50,8 @@
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         DLog(@"---- 结束 刷新  --");
         [self hiddenLoading];
-        
         [self.collectionView reloadData];
+        [self.collectionView.six_header endRefresh];
     }];
 }
 
@@ -112,8 +111,10 @@
         
         [self registerCollectionViewCellWithCollection:_collectionView];
         
-        UIView *header = [[UIView alloc] init];
-        header.backgroundColor = [UIColor redColor];
+        WS
+        SIXRefreshNormalHeader *header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
+            [ws loadData];
+        }];
         _collectionView.six_header = header;
     }
     return _collectionView;

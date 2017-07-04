@@ -8,10 +8,11 @@
 
 #import "UIScrollView+SIXRefresh.h"
 #import "SIXPullRefreshMacro.h"
+#import "SIXRefreshComponent.h"
 
 #import <objc/runtime.h>
 
-
+/** 顶部刷新控件 key */
 static char KeySixHeader;
 
 @implementation UIScrollView (SIXRefresh)
@@ -19,16 +20,15 @@ static char KeySixHeader;
 
 
 
-- (void)setSix_header:(UIView *)six_header {
+- (void)setSix_header:(SIXRefreshComponent *)six_header {
     objc_setAssociatedObject(self, &KeySixHeader, six_header, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self addSubview:six_header];
     
-    CGFloat height = 49;
-    
-    six_header.frame = CGRectMake(0, -49, REFRESH_SC_WIDTH, height);
+    CGFloat height = six_header.frame.size.height;
+    six_header.frame = CGRectMake(0, - height, REFRESH_SC_WIDTH, height);
 }
 
-- (UIView *)six_header {
+- (SIXRefreshComponent *)six_header {
     UIView *header = objc_getAssociatedObject(self, &KeySixHeader);
     return header;
 }

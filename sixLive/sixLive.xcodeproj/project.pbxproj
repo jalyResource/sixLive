@@ -15,6 +15,9 @@
 		0A2776771F0650A900010A80 /* SIXSelectTypeBtnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2776761F0650A900010A80 /* SIXSelectTypeBtnModel.m */; };
 		0A2776791F06512B00010A80 /* lobby_live_select_type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A2776781F06512B00010A80 /* lobby_live_select_type.plist */; };
 		0A27767C1F06639700010A80 /* SIXSelecTypeSupplementaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A27767B1F06639700010A80 /* SIXSelecTypeSupplementaryView.m */; };
+		0A3D36FF1F0B2B870033B735 /* SIXRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D36FE1F0B2B870033B735 /* SIXRefreshHeader.m */; };
+		0A3D37021F0B32AC0033B735 /* SIXRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D37011F0B32AC0033B735 /* SIXRefreshNormalHeader.m */; };
+		0A3D37051F0B35330033B735 /* six_refresh_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3D37041F0B35330033B735 /* six_refresh_arrow_down@2x.png */; };
 		0A457BE51F033E96003FD0E2 /* SIXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BE41F033E96003FD0E2 /* SIXCollectionView.m */; };
 		0A457BE91F0340D9003FD0E2 /* SIXHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BE81F0340D9003FD0E2 /* SIXHttpRequest.m */; };
 		0A457BF01F034836003FD0E2 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A457BEF1F034836003FD0E2 /* UIView+Addition.m */; };
@@ -64,6 +67,8 @@
 		0A91E6B41F0249C1003A0CE0 /* SIXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6B31F0249C1003A0CE0 /* SIXBaseViewController.m */; };
 		0A91E6B71F0249D8003A0CE0 /* SIXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91E6B61F0249D8003A0CE0 /* SIXNavigationController.m */; };
 		0ADA43E41F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA43E31F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m */; };
+		0ADA43E91F0A477C0067BE49 /* SIXRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA43E81F0A477C0067BE49 /* SIXRefreshComponent.m */; };
+		0ADA43ED1F0A4EAE0067BE49 /* UIView+SIXRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA43EC1F0A4EAE0067BE49 /* UIView+SIXRefresh.m */; };
 		0E9B5CB2C23C2CB1F95559A3 /* libPods-sixLiveUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */; };
 		6FA7D6F86ACB6A78561589A8 /* libPods-sixLiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */; };
 /* End PBXBuildFile section */
@@ -101,6 +106,11 @@
 		0A2776781F06512B00010A80 /* lobby_live_select_type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lobby_live_select_type.plist; sourceTree = "<group>"; };
 		0A27767A1F06639700010A80 /* SIXSelecTypeSupplementaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXSelecTypeSupplementaryView.h; sourceTree = "<group>"; };
 		0A27767B1F06639700010A80 /* SIXSelecTypeSupplementaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXSelecTypeSupplementaryView.m; sourceTree = "<group>"; };
+		0A3D36FD1F0B2B870033B735 /* SIXRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXRefreshHeader.h; sourceTree = "<group>"; };
+		0A3D36FE1F0B2B870033B735 /* SIXRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXRefreshHeader.m; sourceTree = "<group>"; };
+		0A3D37001F0B32AC0033B735 /* SIXRefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXRefreshNormalHeader.h; sourceTree = "<group>"; };
+		0A3D37011F0B32AC0033B735 /* SIXRefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXRefreshNormalHeader.m; sourceTree = "<group>"; };
+		0A3D37041F0B35330033B735 /* six_refresh_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "six_refresh_arrow_down@2x.png"; sourceTree = "<group>"; };
 		0A457BE31F033E96003FD0E2 /* SIXCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXCollectionView.h; sourceTree = "<group>"; };
 		0A457BE41F033E96003FD0E2 /* SIXCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXCollectionView.m; sourceTree = "<group>"; };
 		0A457BE71F0340D9003FD0E2 /* SIXHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXHttpRequest.h; sourceTree = "<group>"; };
@@ -203,6 +213,10 @@
 		0ADA43E31F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SIXRefresh.m"; sourceTree = "<group>"; };
 		0ADA43E51F0A41A10067BE49 /* SIXPullRefreshMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXPullRefreshMacro.h; sourceTree = "<group>"; };
 		0ADA43E61F0A424F0067BE49 /* SIXPullRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXPullRefresh.h; sourceTree = "<group>"; };
+		0ADA43E71F0A477C0067BE49 /* SIXRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXRefreshComponent.h; sourceTree = "<group>"; };
+		0ADA43E81F0A477C0067BE49 /* SIXRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXRefreshComponent.m; sourceTree = "<group>"; };
+		0ADA43EB1F0A4EAE0067BE49 /* UIView+SIXRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SIXRefresh.h"; sourceTree = "<group>"; };
+		0ADA43EC1F0A4EAE0067BE49 /* UIView+SIXRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SIXRefresh.m"; sourceTree = "<group>"; };
 		0DA42BC4B3DD35F4F4B84A4F /* libPods-sixLiveUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLiveUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4568E60061EF9207DA530B2C /* Pods-sixLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sixLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-sixLive/Pods-sixLive.release.xcconfig"; sourceTree = "<group>"; };
 		58DA94F8861E257E332F177E /* libPods-sixLiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sixLiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +295,14 @@
 				0A27766D1F0646A400010A80 /* SIXSelectTypeLayout.m */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		0A3D37031F0B35330033B735 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A3D37041F0B35330033B735 /* six_refresh_arrow_down@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		0A457BE21F033E84003FD0E2 /* SIXCollectionView */ = {
@@ -731,12 +753,29 @@
 		0ADA43E11F0A3F3F0067BE49 /* SIXPullRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				0A3D37031F0B35330033B735 /* Resources */,
+				0ADA43EA1F0A4E900067BE49 /* Category */,
 				0ADA43E21F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.h */,
 				0ADA43E31F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.m */,
+				0ADA43E71F0A477C0067BE49 /* SIXRefreshComponent.h */,
+				0ADA43E81F0A477C0067BE49 /* SIXRefreshComponent.m */,
+				0A3D36FD1F0B2B870033B735 /* SIXRefreshHeader.h */,
+				0A3D36FE1F0B2B870033B735 /* SIXRefreshHeader.m */,
+				0A3D37001F0B32AC0033B735 /* SIXRefreshNormalHeader.h */,
+				0A3D37011F0B32AC0033B735 /* SIXRefreshNormalHeader.m */,
 				0ADA43E51F0A41A10067BE49 /* SIXPullRefreshMacro.h */,
 				0ADA43E61F0A424F0067BE49 /* SIXPullRefresh.h */,
 			);
 			path = SIXPullRefresh;
+			sourceTree = "<group>";
+		};
+		0ADA43EA1F0A4E900067BE49 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0ADA43EB1F0A4EAE0067BE49 /* UIView+SIXRefresh.h */,
+				0ADA43EC1F0A4EAE0067BE49 /* UIView+SIXRefresh.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		715763FF270FC32C6E4057F5 /* Frameworks */ = {
@@ -884,6 +923,7 @@
 				0A56D14F1F09F6590032CB9D /* tabBar_button_info.plist in Resources */,
 				0A91E6771F0242B1003A0CE0 /* LaunchScreen.storyboard in Resources */,
 				0A2776791F06512B00010A80 /* lobby_live_select_type.plist in Resources */,
+				0A3D37051F0B35330033B735 /* six_refresh_arrow_down@2x.png in Resources */,
 				0A46BF101F05059800E12CD6 /* lobby_live_sound_btn_kind.plist in Resources */,
 				0A56D13D1F09DABE0032CB9D /* lobby_live_select_level.plist in Resources */,
 				0A91E6741F0242B1003A0CE0 /* Assets.xcassets in Resources */,
@@ -1054,6 +1094,7 @@
 				0A46BEE91F04ADF700E12CD6 /* SIXLocalListViewController.m in Sources */,
 				0A457C2C1F03AB28003FD0E2 /* SIXBannerCollectionViewCell.m in Sources */,
 				0A457C261F039C4A003FD0E2 /* SIXEvent.m in Sources */,
+				0ADA43ED1F0A4EAE0067BE49 /* UIView+SIXRefresh.m in Sources */,
 				0A2776771F0650A900010A80 /* SIXSelectTypeBtnModel.m in Sources */,
 				0A46BEEF1F04AFC700E12CD6 /* SIXLocalContent.m in Sources */,
 				0A68BE9B1F0267410094141A /* SIXHomeViewController.m in Sources */,
@@ -1072,6 +1113,7 @@
 				0A457C031F038952003FD0E2 /* SIXTitleListView.m in Sources */,
 				0A46BF0B1F05006700E12CD6 /* SIXCollectionViewCell.m in Sources */,
 				0A46BEEC1F04AE1C00E12CD6 /* SIXLocalListModel.m in Sources */,
+				0ADA43E91F0A477C0067BE49 /* SIXRefreshComponent.m in Sources */,
 				0A46BF0E1F05013400E12CD6 /* SIXSoundHeaderSupplementaryView.m in Sources */,
 				0A27766E1F0646A400010A80 /* SIXSelectTypeLayout.m in Sources */,
 				0A457BE91F0340D9003FD0E2 /* SIXHttpRequest.m in Sources */,
@@ -1082,10 +1124,12 @@
 				0A457C1C1F039991003FD0E2 /* SIXCommonListViewController.m in Sources */,
 				0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */,
 				0A46BF021F04E67700E12CD6 /* SIXProvinceListViewController.m in Sources */,
+				0A3D36FF1F0B2B870033B735 /* SIXRefreshHeader.m in Sources */,
 				0A457C231F039A81003FD0E2 /* SIXHotTopicListViewController.m in Sources */,
 				0A457C2F1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m in Sources */,
 				0A46BF051F04F25100E12CD6 /* SIXProvinceCell.m in Sources */,
 				0A457C1B1F039991003FD0E2 /* SIXCommonListModel.m in Sources */,
+				0A3D37021F0B32AC0033B735 /* SIXRefreshNormalHeader.m in Sources */,
 				0A457C291F03A59D003FD0E2 /* SIXHotListModel.m in Sources */,
 				0A457BFC1F0350FA003FD0E2 /* SIXUser.m in Sources */,
 				0A2776711F06474300010A80 /* SIXSelectTypeCollectionViewCell.m in Sources */,
