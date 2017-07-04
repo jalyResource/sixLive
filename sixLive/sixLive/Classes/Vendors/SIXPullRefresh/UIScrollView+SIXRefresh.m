@@ -29,7 +29,7 @@ static char KeySixHeader;
 }
 
 - (SIXRefreshComponent *)six_header {
-    UIView *header = objc_getAssociatedObject(self, &KeySixHeader);
+    SIXRefreshComponent *header = objc_getAssociatedObject(self, &KeySixHeader);
     return header;
 }
 

@@ -305,6 +305,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		0A3D37061F0B472E0033B735 /* SIXHud */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SIXHud;
+			sourceTree = "<group>";
+		};
 		0A457BE21F033E84003FD0E2 /* SIXCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +503,7 @@
 		0A46BEFD1F04E22900E12CD6 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				0A3D37061F0B472E0033B735 /* SIXHud */,
 				0ADA43E11F0A3F3F0067BE49 /* SIXPullRefresh */,
 			);
 			path = Vendors;

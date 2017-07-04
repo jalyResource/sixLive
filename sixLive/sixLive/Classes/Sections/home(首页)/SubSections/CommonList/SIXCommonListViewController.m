@@ -48,9 +48,12 @@
 
 - (void)loadData {
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
-        DLog(@"---- 结束 刷新  --");
+        if (EnumHttpCodeSuccess == code) {
+            [self.collectionView reloadData];
+        } else if (EnumHttpCodeFaile == code) {
+            // Toast
+        }
         [self hiddenLoading];
-        [self.collectionView reloadData];
         [self.collectionView.six_header endRefresh];
     }];
 }
