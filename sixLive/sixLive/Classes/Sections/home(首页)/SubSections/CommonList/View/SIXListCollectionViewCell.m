@@ -53,8 +53,11 @@
     self.lblName.text = user.username;
     self.lblCount.text = [NSString stringWithFormat:@"%lu人", user.count];
     
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     [self setNeedsLayout];
     [self layoutIfNeeded];
+    [CATransaction commit];
 }
 
 /**

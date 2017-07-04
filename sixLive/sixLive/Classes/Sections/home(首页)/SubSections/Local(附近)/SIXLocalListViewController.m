@@ -32,7 +32,6 @@ static CGFloat const HeaderViewHeight = 55.;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self.collectionView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
 - (void)dealloc {

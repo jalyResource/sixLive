@@ -54,10 +54,14 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     
     self.imgViewLeftIcon.frame = CGRectMake(10, 19, 13, 17);
     self.lblPlace.frame = CGRectMake(33, 19, SIX_SCREEN_WIDTH - 33 * 2, 17);
     self.imgViewArrow.frame = CGRectMake(SIX_SCREEN_WIDTH - 30, 20, 20, 11);
+    
+    [CATransaction commit];
 }
 
 - (void)setPlaceName:(NSString *)placeName {

@@ -78,6 +78,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     
     CGFloat width = self.width / 3.0;
     CGFloat height = self.height / 2.0;
@@ -92,6 +94,8 @@
     self.lblHorizentalLine.frame = CGRectMake(10, height, self.width - 20, 0.5);
     self.lblVerticalLeft.frame = CGRectMake(width, 0, 0.5, self.height);
     self.lblVerticalRight.frame = CGRectMake(width * 2, 0, 0.5, self.height);
+    
+    [CATransaction commit];
 }
 
 
