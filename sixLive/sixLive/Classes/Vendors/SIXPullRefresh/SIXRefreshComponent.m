@@ -78,6 +78,7 @@
         
         return;
     }
+    self.hidden = -newContentOffset.y < self.superScrollViewOriginInsets.top + 20;
     
     if (_superScrollView.isDragging) {
         if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
@@ -91,6 +92,7 @@
         // 放手时
         //   刷新控件完全显示   --刷新
         //   刷新控件不完全显示 --不刷新
+        
         if (EnumRefreshStateRefreshPulling ==  self.state) {
             if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
                 [self beganRefresh];
