@@ -48,6 +48,7 @@ static CGFloat const HeaderViewHeight = 55.;
         [self hiddenLoading];
         [self.viewLocalSelect setPlaceName:[self.listModel currentProvinceName]];
         [self.collectionView reloadData];
+        [self.collectionView.six_header endRefresh];
     }];
 }
 

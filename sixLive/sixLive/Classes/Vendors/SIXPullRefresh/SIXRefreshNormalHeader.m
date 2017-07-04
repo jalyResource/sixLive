@@ -76,6 +76,7 @@ NSString *TipTextRefreshEnd = @"加载完成";
         }
         case EnumRefreshStateRefreshEnd: {
             self.lblTitle.text = TipTextRefreshEnd;
+            self.imgViewArrow.hidden = YES;
             break;
         }
     }

@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.state = EnumRefreshStateNormal;
-        self.backgroundColor = [UIColor orangeColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
