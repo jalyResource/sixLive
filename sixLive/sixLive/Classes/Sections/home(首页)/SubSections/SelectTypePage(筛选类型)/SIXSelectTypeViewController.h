@@ -37,6 +37,12 @@
  */
 @property (assign, nonatomic) NSUInteger currentIndex ;
 
+
+/**
+ 好声音，的具体子选项
+ */
+@property (copy, nonatomic) NSString *typeOfSound;
+
 /**
  * 获取 collectionView 的高度
  */

@@ -96,6 +96,8 @@
         model.selected = indexPath.item == self.currentIndex; 
         cell.model = model;
     } else {
+        SIXSelectLevelBtnModel *model = [self.selectTypeModel selectLevelBtnModelAtIndexPath:indexPath];
+        model.selected = [self.typeOfSound isEqualToString:model.type];
         cell.model = [self.selectTypeModel selectLevelBtnModelAtIndexPath:indexPath];
     }
     

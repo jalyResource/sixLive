@@ -240,21 +240,24 @@
     DLog(@"点击搜索");
 }
 - (void)headerRightButtonClicked {
-    self.selectTypeViewController.currentIndex = self.scrollView.contentOffset.x / self.scrollView.width;
+    NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.width;
+    // 设置“好声音” 界面的 具体类型
+    if ( EnumLiveListTypeSound == index ) {
+        self.selectTypeViewController.typeOfSound = self.soundViewController.dicParams[@"type"];
+    } else {
+        self.selectTypeViewController.typeOfSound = nil;
+    }
+    // 设置当前选中控制器 的类型
+    self.selectTypeViewController.currentIndex = index;
 
-    
+    // 添加 view，设置动画
     [self.view addSubview:self.selectTypeViewController.view];
     SIXCollectionView *collectionView = self.selectTypeViewController.collectionView;
     collectionView.height = 0;
-//    UIButton *btnRight = self.selectTypeViewController.btnRightHeader;
     
-    NSTimeInterval interval = 0.25;
-    
-    
-    [UIView animateWithDuration:interval animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         collectionView.height = [self.selectTypeViewController collectionViewHeight];
         self.selectTypeViewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
-//        [btnRight setImage:[UIImage imageNamed:@"lobby_button_close_normal"] forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
     }];
 }
