@@ -53,11 +53,10 @@
     self.lblName.text = user.username;
     self.lblCount.text = [NSString stringWithFormat:@"%lu人", user.count];
     
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
+    
     [self setNeedsLayout];
     [self layoutIfNeeded];
-    [CATransaction commit];
+    
 }
 
 /**
@@ -77,6 +76,10 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    
+    
     self.imgViewBackground.frame = self.contentView.bounds;
     
     CGFloat shadowH = 40;
@@ -95,6 +98,8 @@
     // name
     labWidth = self.lblCount.frame.origin.x - 7 - 3;
     self.lblName.frame = CGRectMake(7, self.contentView.height - 7 - 16, labWidth, 16);
+    
+    [CATransaction commit];
 }
 
 
