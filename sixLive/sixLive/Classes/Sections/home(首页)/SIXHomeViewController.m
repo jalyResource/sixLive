@@ -241,7 +241,22 @@
 }
 - (void)headerRightButtonClicked {
     self.selectTypeViewController.currentIndex = self.scrollView.contentOffset.x / self.scrollView.width;
-    [self.navigationController presentViewController:self.selectTypeViewController animated:NO completion:nil];
+
+    
+    [self.view addSubview:self.selectTypeViewController.view];
+    SIXCollectionView *collectionView = self.selectTypeViewController.collectionView;
+    collectionView.height = 0;
+//    UIButton *btnRight = self.selectTypeViewController.btnRightHeader;
+    
+    NSTimeInterval interval = 0.25;
+    
+    
+    [UIView animateWithDuration:interval animations:^{
+        collectionView.height = [self.selectTypeViewController collectionViewHeight];
+        self.selectTypeViewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+//        [btnRight setImage:[UIImage imageNamed:@"lobby_button_close_normal"] forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
+    }];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -365,6 +380,9 @@
 - (SIXSelectTypeViewController *)selectTypeViewController {
     if (!_selectTypeViewController) {
         _selectTypeViewController = [[SIXSelectTypeViewController alloc] init];
+        CGRect frame = [UIScreen mainScreen].bounds;
+        frame.size.height -= SIX_TABBAR_HEIGHT;
+        _selectTypeViewController.view.frame = frame;
         _selectTypeViewController.delegate = self;
     }
     return _selectTypeViewController;

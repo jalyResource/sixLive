@@ -22,29 +22,29 @@
     
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     if ([fromVC isKindOfClass:[SIXSelectTypeViewController class]]) {
-//        SIXSelectTypeViewController *selectTypeVC = (SIXSelectTypeViewController *)fromVC;
-        
+        SIXSelectTypeViewController *selectTypeVC = (SIXSelectTypeViewController *)fromVC;
         // 将控件添加到 collectionView
         UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
-        fromView.frame = [UIScreen mainScreen].bounds;
-        [containerView addSubview:fromView];
+        UICollectionView *collectionView = [selectTypeVC valueForKey:@"collectionView"];
+        
+        CGRect frameCollectionViewOrigin = collectionView.frame;
+        
         
         UIColor *fromViewOriginColor = fromView.backgroundColor;
         containerView.backgroundColor = fromViewOriginColor;
         
         
-        // 修改 fromView 
-        fromView.layer.anchorPoint = CGPointMake(0, 64.f / SIX_SCREEN_HEIGHT);
-        fromView.layer.position = CGPointMake(0, 64);
-        fromView.backgroundColor = [UIColor clearColor];
+        [containerView addSubview:collectionView];
+      
         
         NSTimeInterval interval = [self transitionDuration:transitionContext];
         [UIView animateWithDuration:interval animations:^{
-            fromView.transform = CGAffineTransformMakeScale(1., 0.01);
+            collectionView.height = 1;
             containerView.backgroundColor = [UIColor clearColor];
         } completion:^(BOOL finished) {
-            fromView.transform = CGAffineTransformIdentity;
-            fromView.backgroundColor = fromViewOriginColor;
+            
+            collectionView.frame = frameCollectionViewOrigin;
+            [fromView addSubview:collectionView];
             [transitionContext completeTransition: !transitionContext.transitionWasCancelled];
         }];
         

@@ -19,9 +19,10 @@
 /** 自定义 present 动画 */
 @property (strong, nonatomic) SIXSelectTypeTransition *myTransition;
 
-@property (strong, nonatomic) SIXCollectionView *collectionView;
 
 @property (strong, nonatomic) SIXSelectTypeModel *selectTypeModel;
+/** 默认背景色 */
+@property (strong, nonatomic) UIColor *defaultBgColor;
 
 @end
 
@@ -31,8 +32,8 @@
 {
     self = [super init];
     if (self) {
-        self.modalPresentationStyle = UIModalPresentationCustom;
-        self.transitioningDelegate = self.myTransition;
+//        self.modalPresentationStyle = UIModalPresentationCustom;
+//        self.transitioningDelegate = self.myTransition;
     }
     return self;
 }
@@ -40,7 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    self.defaultBgColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.collectionView];
     [self setUpHeaderBar];
 }
@@ -53,20 +55,27 @@
     self.customStatusBar.hidden = YES;
     [self.view bringSubviewToFront:self.headerBar];
     self.headerBar.btnLeft.hidden = YES;
+    self.btnRightHeader = self.headerBar.btnRight;
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    CGRect frame = self.view.bounds;
-    frame.origin.y = CGRectGetMaxY(self.headerBar.frame);
-    frame.size.height = self.collectionViewHeight;
-    self.collectionView.frame = frame; // bottom 140
-}
+//- (void)viewDidLayoutSubviews {
+//    [super viewDidLayoutSubviews];
+//    CGRect frame = self.view.bounds;
+//    frame.origin.y = CGRectGetMaxY(self.headerBar.frame);
+//    frame.size.height = self.collectionViewHeight;
+//    self.collectionView.frame = frame; // bottom 140
+//}
 
 #pragma -mark 
 #pragma -mark  SIXNavigationBarDelegate methods
 - (void)headerRightButtonClicked {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.collectionView.height = 0;
+        self.view.backgroundColor = [UIColor clearColor];
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+    }];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self headerRightButtonClicked];
@@ -114,7 +123,8 @@
         }
     }
     
-    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.view removeFromSuperview];
 }
 
 #pragma -mark 
@@ -162,7 +172,12 @@
     if (!_collectionView) {
         SIXSelectTypeLayout *layout = [[SIXSelectTypeLayout alloc] init];
         
-        _collectionView = [[SIXCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        CGRect frame = self.view.bounds;
+        frame.origin.y = CGRectGetMaxY(self.headerBar.frame);
+        frame.size.height = self.collectionViewHeight;
+
+        
+        _collectionView = [[SIXCollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
         _collectionView.backgroundColor = SIX_BACKGROUND_COLOR;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;

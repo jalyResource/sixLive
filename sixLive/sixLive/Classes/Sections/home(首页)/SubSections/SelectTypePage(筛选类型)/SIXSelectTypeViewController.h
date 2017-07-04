@@ -29,6 +29,9 @@
 
 @property (weak, nonatomic) id<SIXSelectTypeViewControllerDelegate> delegate;
 
+@property (strong, nonatomic) SIXCollectionView *collectionView;
+@property (weak, nonatomic) UIButton *btnRightHeader;
+
 /**
  home 页，当前显示列表的 index
  */
