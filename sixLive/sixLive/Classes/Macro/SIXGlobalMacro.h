@@ -39,6 +39,11 @@
  */
 #define SIX_TABBAR_HEIGHT 49.0
 
+/*
+ *  大堂界面，scrollView 的宽度  
+ */
+#define LOBBY_SCROLLVIEW_WIDTH (SIX_SCREEN_WIDTH + 10)
+
 
 
 /** 自定义 log */

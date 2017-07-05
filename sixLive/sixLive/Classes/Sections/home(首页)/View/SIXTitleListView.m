@@ -85,12 +85,12 @@
 #pragma -mark 
 #pragma -mark setters
 - (void)setContentOffset:(CGPoint)contentOffset {
-    if (contentOffset.x < 0 || contentOffset.x > (self.arrTitle.count - 1) * SIX_SCREEN_WIDTH) {
+    if (contentOffset.x < 0 || contentOffset.x > (self.arrTitle.count - 1) * LOBBY_SCROLLVIEW_WIDTH) {
         return;
     }
-    CGFloat currentPageX = SIX_SCREEN_WIDTH * self.currentIndex;
+    CGFloat currentPageX = LOBBY_SCROLLVIEW_WIDTH * self.currentIndex;
     // 界面滑动偏移 比率：[-1, 1],负数：左滑   整数：右滑
-    CGFloat slideRate = (contentOffset.x - currentPageX) / SIX_SCREEN_WIDTH;
+    CGFloat slideRate = (contentOffset.x - currentPageX) / LOBBY_SCROLLVIEW_WIDTH;
     
     // 找到当前 title 的宽度
 //    NSString *currentTitle = self.arrTitle[self.currentIndex];

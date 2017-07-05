@@ -15,6 +15,8 @@
 #import "SIXTitleListView.h"
 
 
+
+
 @interface SIXHomeViewController ()<UIScrollViewDelegate, SIXTitleListViewDelagate, SIXSelectTypeViewControllerDelegate>
 /** UI */
 @property (strong, nonatomic) SIXTitleListView *viewTopTitle;
@@ -155,7 +157,8 @@
     [self addChildViewController:hotTopicVC];
     self.hotTopicViewController = hotTopicVC;
     
-    self.scrollView.contentSize = CGSizeMake(self.arrDicParams.count * SIX_SCREEN_WIDTH, SIX_TABBAR_HEIGHT);
+    CGFloat contentWidth = self.arrDicParams.count * LOBBY_SCROLLVIEW_WIDTH;
+    self.scrollView.contentSize = CGSizeMake(contentWidth, SIX_TABBAR_HEIGHT);
 }
 
 
@@ -170,7 +173,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
-    NSUInteger index = scrollView.contentOffset.x/scrollView.width;
+    NSUInteger index = scrollView.contentOffset.x/LOBBY_SCROLLVIEW_WIDTH;
     DLog(@"index : %lu  %s",index,  __func__);
     [self addSubListViewToScrollViewAtIndex:index];
     self.viewTopTitle.currentIndex = index;
@@ -270,7 +273,7 @@
 #pragma -mark 
 #pragma -mark SIXTitleListViewDelagate
 - (void)titleListView:(SIXTitleListView *)titleListView didClickedAtIndex:(NSUInteger)index {
-    self.scrollView.contentOffset = CGPointMake(index * SIX_SCREEN_WIDTH, 0);
+    self.scrollView.contentOffset = CGPointMake(index * LOBBY_SCROLLVIEW_WIDTH, 0);
 //    CGRect rect = self.scrollView.bounds;
 //    rect.origin.x = index * rect.size.width;
 //    [self.scrollView scrollRectToVisible:rect animated:YES];
@@ -304,7 +307,7 @@
         NSUInteger index = EnumLiveListTypeRed;
         _redViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_redViewController];
-        _redViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _redViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH , 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _redViewController;
 }
@@ -315,7 +318,7 @@
         NSUInteger index = EnumLiveListTypeLocal;
         _localViewController = [[SIXLocalListViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_localViewController];
-        _localViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _localViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _localViewController;
 }
@@ -326,7 +329,7 @@
         NSUInteger index = EnumLiveListTypeSound;
         _soundViewController = [[SIXSoundViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_soundViewController];
-        _soundViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _soundViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _soundViewController;
 }
@@ -338,7 +341,7 @@
         NSUInteger index = EnumLiveListTypeDance;
         _danceViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_danceViewController];
-        _danceViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _danceViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _danceViewController;
 }
@@ -349,7 +352,7 @@
         NSUInteger index = EnumLiveListTypeFunny;
         _funnyViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_funnyViewController];
-        _funnyViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _funnyViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _funnyViewController;
 }
@@ -360,7 +363,7 @@
         NSUInteger index = EnumLiveListTypeChat;
         _chatViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_chatViewController];
-        _chatViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _chatViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _chatViewController;
 }
@@ -371,7 +374,7 @@
         NSUInteger index = EnumLiveListTypeMale;
         _maleViewController = [[SIXCommonListViewController alloc] initWithParams:self.arrDicParams[index]];
         [self addChildViewController:_maleViewController];
-        _maleViewController.view.frame = CGRectMake(index * SIX_SCREEN_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+        _maleViewController.view.frame = CGRectMake(index * LOBBY_SCROLLVIEW_WIDTH, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
     }
     return _maleViewController;
 }
@@ -405,7 +408,9 @@
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        CGRect frame = [UIScreen mainScreen].bounds;
+        frame.size.width = LOBBY_SCROLLVIEW_WIDTH;
+        _scrollView = [[UIScrollView alloc] initWithFrame:frame];
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
         _scrollView.showsVerticalScrollIndicator = NO;
