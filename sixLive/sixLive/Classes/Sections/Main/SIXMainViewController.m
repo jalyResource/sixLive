@@ -44,6 +44,7 @@
     
     SIXHomeViewController *liveViewController = [[SIXHomeViewController alloc] init];
     SIXNavigationController *navController = [[SIXNavigationController alloc] initWithRootViewController:liveViewController];
+    navController.view.frame = [UIScreen mainScreen].bounds;
     
     [self.arrSubControllers addObject:navController];
     [self addChildViewController:navController];
@@ -52,14 +53,14 @@
     self.navControllerCurrent = navController;
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
-    self.navControllerCurrent.view.frame = rect;
-    
-    // tabBar
-    self.viewTabBar.frame = CGRectMake(0, self.view.height - SIX_TABBAR_HEIGHT, self.view.width, SIX_TABBAR_HEIGHT);
-}
+//- (void)viewDidLayoutSubviews {
+//    [super viewDidLayoutSubviews];
+//    CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+//    self.navControllerCurrent.view.frame = rect;
+//    
+//    // tabBar
+//    self.viewTabBar.frame = CGRectMake(0, self.view.height - SIX_TABBAR_HEIGHT, self.view.width, SIX_TABBAR_HEIGHT);
+//}
 
 
 
@@ -68,6 +69,7 @@
 - (SIXTabBar *)viewTabBar {
     if (!_viewTabBar) {
         _viewTabBar = [SIXTabBar homeTabBar];
+        _viewTabBar.frame = CGRectMake(0, self.view.height - SIX_TABBAR_HEIGHT, self.view.width, SIX_TABBAR_HEIGHT);
     }
     return _viewTabBar;
 }

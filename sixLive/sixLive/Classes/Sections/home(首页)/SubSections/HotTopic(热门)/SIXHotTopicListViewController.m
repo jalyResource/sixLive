@@ -43,6 +43,11 @@
     
 //    dispatch_time_t time = dispat
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
+        [self hiddenLoading];
+        [self.collectionView.six_header endRefresh];
+        
+        
         if (EnumHttpCodeFaile == self.fetchEventListCode || EnumHttpCodeFaile == self.fetchUserListCode) {
             if (nil == self.listModel.arrOfUser) {
                 [self.collectionView showRefreshTip];
@@ -52,8 +57,6 @@
             [self.collectionView removeTipText];
         }
         
-        [self hiddenLoading];
-        [self.collectionView.six_header endRefresh];
     });
 }
 

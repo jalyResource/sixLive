@@ -30,6 +30,7 @@
     // 添加状态栏
     _customStatusBar = [[UIView alloc] init];
     _customStatusBar.backgroundColor = SIX_BACKGROUND_COLOR;
+    _customStatusBar.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_STATUSBAR_HEIGHT);
     [self.view addSubview:_customStatusBar];
    
     
@@ -38,9 +39,6 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    if (self.customStatusBar) {
-        self.customStatusBar.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_STATUSBAR_HEIGHT);
-    }
     // viewLoading
     CGFloat width = 20;
     CGFloat x = (self.view.width - width) / 2.0;

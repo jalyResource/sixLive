@@ -264,7 +264,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.scrollView.frame = self.view.bounds;
+//    self.scrollView.frame = self.view.bounds;
 }
 
 #pragma -mark 
@@ -405,7 +405,7 @@
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+        _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
         _scrollView.showsVerticalScrollIndicator = NO;
