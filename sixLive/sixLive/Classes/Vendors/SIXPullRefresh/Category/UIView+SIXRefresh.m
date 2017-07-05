@@ -25,6 +25,8 @@
     return self.frame.size.height;
 }
 
+
+
 #pragma -mark 
 #pragma -mark setters
 - (void)setSix_x:(CGFloat)six_x {

@@ -45,23 +45,35 @@ NSString *TipTextRefreshEnd = @"加载完成";
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:NO];
+    
     CGFloat centerX = self.six_width / 2.0;
     CGFloat centerY = self.six_height / 2.0;
     self.imgViewArrow.center = self.activityIndicatorView.center = CGPointMake(centerX -  40, centerY);
     
     self.lblTitle.frame = CGRectMake(centerX - 10, 0, centerX, centerY * 2);
+    
+    [CATransaction commit];
 }
 
 
 - (void)setState:(EnumRefreshState)state {
+    if (_state == state) {
+        return;
+    }
+    EnumRefreshState oldState = _state;
     [super setState:state];
+    
     
     [self.activityIndicatorView stopAnimating];
     self.imgViewArrow.hidden = NO;
     
     switch (state) {
         case EnumRefreshStateNormal: {
-            self.lblTitle.text = TipTextNormal;
+            {
+                self.lblTitle.text = TipTextNormal;
+            }
             break;
         }
         case EnumRefreshStateRefreshPulling: {

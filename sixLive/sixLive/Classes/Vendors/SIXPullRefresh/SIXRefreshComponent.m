@@ -9,6 +9,10 @@
 #import "SIXRefreshComponent.h"
 #import "UIView+SIXRefresh.h"
 
+@interface SIXRefreshComponent()
+@property (assign, nonatomic) CGFloat insetTDelta;
+@end
+
 @implementation SIXRefreshComponent
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -69,22 +73,32 @@
     CGFloat normal2RefreshContentOffsetY = -self.superScrollViewOriginInsets.top - self.six_height;
     
     if (self.state == EnumRefreshStateRefreshing) {
-        // 设置 contentOffset 显示刷新控件
-        UIEdgeInsets insets = self.superScrollViewOriginInsets;
-        insets.top = - normal2RefreshContentOffsetY;
-        _superScrollView.contentInset = insets;
+        if (self.window == nil) return;
         
+        CGFloat insetT = - self.superScrollView.contentOffset.y > self.superScrollViewOriginInsets.top ? - self.superScrollView.contentOffset.y : self.superScrollViewOriginInsets.top;
+        insetT = insetT > self.six_height + self.superScrollViewOriginInsets.top ? self.six_height + self.superScrollViewOriginInsets.top : insetT;
+        self.superScrollView.six_insetTop = insetT;
+        
+        self.insetTDelta = self.superScrollViewOriginInsets.top - insetT;
         return;
     }
-//    if (EnumRefreshStateRefreshEnd == self.state) {
-//        
-//        return;
-//    }
-    self.hidden = -newContentOffset.y < self.superScrollViewOriginInsets.top + 20;
+    
+    // 当前的contentOffset
+    CGFloat offsetY = self.superScrollView.contentOffset.y;
+    // 头部控件刚好出现的offsetY
+    CGFloat happenOffsetY = - self.superScrollViewOriginInsets.top;
+    if (offsetY > happenOffsetY) return;
+    
+    if (EnumRefreshStateRefreshEnd != self.state) {
+        self.hidden = -newContentOffset.y < self.superScrollViewOriginInsets.top + 20;
+    }
+    
     
     if (_superScrollView.isDragging) {
-        if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
-            self.state = EnumRefreshStateRefreshPulling;
+        if ( (newContentOffset.y < normal2RefreshContentOffsetY)) { // 刷新
+            if (EnumRefreshStateRefreshPulling != self.state) {
+                self.state = EnumRefreshStateRefreshPulling;
+            }
         } else { // 不刷新
             if (self.state != EnumRefreshStateNormal) {
                 self.state = EnumRefreshStateNormal;
@@ -94,7 +108,6 @@
         // 放手时
         //   刷新控件完全显示   --刷新
         //   刷新控件不完全显示 --不刷新
-        
         if (EnumRefreshStateRefreshPulling ==  self.state) {
             if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
                 [self beganRefresh];
@@ -102,30 +115,56 @@
                 
             }
         }
-        
     }
 }
 
+
+
 - (void)beganRefresh {
-    DLog(@"开始刷新");
     self.state = EnumRefreshStateRefreshing;
 }
 
 - (void)setState:(EnumRefreshState)state {
-    if (EnumRefreshStateRefreshEnd == state && EnumRefreshStateRefreshing == _state) { // 刷新 ---> 刷新结束
-        _superScrollView.userInteractionEnabled = NO;
-        [UIView animateWithDuration:0.35 animations:^{
-            _superScrollView.transform = CGAffineTransformMakeTranslation(0, -self.six_height);
+    if (_state == state) {
+        return;
+    }
+    EnumRefreshState oldState = _state;
+    _state = state;
+    
+    if (EnumRefreshStateRefreshing == state) {
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            CGFloat top = self.superScrollViewOriginInsets.top + self.six_height;
+            // 增加滚动区域top
+            _superScrollView.six_insetTop = top;
+            // 设置滚动位置
+            [_superScrollView setContentOffset:CGPointMake(0, -top) animated:NO];
         } completion:^(BOOL finished) {
-            _superScrollView.userInteractionEnabled = YES;
-            _superScrollView.transform = CGAffineTransformIdentity;
-            _superScrollView.contentInset = self.superScrollViewOriginInsets;
+            [self handleRefreshEvent];
         }];
-        self.state = EnumRefreshStateNormal;    
+    } else if (EnumRefreshStateRefreshEnd == state) {
+        if (EnumRefreshStateRefreshing != oldState) return;
+        
+        // 恢复inset
+        [UIView animateWithDuration:0.25 animations:^{
+            self.superScrollView.six_insetTop += self.insetTDelta;
+//            self.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.state = EnumRefreshStateNormal;
+            self.hidden = YES;
+        }];
     }
     
-    _state = state;
+    [self setNeedsLayout];
 }
+
+/**
+ 处理刷新事件
+ */
+- (void)handleRefreshEvent {
+    
+}
+
 
 /**
  刷新结束调用

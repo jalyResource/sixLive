@@ -20,11 +20,13 @@
 
 
 - (void)setState:(EnumRefreshState)state {
+    if (_state == state) {
+        return;
+    }
+    EnumRefreshState oldState = _state;
     [super setState:state];
     
-    if (EnumRefreshStateRefreshing == state) {
-        [self handleRefreshEvent];
-    }
+    
 }
 
 
@@ -32,6 +34,8 @@
  处理刷新事件
  */
 - (void)handleRefreshEvent {
+    [super handleRefreshEvent];
+    
     if (self.refreshBlock) {
         self.refreshBlock();
     }

@@ -33,6 +33,17 @@ static char KeySixHeader;
     return header;
 }
 
+#pragma -mark 
+#pragma -mark getters / setters
+- (CGFloat)six_insetTop {
+    return self.contentInset.top;
+}
+- (void)setSix_insetTop:(CGFloat)six_insetTop {
+    UIEdgeInsets inset = self.contentInset;
+    inset.top = six_insetTop;
+    self.contentInset = inset;
+}
+
 @end
 
 

@@ -18,8 +18,11 @@ typedef NS_ENUM(NSUInteger, EnumRefreshState) {
 @interface SIXRefreshComponent : UIView {
     /** 父控件， ScrollView*/
     __weak UIScrollView *_superScrollView;
+    @protected
+    EnumRefreshState _state;
 }
-
+/** 父控件， ScrollView*/
+@property (weak, nonatomic) UIScrollView *superScrollView;
 
 /**
  父控件 原始 contentInset
@@ -33,6 +36,10 @@ typedef NS_ENUM(NSUInteger, EnumRefreshState) {
  */
 - (void)refreshHeaderContentOffsetDidChange:(CGPoint)newContentOffset NS_REQUIRES_SUPER;
 
+/**
+ 处理刷新事件
+ */
+- (void)handleRefreshEvent NS_REQUIRES_SUPER;
 
 /**
  刷新结束调用

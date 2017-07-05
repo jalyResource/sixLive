@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) SIXRefreshComponent *six_header;
 
+@property (assign, nonatomic) CGFloat six_insetTop;
+
 @end

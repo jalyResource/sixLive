@@ -44,6 +44,8 @@ static CGFloat const HeaderViewHeight = 55.;
 
 - (void)loadData {
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
+        [self.collectionView.six_header endRefresh];
+        
         if (EnumHttpCodeFaile == code) {
             [self.collectionView showRefreshTip];
         } else {
@@ -53,7 +55,6 @@ static CGFloat const HeaderViewHeight = 55.;
         
         [self hiddenLoading];
         [self.viewLocalSelect setPlaceName:[self.listModel currentProvinceName]];
-        [self.collectionView.six_header endRefresh];
     }];
 }
 

@@ -9,6 +9,7 @@
 #import "SIXCommonListViewController.h"
 
 
+
 @interface SIXCommonListViewController ()
 
 
@@ -47,7 +48,11 @@
 }
 
 - (void)loadData {
+    DLog(@"%s", __func__);
+    
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
+        [self.collectionView.six_header endRefresh];
+        
         if (EnumHttpCodeSuccess == code) {
             [self.collectionView reloadData];
             [self.collectionView removeTipText];
@@ -55,7 +60,6 @@
             [self.collectionView showRefreshTip];
         }
         [self hiddenLoading];
-        [self.collectionView.six_header endRefresh];
     }];
 }
 
@@ -63,7 +67,6 @@
 #pragma -mark UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSInteger num = [self.listModel numberOfItemsInSection:section];
-    DLog(@"numberOfItemsInSection: %ld", num);
     return num;
 }
 
@@ -77,7 +80,6 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     NSInteger num = [self.listModel numberOfSections];
-    DLog(@"numberOfSectionsInCollectionView: %ld", num);
     return num;
 }
 
@@ -116,10 +118,12 @@
         [self registerCollectionViewCellWithCollection:_collectionView];
         
         WS
-        SIXRefreshNormalHeader *header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
+        _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
             [ws loadData];
         }];
-        _collectionView.six_header = header;
+//        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//            [ws loadData];
+//        }];    
     }
     return _collectionView;
 }
