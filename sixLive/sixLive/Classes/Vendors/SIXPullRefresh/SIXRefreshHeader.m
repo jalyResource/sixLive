@@ -23,7 +23,7 @@
     if (_state == state) {
         return;
     }
-    EnumRefreshState oldState = _state;
+//    EnumRefreshState oldState = _state;
     [super setState:state];
     
     

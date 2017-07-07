@@ -172,9 +172,8 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
     NSUInteger index = scrollView.contentOffset.x/LOBBY_SCROLLVIEW_WIDTH;
-    DLog(@"index : %lu  %s",index,  __func__);
+//    DLog(@"index : %lu  %s",index,  __func__);
     [self addSubListViewToScrollViewAtIndex:index];
     self.viewTopTitle.currentIndex = index;
 }
@@ -265,10 +264,7 @@
     }];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-//    self.scrollView.frame = self.view.bounds;
-}
+
 
 #pragma -mark 
 #pragma -mark SIXTitleListViewDelagate
