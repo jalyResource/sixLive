@@ -25,11 +25,11 @@ typedef NS_ENUM(NSUInteger, EnumListCellType) {
 
 typedef void(^RequestCallBackBlock)(EnumHttpCode code, NSString *infoString);
 
+
+
 @interface SIXCommonListModel : NSObject
 
 @property (strong, nonatomic) NSArray<SIXUser *> *arrOfUser;
-
-
 
 /**
  获取 主播列表
@@ -38,8 +38,6 @@ typedef void(^RequestCallBackBlock)(EnumHttpCode code, NSString *infoString);
  @param callBack 请求回调
  */
 - (void)fetchUserListWithParam:(NSDictionary *)dicParams completedCallBack:(RequestCallBackBlock)callBack ;
-
-
 
 
 /**

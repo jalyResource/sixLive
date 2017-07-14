@@ -12,6 +12,9 @@
 
 #import <objc/runtime.h>
 
+
+const NSUInteger SIX_UICollectionView_backgroundView_Tag = 601616;
+
 /** 顶部刷新控件 key */
 static char KeySixHeader;
 
@@ -21,11 +24,40 @@ static char KeySixHeader;
 
 
 - (void)setSix_header:(SIXRefreshComponent *)six_header {
+    // 1 、先删除旧 view
+    SIXRefreshComponent *oldHeader = objc_getAssociatedObject(self, &KeySixHeader);
+    if (oldHeader) {
+        [oldHeader removeFromSuperview];
+    }
+    
+    // 2、添加新 view
     objc_setAssociatedObject(self, &KeySixHeader, six_header, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self addSubview:six_header];
     
     CGFloat height = six_header.frame.size.height;
-    six_header.frame = CGRectMake(0, - height, REFRESH_SC_WIDTH, height);
+    CGRect frameHeader = CGRectMake(0, self.six_insetTop, REFRESH_SC_WIDTH, height);
+    
+    if ([self isKindOfClass:[UICollectionView class]]) {
+        UICollectionView *collectionView = (UICollectionView *)self;
+        if (nil == collectionView.backgroundView) {
+            collectionView.backgroundView = ({
+                UIView *viewBg = [[UIView alloc] init];
+                viewBg.backgroundColor = [UIColor clearColor];
+                viewBg.tag = SIX_UICollectionView_backgroundView_Tag;
+//                viewBg.frame = frameHeader;
+                viewBg;
+            });
+        }
+        
+        [collectionView.backgroundView addSubview:six_header];
+    } else if ([self isKindOfClass:[UITableView class]]) {
+        UITableView *tableView = (UITableView *)self;
+        tableView.backgroundView.tag = SIX_UICollectionView_backgroundView_Tag;
+        [tableView.backgroundView addSubview:six_header];
+    } else {
+        [self addSubview:six_header];
+    }
+    
+    six_header.frame = frameHeader;
 }
 
 - (SIXRefreshComponent *)six_header {
@@ -33,8 +65,7 @@ static char KeySixHeader;
     return header;
 }
 
-#pragma -mark 
-#pragma -mark getters / setters
+
 - (CGFloat)six_insetTop {
     return self.contentInset.top;
 }

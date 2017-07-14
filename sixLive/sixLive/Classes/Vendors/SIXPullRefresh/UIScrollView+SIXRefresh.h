@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 @class SIXRefreshComponent;
 
+FOUNDATION_EXPORT const NSUInteger SIX_UICollectionView_backgroundView_Tag;
+
 @interface UIScrollView (SIXRefresh)
 
 @property (strong, nonatomic) SIXRefreshComponent *six_header;

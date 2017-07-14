@@ -120,10 +120,7 @@
         WS
         _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
             [ws loadData];
-        }];
-//        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//            [ws loadData];
-//        }];    
+        }];   
     }
     return _collectionView;
 }

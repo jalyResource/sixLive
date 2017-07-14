@@ -30,8 +30,17 @@
     
     [self removeObserver];
     
+    UIScrollView *scrollView = nil;
+    // 刷新控件添加到 UICollectionView 或 UITalbeView 的 backgroundView
+    if (SIX_UICollectionView_backgroundView_Tag == newSuperview.tag) {
+        scrollView = (UIScrollView *)newSuperview.superview;
+    } else // 刷新控件添加到  UISCrollView 
     if ([newSuperview isKindOfClass:[UIScrollView class]]) {
-        _superScrollView = (UIScrollView *)newSuperview;
+        scrollView = (UIScrollView *)newSuperview;
+    }
+    
+    if (scrollView) {
+        _superScrollView = scrollView;
         _superScrollView.alwaysBounceVertical = YES;
         self.superScrollViewOriginInsets = _superScrollView.contentInset;
         
@@ -90,7 +99,7 @@
     if (offsetY > happenOffsetY) return;
     
     if (EnumRefreshStateRefreshEnd != self.state) {
-        self.hidden = -newContentOffset.y < self.superScrollViewOriginInsets.top + 20;
+        self.hidden = -newContentOffset.y < self.superScrollViewOriginInsets.top + self.six_height * 0.3;
     }
     
     
@@ -132,13 +141,14 @@
     _state = state;
     
     if (EnumRefreshStateRefreshing == state) {
+        CGFloat top = self.superScrollViewOriginInsets.top + self.six_height;
         
         [UIView animateWithDuration:0.25 animations:^{
-            CGFloat top = self.superScrollViewOriginInsets.top + self.six_height;
-            // 增加滚动区域top
+            // 增加滚动区域top        
             _superScrollView.six_insetTop = top;
             // 设置滚动位置
             [_superScrollView setContentOffset:CGPointMake(0, -top) animated:NO];
+            
         } completion:^(BOOL finished) {
             [self handleRefreshEvent];
         }];
@@ -170,7 +180,9 @@
  刷新结束调用
  */
 - (void)endRefresh {
-    self.state = EnumRefreshStateRefreshEnd;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.state = EnumRefreshStateRefreshEnd;
+    });
 }
 
 @end
