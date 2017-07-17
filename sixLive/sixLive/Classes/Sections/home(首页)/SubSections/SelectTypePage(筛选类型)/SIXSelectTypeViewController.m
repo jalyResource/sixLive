@@ -12,6 +12,7 @@
 #import "SIXSelectTypeModel.h"
 #import "SIXSelecTypeSupplementaryView.h"
 #import "SIXSelectTypeTransition.h"
+#import "SIXAnimationButton.h"
 
 
 @interface SIXSelectTypeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -55,7 +56,11 @@
     self.customStatusBar.hidden = YES;
     [self.view bringSubviewToFront:self.headerBar];
     self.headerBar.btnLeft.hidden = YES;
-    self.btnRightHeader = self.headerBar.btnRight;
+    
+    // right button
+    SIXAnimationButton *btnAnimation = [[SIXAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
+    [self setHeaderRightButtonWith:btnAnimation];
+    self.btnRightHeader = btnAnimation;
 }
 
 //- (void)viewDidLayoutSubviews {
@@ -69,12 +74,16 @@
 #pragma -mark 
 #pragma -mark  SIXNavigationBarDelegate methods
 - (void)headerRightButtonClicked {
-//    
+//    DLog(@"%s", __func__);
+    
+    [self.btnRightHeader startAnimation];
+    
     [UIView animateWithDuration:0.2 animations:^{
         self.collectionView.height = 0;
         self.view.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
+        [self notificationDelegateDidRemoveFromSuperView];
     }];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -127,6 +136,7 @@
     
 //    [self dismissViewControllerAnimated:NO completion:nil];
     [self.view removeFromSuperview];
+    [self notificationDelegateDidRemoveFromSuperView];
 }
 
 #pragma -mark 
@@ -151,6 +161,17 @@
 #pragma -mark public
 - (CGFloat)collectionViewHeight {
     return SIX_SCREEN_HEIGHT - 140 - SIX_STATUSBAR_HEIGHT - SIX_NAVIGATIONBAR_HEIGHT;
+}
+
+#pragma -mark 
+#pragma -mark private
+/**
+ * 通知代理，已从父控件移除
+ */
+- (void)notificationDelegateDidRemoveFromSuperView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectTypeViewControllerDidRemoveFromSuperView)]) {
+        [self.delegate selectTypeViewControllerDidRemoveFromSuperView];
+    }
 }
 
 

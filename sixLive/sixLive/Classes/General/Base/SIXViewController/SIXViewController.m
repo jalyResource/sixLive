@@ -24,6 +24,23 @@
     self.headerBar.frame = CGRectMake(0, SIX_STATUSBAR_HEIGHT, SIX_SCREEN_WIDTH, SIX_NAVIGATIONBAR_HEIGHT);
 }
 
+
+#pragma -mark 
+#pragma -mark public 
+/**
+ * 定制导航栏右侧按钮
+ */
+- (void)setHeaderRightButtonWith:(__kindof UIButton *)btn {
+    SEL sel = @selector(btnRightClicked:);
+    [btn addTarget:self.headerBar action:sel forControlEvents:UIControlEventTouchUpInside];
+    
+//    btn.frame = self.headerBar.btnRight.frame;
+    [self.headerBar addSubview:btn];
+    [self.headerBar.btnRight removeFromSuperview];
+    self.headerBar.btnRight = btn;
+}
+
+
 #pragma -mark 
 #pragma -mark  SIXNavigationBarDelegate 
 - (void)headerLeftButtonClicked {

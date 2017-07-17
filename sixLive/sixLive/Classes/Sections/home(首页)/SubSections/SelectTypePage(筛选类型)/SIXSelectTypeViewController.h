@@ -9,6 +9,7 @@
 #import "SIXViewController.h"
 #import "SIXHomeViewController.h"
 @class SIXSelectTypeViewController;
+@class SIXAnimationButton;
 
 @protocol SIXSelectTypeViewControllerDelegate <NSObject>
 @optional
@@ -21,6 +22,11 @@
  */
 - (void)selectTypeViewController:(SIXSelectTypeViewController *)viewController didSelectSoundType:(NSString *)type ;
 
+/**
+ * 从父控件移除
+ */
+- (void)selectTypeViewControllerDidRemoveFromSuperView ;
+
 @end
 
 
@@ -30,7 +36,8 @@
 @property (weak, nonatomic) id<SIXSelectTypeViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) SIXCollectionView *collectionView;
-@property (weak, nonatomic) UIButton *btnRightHeader;
+
+@property (weak, nonatomic) SIXAnimationButton *btnRightHeader;
 
 /**
  home 页，当前显示列表的 index

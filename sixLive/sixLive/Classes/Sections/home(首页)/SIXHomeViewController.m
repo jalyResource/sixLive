@@ -13,7 +13,7 @@
 #import "SIXSoundViewController.h"
 #import "SIXSelectTypeViewController.h"
 #import "SIXTitleListView.h"
-
+#import "SIXAnimationButton.h"
 
 
 
@@ -73,6 +73,10 @@
     UIColor *colorBg = [[UIColor colorWithHex:0xdd0000] colorWithAlphaComponent:0.9];
     self.headerBar.backgroundColor = colorBg;
     self.customStatusBar.backgroundColor = colorBg;
+    
+    // right header btn
+    SIXAnimationButton *btnAnimation = [[SIXAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
+    [self setHeaderRightButtonWith:btnAnimation];
 }
 
 - (void)addSubviews {
@@ -242,6 +246,9 @@
     DLog(@"点击搜索");
 }
 - (void)headerRightButtonClicked {
+    self.headerBar.btnRight.hidden = YES;
+//    DLog(@"%s", __func__);
+    
     NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.width;
     // 设置“好声音” 界面的 具体类型
     if ( EnumLiveListTypeSound == index ) {
@@ -257,6 +264,7 @@
     SIXCollectionView *collectionView = self.selectTypeViewController.collectionView;
     collectionView.height = 0;
     
+    [self.selectTypeViewController.btnRightHeader startAnimation];
     [UIView animateWithDuration:0.25 animations:^{
         collectionView.height = [self.selectTypeViewController collectionViewHeight];
         self.selectTypeViewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
@@ -292,6 +300,12 @@
     [self.soundViewController soundHeaderSupplementaryView:nil didClickedBtnType:type];
 }
 
+/**
+ * 从父控件移除
+ */
+- (void)selectTypeViewControllerDidRemoveFromSuperView {
+    self.headerBar.btnRight.hidden = NO;
+}
 
 
 #pragma -mark 

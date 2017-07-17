@@ -13,6 +13,11 @@
 
 @property (strong, nonatomic) SIXNavigationBar *headerBar;
 
+/**
+ * 定制导航栏右侧按钮
+ */
+- (void)setHeaderRightButtonWith:(__kindof UIButton *)btn ;
+
 
 - (void)back ;
 
