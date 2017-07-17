@@ -174,7 +174,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    CGFloat offsetX = scrollView.contentOffset.x;
     self.viewTopTitle.contentOffset = scrollView.contentOffset;
-    
+    self.viewTopTitle.userInteractionEnabled = NO;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -182,6 +182,7 @@
 //    DLog(@"index : %lu  %s",index,  __func__);
     [self addSubListViewToScrollViewAtIndex:index];
     self.viewTopTitle.currentIndex = index;
+    self.viewTopTitle.userInteractionEnabled = YES;
 }
 
 
@@ -202,39 +203,44 @@
          EnumLiveListTypeMale  = 7  // 男神
  */
 - (void)addSubListViewToScrollViewAtIndex:(NSUInteger)index {
+    UIView *viewOfIndex = nil;
     switch (index) {
         case EnumLiveListTypeHot:   { // 热门
-            [self.scrollView addSubview:self.hotTopicViewController.view];
+            viewOfIndex = self.hotTopicViewController.view;
             break;
         } 
         case EnumLiveListTypeRed:   { // 手机红人
-            [self.scrollView addSubview:self.redViewController.view];
+            viewOfIndex = self.redViewController.view;
             break;
         } 
         case EnumLiveListTypeLocal: { // 附近
-            [self.scrollView addSubview:self.localViewController.view];
+            viewOfIndex = self.localViewController.view;
             break;
         } 
         case EnumLiveListTypeSound: { // 好声音
-            [self.scrollView addSubview:self.soundViewController.view];
+            viewOfIndex = self.soundViewController.view; 
             break;
         } 
         case EnumLiveListTypeDance: { // 舞蹈
-            [self.scrollView addSubview:self.danceViewController.view];
+            viewOfIndex = self.danceViewController.view;
             break;
         } 
         case EnumLiveListTypeFunny: { // 搞笑
-            [self.scrollView addSubview:self.funnyViewController.view];
+            viewOfIndex = self.funnyViewController.view;
             break;
         } 
         case EnumLiveListTypeChat:  { // 唠嗑
-            [self.scrollView addSubview:self.chatViewController.view];
+            viewOfIndex = self.chatViewController.view;
             break;
         } 
         case EnumLiveListTypeMale:  { // 男神
-            [self.scrollView addSubview:self.maleViewController.view];
+            viewOfIndex = self.maleViewController.view;
             break;
         } 
+    }
+    
+    if (viewOfIndex.superview != self.scrollView) {
+        [self.scrollView addSubview:viewOfIndex];
     }
 }
 
@@ -280,9 +286,11 @@
 #pragma -mark SIXTitleListViewDelagate
 - (void)titleListView:(SIXTitleListView *)titleListView didClickedAtIndex:(NSUInteger)index {
     self.scrollView.contentOffset = CGPointMake(index * LOBBY_SCROLLVIEW_WIDTH, 0);
+    
 //    CGRect rect = self.scrollView.bounds;
 //    rect.origin.x = index * rect.size.width;
 //    [self.scrollView scrollRectToVisible:rect animated:YES];
+    
     [self scrollViewDidEndDecelerating:self.scrollView];
 }
 

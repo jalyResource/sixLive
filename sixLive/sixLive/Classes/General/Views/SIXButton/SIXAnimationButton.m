@@ -75,7 +75,7 @@ static CGFloat const kVerticalMargin = 7.;
     
     self.userInteractionEnabled = NO;
 //    NSLog(@"tag: %ld", self.tag);
-    if (self.tag) {  // 三 -->  一
+    if (self.tag) {  // 三 -->  X
         CGRect frameTop = self.frameOriginTop;
         frameTop.origin.y += kVerticalMargin;
         CGRect frameBottom = self.frameOriginBottom;
@@ -100,7 +100,7 @@ static CGFloat const kVerticalMargin = 7.;
             
         }];
         
-    } else {         // 一 -->  三
+    } else {         // X -->  三
         CGRect frameTop = self.frameOriginTop;
         frameTop.origin.y += kVerticalMargin;
         
