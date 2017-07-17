@@ -10,6 +10,15 @@
 
 @implementation SIXCollectionSupplementaryView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = SIX_BACKGROUND_COLOR;
+    }
+    return self;
+}
+
 /** 注册 view 的 id  */
 + (NSString *)viewReuseIdentifier {
     return NSStringFromClass([self class]);

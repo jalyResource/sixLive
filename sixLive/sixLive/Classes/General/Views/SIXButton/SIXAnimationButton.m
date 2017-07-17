@@ -89,8 +89,11 @@ static CGFloat const kVerticalMargin = 7.;
         } completion:^(BOOL finished) {
             
             [UIView animateWithDuration:interval delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                 self.viewTop.transform = CGAffineTransformMakeRotation(M_PI_4);
-                 self.viewBottom.transform = CGAffineTransformMakeRotation(-M_PI_4);
+                 CGAffineTransform transformTop = CGAffineTransformMakeRotation(M_PI_4);
+                 self.viewTop.transform = CGAffineTransformScale(transformTop, 1.1, 1);
+                
+                 CGAffineTransform transformBottom = CGAffineTransformMakeRotation(-M_PI_4);
+                 self.viewBottom.transform = CGAffineTransformScale(transformBottom, 1.1, 1);
             } completion:^(BOOL finished) {
                 self.userInteractionEnabled = YES;
             }];

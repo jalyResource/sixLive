@@ -77,6 +77,8 @@
     // right header btn
     SIXAnimationButton *btnAnimation = [[SIXAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
     [self setHeaderRightButtonWith:btnAnimation];
+    // left header btn
+    [self.headerBar.btnLeft setImage:[UIImage imageNamed:@"home_button_search_normal"] forState:UIControlStateNormal];
 }
 
 - (void)addSubviews {

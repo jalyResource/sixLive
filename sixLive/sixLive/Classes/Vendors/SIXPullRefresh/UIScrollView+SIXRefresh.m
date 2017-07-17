@@ -9,6 +9,7 @@
 #import "UIScrollView+SIXRefresh.h"
 #import "SIXPullRefreshMacro.h"
 #import "SIXRefreshComponent.h"
+#import "NSObject+DLIntrospection.h"
 
 #import <objc/runtime.h>
 
@@ -47,6 +48,8 @@ static char KeySixHeader;
                 viewBg;
             });
         }
+        
+//        NSLog(@"%@  %@", collectionView, collectionView.backgroundView.superview);
         
         [collectionView.backgroundView addSubview:six_header];
     } else if ([self isKindOfClass:[UITableView class]]) {

@@ -142,13 +142,14 @@
     
     if (EnumRefreshStateRefreshing == state) {
         CGFloat top = self.superScrollViewOriginInsets.top + self.six_height;
-        
+            
         [UIView animateWithDuration:0.25 animations:^{
-            // 增加滚动区域top        
-            _superScrollView.six_insetTop = top;
             // 设置滚动位置
             [_superScrollView setContentOffset:CGPointMake(0, -top) animated:NO];
+
             
+            // 增加滚动区域top  
+            _superScrollView.six_insetTop = top;            
         } completion:^(BOOL finished) {
             [self handleRefreshEvent];
         }];

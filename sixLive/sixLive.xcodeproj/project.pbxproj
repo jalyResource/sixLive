@@ -53,6 +53,7 @@
 		0A56D14D1F09F4CF0032CB9D /* SIXTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D14C1F09F4CF0032CB9D /* SIXTabBar.m */; };
 		0A56D14F1F09F6590032CB9D /* tabBar_button_info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */; };
 		0A5DEE241F1C545C005649DB /* SIXAnimationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DEE231F1C545C005649DB /* SIXAnimationButton.m */; };
+		0A5DEE281F1C8BD8005649DB /* NSObject+DLIntrospection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DEE271F1C8BD8005649DB /* NSObject+DLIntrospection.m */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
 		0A68BE941F0260410094141A /* SIXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE931F0260410094141A /* SIXViewController.m */; };
@@ -179,6 +180,8 @@
 		0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tabBar_button_info.plist; sourceTree = "<group>"; };
 		0A5DEE221F1C545C005649DB /* SIXAnimationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXAnimationButton.h; sourceTree = "<group>"; };
 		0A5DEE231F1C545C005649DB /* SIXAnimationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXAnimationButton.m; sourceTree = "<group>"; };
+		0A5DEE261F1C8BD8005649DB /* NSObject+DLIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DLIntrospection.h"; sourceTree = "<group>"; };
+		0A5DEE271F1C8BD8005649DB /* NSObject+DLIntrospection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DLIntrospection.m"; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		0A68BE641F024FF50094141A /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		0A68BE8C1F0254ED0094141A /* SIXGlobalMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIXGlobalMacro.h; sourceTree = "<group>"; };
@@ -535,6 +538,15 @@
 			path = SIXButton;
 			sourceTree = "<group>";
 		};
+		0A5DEE251F1C8BD8005649DB /* DLIntrospection */ = {
+			isa = PBXGroup;
+			children = (
+				0A5DEE261F1C8BD8005649DB /* NSObject+DLIntrospection.h */,
+				0A5DEE271F1C8BD8005649DB /* NSObject+DLIntrospection.m */,
+			);
+			path = DLIntrospection;
+			sourceTree = "<group>";
+		};
 		0A68BE8E1F02586D0094141A /* SIXNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +778,7 @@
 		0ADA43E11F0A3F3F0067BE49 /* SIXPullRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				0A5DEE251F1C8BD8005649DB /* DLIntrospection */,
 				0A3D37031F0B35330033B735 /* Resources */,
 				0ADA43EA1F0A4E900067BE49 /* Category */,
 				0ADA43E21F0A3FBA0067BE49 /* UIScrollView+SIXRefresh.h */,
@@ -1141,6 +1154,7 @@
 				0A3D36FF1F0B2B870033B735 /* SIXRefreshHeader.m in Sources */,
 				0A457C231F039A81003FD0E2 /* SIXHotTopicListViewController.m in Sources */,
 				0A457C2F1F03AB51003FD0E2 /* SIXRecCollectionViewCell.m in Sources */,
+				0A5DEE281F1C8BD8005649DB /* NSObject+DLIntrospection.m in Sources */,
 				0A46BF051F04F25100E12CD6 /* SIXProvinceCell.m in Sources */,
 				0A457C1B1F039991003FD0E2 /* SIXCommonListModel.m in Sources */,
 				0A3D37021F0B32AC0033B735 /* SIXRefreshNormalHeader.m in Sources */,
