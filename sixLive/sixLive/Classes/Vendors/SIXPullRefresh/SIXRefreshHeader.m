@@ -9,11 +9,13 @@
 #import "SIXRefreshHeader.h"
 #import "SIXPullRefreshMacro.h"
 
+static const CGFloat kHeaderHeight = 44;
+
 @implementation SIXRefreshHeader
 
 
 + (instancetype)refreshHeaderWithBlock:(SIXRefreshBlock)refreshBlock {
-    SIXRefreshHeader *header = [[self alloc] initWithFrame:CGRectMake(0, -64, REFRESH_SC_WIDTH, 64)];
+    SIXRefreshHeader *header = [[self alloc] initWithFrame:CGRectMake(0, -kHeaderHeight, REFRESH_SC_WIDTH, kHeaderHeight)];
     header.refreshBlock = refreshBlock;
     return header;
 }

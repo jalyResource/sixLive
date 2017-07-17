@@ -142,8 +142,12 @@
     
     if (EnumRefreshStateRefreshing == state) {
         CGFloat top = self.superScrollViewOriginInsets.top + self.six_height;
-            
+        
+        [self snapshotViewAfterScreenUpdates:YES];
+        
+        
         [UIView animateWithDuration:0.25 animations:^{
+            
             // 设置滚动位置
             [_superScrollView setContentOffset:CGPointMake(0, -top) animated:NO];
 
