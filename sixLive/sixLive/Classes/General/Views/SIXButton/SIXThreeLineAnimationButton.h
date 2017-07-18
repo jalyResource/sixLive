@@ -1,5 +1,5 @@
 //
-//  SIXAnimationButton.h
+//  SIXThreeLineAnimationButton.h
 //  test
 //
 //  Created by li’Pro on 2017/7/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SIXAnimationButton : UIButton
+@interface SIXThreeLineAnimationButton : UIButton
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

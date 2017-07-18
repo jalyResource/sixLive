@@ -9,7 +9,7 @@
 #import "SIXViewController.h"
 #import "SIXHomeViewController.h"
 @class SIXSelectTypeViewController;
-@class SIXAnimationButton;
+@class SIXThreeLineAnimationButton;
 
 @protocol SIXSelectTypeViewControllerDelegate <NSObject>
 @optional
@@ -37,7 +37,7 @@
 
 @property (strong, nonatomic) SIXCollectionView *collectionView;
 
-@property (weak, nonatomic) SIXAnimationButton *btnRightHeader;
+@property (weak, nonatomic) SIXThreeLineAnimationButton *btnRightHeader;
 
 /**
  home 页，当前显示列表的 index

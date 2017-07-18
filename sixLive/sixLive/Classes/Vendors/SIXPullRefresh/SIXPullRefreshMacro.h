@@ -9,6 +9,8 @@
 #ifndef SIXPullRefreshMacro_h
 #define SIXPullRefreshMacro_h
 
+#import "UIView+SIXRefresh.h"
+
 #define REFRESH_SC_WIDTH [UIScreen mainScreen].bounds.size.width
 #define REFRESH_SC_HEIGHT [UIScreen mainScreen].bounds.size.height
 

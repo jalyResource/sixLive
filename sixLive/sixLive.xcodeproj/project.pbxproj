@@ -52,7 +52,7 @@
 		0A56D14A1F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D1491F09E6590032CB9D /* SIXSelectTypeTransitionAnimation.m */; };
 		0A56D14D1F09F4CF0032CB9D /* SIXTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A56D14C1F09F4CF0032CB9D /* SIXTabBar.m */; };
 		0A56D14F1F09F6590032CB9D /* tabBar_button_info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */; };
-		0A5DEE241F1C545C005649DB /* SIXAnimationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DEE231F1C545C005649DB /* SIXAnimationButton.m */; };
+		0A5DEE241F1C545C005649DB /* SIXThreeLineAnimationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DEE231F1C545C005649DB /* SIXThreeLineAnimationButton.m */; };
 		0A5DEE281F1C8BD8005649DB /* NSObject+DLIntrospection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DEE271F1C8BD8005649DB /* NSObject+DLIntrospection.m */; };
 		0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE641F024FF50094141A /* UIColor+Addition.m */; };
 		0A68BE911F0258860094141A /* SIXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68BE901F0258860094141A /* SIXNavigationBar.m */; };
@@ -178,8 +178,8 @@
 		0A56D14B1F09F4CF0032CB9D /* SIXTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXTabBar.h; sourceTree = "<group>"; };
 		0A56D14C1F09F4CF0032CB9D /* SIXTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXTabBar.m; sourceTree = "<group>"; };
 		0A56D14E1F09F6590032CB9D /* tabBar_button_info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tabBar_button_info.plist; sourceTree = "<group>"; };
-		0A5DEE221F1C545C005649DB /* SIXAnimationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXAnimationButton.h; sourceTree = "<group>"; };
-		0A5DEE231F1C545C005649DB /* SIXAnimationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXAnimationButton.m; sourceTree = "<group>"; };
+		0A5DEE221F1C545C005649DB /* SIXThreeLineAnimationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIXThreeLineAnimationButton.h; sourceTree = "<group>"; };
+		0A5DEE231F1C545C005649DB /* SIXThreeLineAnimationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIXThreeLineAnimationButton.m; sourceTree = "<group>"; };
 		0A5DEE261F1C8BD8005649DB /* NSObject+DLIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DLIntrospection.h"; sourceTree = "<group>"; };
 		0A5DEE271F1C8BD8005649DB /* NSObject+DLIntrospection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DLIntrospection.m"; sourceTree = "<group>"; };
 		0A68BE631F024FF50094141A /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
@@ -532,8 +532,8 @@
 		0A5DEE211F1C545C005649DB /* SIXButton */ = {
 			isa = PBXGroup;
 			children = (
-				0A5DEE221F1C545C005649DB /* SIXAnimationButton.h */,
-				0A5DEE231F1C545C005649DB /* SIXAnimationButton.m */,
+				0A5DEE221F1C545C005649DB /* SIXThreeLineAnimationButton.h */,
+				0A5DEE231F1C545C005649DB /* SIXThreeLineAnimationButton.m */,
 			);
 			path = SIXButton;
 			sourceTree = "<group>";
@@ -1148,7 +1148,7 @@
 				0A457BF01F034836003FD0E2 /* UIView+Addition.m in Sources */,
 				0A457C1D1F039991003FD0E2 /* SIXListCollectionViewCell.m in Sources */,
 				0A457C1C1F039991003FD0E2 /* SIXCommonListViewController.m in Sources */,
-				0A5DEE241F1C545C005649DB /* SIXAnimationButton.m in Sources */,
+				0A5DEE241F1C545C005649DB /* SIXThreeLineAnimationButton.m in Sources */,
 				0A68BE651F024FF50094141A /* UIColor+Addition.m in Sources */,
 				0A46BF021F04E67700E12CD6 /* SIXProvinceListViewController.m in Sources */,
 				0A3D36FF1F0B2B870033B735 /* SIXRefreshHeader.m in Sources */,

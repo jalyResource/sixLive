@@ -13,7 +13,7 @@
 #import "SIXSoundViewController.h"
 #import "SIXSelectTypeViewController.h"
 #import "SIXTitleListView.h"
-#import "SIXAnimationButton.h"
+#import "SIXThreeLineAnimationButton.h"
 
 
 
@@ -75,7 +75,7 @@
     self.customStatusBar.backgroundColor = colorBg;
     
     // right header btn
-    SIXAnimationButton *btnAnimation = [[SIXAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
+    SIXThreeLineAnimationButton *btnAnimation = [[SIXThreeLineAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
     [self setHeaderRightButtonWith:btnAnimation];
     // left header btn
     [self.headerBar.btnLeft setImage:[UIImage imageNamed:@"home_button_search_normal"] forState:UIControlStateNormal];

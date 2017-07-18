@@ -12,7 +12,7 @@
 #import "SIXSelectTypeModel.h"
 #import "SIXSelecTypeSupplementaryView.h"
 #import "SIXSelectTypeTransition.h"
-#import "SIXAnimationButton.h"
+#import "SIXThreeLineAnimationButton.h"
 
 
 @interface SIXSelectTypeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -58,7 +58,7 @@
     self.headerBar.btnLeft.hidden = YES;
     
     // right button
-    SIXAnimationButton *btnAnimation = [[SIXAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
+    SIXThreeLineAnimationButton *btnAnimation = [[SIXThreeLineAnimationButton alloc] initWithFrame:self.headerBar.btnRight.frame];
     [self setHeaderRightButtonWith:btnAnimation];
     self.btnRightHeader = btnAnimation;
 }

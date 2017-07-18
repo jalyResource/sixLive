@@ -21,6 +21,7 @@ static const CGFloat kHeaderHeight = 44;
 }
 
 
+
 - (void)setState:(EnumRefreshState)state {
     if (_state == state) {
         return;

@@ -1,17 +1,17 @@
 //
-//  SIXAnimationButton.m
+//  SIXThreeLineAnimationButton.m
 //  test
 //
 //  Created by li’Pro on 2017/7/16.
 //  Copyright © 2017年 li’Pro. All rights reserved.
 //
 
-#import "SIXAnimationButton.h"
+#import "SIXThreeLineAnimationButton.h"
 
 // height 1.5 width 20    vMargin 5
 static CGFloat const kVerticalMargin = 7.;
 
-@interface SIXAnimationButton ()
+@interface SIXThreeLineAnimationButton ()
 
 @property (strong, nonatomic) UIView *viewTop;
 @property (strong, nonatomic) UIView *viewCenter;
@@ -23,7 +23,7 @@ static CGFloat const kVerticalMargin = 7.;
 @end
 
 
-@implementation SIXAnimationButton
+@implementation SIXThreeLineAnimationButton
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
