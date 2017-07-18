@@ -62,7 +62,7 @@ NSString *TipTextRefreshEnd = @"加载完成";
     if (_state == state) {
         return;
     }
-//    EnumRefreshState oldState = _state;
+    EnumRefreshState oldState = _state;
     [super setState:state];
     
     
@@ -87,8 +87,14 @@ NSString *TipTextRefreshEnd = @"加载完成";
             break;
         }
         case EnumRefreshStateRefreshEnd: {
-            self.lblTitle.text = TipTextRefreshEnd;
-            self.imgViewArrow.hidden = YES;
+            // normal-->End  调用 - (void)endRefresh; 的情况
+            if (EnumRefreshStateNormal == oldState) {
+                self.lblTitle.text = TipTextNormal;
+            } else { // 真正 刷新-->结束
+                self.lblTitle.text = TipTextRefreshEnd;
+                self.imgViewArrow.hidden = YES;
+            }
+            
             break;
         }
     }
@@ -132,8 +138,8 @@ NSString *TipTextRefreshEnd = @"加载完成";
 - (UILabel *)lblTitle {
     if (!_lblTitle) {
         _lblTitle = [[UILabel alloc] init];
-        _lblTitle.font = [UIFont systemFontOfSize:13];
-        double rate = 102/255.0f;
+        _lblTitle.font = [UIFont systemFontOfSize:14];
+        double rate = 152/255.0f;
         _lblTitle.textColor = [UIColor colorWithRed:rate green:rate blue:rate alpha:1.];
         _lblTitle.textAlignment = NSTextAlignmentLeft;
         _lblTitle.text = TipTextNormal;

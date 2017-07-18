@@ -168,7 +168,7 @@ static CGFloat const HeaderViewHeight = 55.;
 - (UIView *)viewHeader {
     if (!_viewHeader) {
         _viewHeader = [[UIView alloc] init];
-        _viewHeader.backgroundColor = [UIColor orangeColor];
+        _viewHeader.backgroundColor = [UIColor clearColor];
     }
     return _viewHeader;
 }

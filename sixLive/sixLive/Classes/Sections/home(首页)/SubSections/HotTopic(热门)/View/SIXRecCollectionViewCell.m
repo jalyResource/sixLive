@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.contentView.backgroundColor = [UIColor orangeColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

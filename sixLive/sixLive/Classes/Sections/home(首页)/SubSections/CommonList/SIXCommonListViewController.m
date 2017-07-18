@@ -44,7 +44,6 @@
     [self.view addSubview:self.collectionView];
     self.collectionView.frame = self.view.bounds;
     self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.collectionView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)loadData {

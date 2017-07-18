@@ -78,7 +78,7 @@
 #pragma -mark 
 #pragma -mark public
 - (void)refreshHeaderContentOffsetDidChange:(CGPoint)newContentOffset {
-//    DLog(@"contentInset.top: %lf   self.height:%lf", _superScrollView.contentInset.top, self.six_height);
+    DLog(@"contentInset.top: %lf   self.height:%lf", _superScrollView.contentInset.top, self.six_height);
     CGFloat normal2RefreshContentOffsetY = -self.superScrollViewOriginInsets.top - self.six_height;
     
     if (self.state == EnumRefreshStateRefreshing) {
@@ -103,25 +103,28 @@
     }
     
     
-    if (_superScrollView.isDragging) {
-        if ( (newContentOffset.y < normal2RefreshContentOffsetY)) { // 刷新
-            if (EnumRefreshStateRefreshPulling != self.state) {
-                self.state = EnumRefreshStateRefreshPulling;
-            }
-        } else { // 不刷新
-            if (self.state != EnumRefreshStateNormal) {
-                self.state = EnumRefreshStateNormal;
-            }
-        }
-    } else {
-        // 放手时
-        //   刷新控件完全显示   --刷新
-        //   刷新控件不完全显示 --不刷新
-        if (EnumRefreshStateRefreshPulling ==  self.state) {
-            if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
-                [self beganRefresh];
+    if (EnumRefreshStateRefreshing != self.state && EnumRefreshStateRefreshEnd != self.state) 
+    {
+        if (_superScrollView.isDragging) {
+            if ( (newContentOffset.y < normal2RefreshContentOffsetY)) { // 刷新
+                if (EnumRefreshStateRefreshPulling != self.state) {
+                    self.state = EnumRefreshStateRefreshPulling;
+                }
             } else { // 不刷新
-                
+                if (self.state != EnumRefreshStateNormal) {
+                    self.state = EnumRefreshStateNormal;
+                }
+            }
+        } else {
+            // 放手时
+            //   刷新控件完全显示   --刷新
+            //   刷新控件不完全显示 --不刷新
+            if (EnumRefreshStateRefreshPulling ==  self.state) {
+                if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
+                    [self beganRefresh];
+                } else { // 不刷新
+                    
+                }
             }
         }
     }
@@ -158,9 +161,13 @@
             [self handleRefreshEvent];
         }];
     } else if (EnumRefreshStateRefreshEnd == state) {
-        if (EnumRefreshStateRefreshing != oldState) return;
-        
+        if (EnumRefreshStateNormal == oldState) {
+            _state = EnumRefreshStateNormal;
+            return;
+        };
+        [self snapshotViewAfterScreenUpdates:YES];
         // 恢复inset
+        
         [UIView animateWithDuration:0.25 animations:^{
             self.superScrollView.six_insetTop += self.insetTDelta;
 //            self.alpha = 0;
