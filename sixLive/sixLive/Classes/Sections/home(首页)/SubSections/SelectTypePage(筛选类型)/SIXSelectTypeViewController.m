@@ -17,10 +17,6 @@
 
 @interface SIXSelectTypeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
-/** 自定义 present 动画 */
-@property (strong, nonatomic) SIXSelectTypeTransition *myTransition;
-
-
 @property (strong, nonatomic) SIXSelectTypeModel *selectTypeModel;
 /** 默认背景色 */
 @property (strong, nonatomic) UIColor *defaultBgColor;
@@ -28,16 +24,6 @@
 @end
 
 @implementation SIXSelectTypeViewController
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-//        self.modalPresentationStyle = UIModalPresentationCustom;
-//        self.transitioningDelegate = self.myTransition;
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,13 +49,6 @@
     self.btnRightHeader = btnAnimation;
 }
 
-//- (void)viewDidLayoutSubviews {
-//    [super viewDidLayoutSubviews];
-//    CGRect frame = self.view.bounds;
-//    frame.origin.y = CGRectGetMaxY(self.headerBar.frame);
-//    frame.size.height = self.collectionViewHeight;
-//    self.collectionView.frame = frame; // bottom 140
-//}
 
 #pragma -mark 
 #pragma -mark  SIXNavigationBarDelegate methods
@@ -80,6 +59,7 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         self.collectionView.height = 0;
+        self.collectionView.alpha = 0.7;
         self.view.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
@@ -177,12 +157,6 @@
 
 #pragma -mark 
 #pragma -mark getters
-- (SIXSelectTypeTransition *)myTransition {
-    if (!_myTransition) {
-        _myTransition = [[SIXSelectTypeTransition alloc] init];
-    }
-    return _myTransition;
-}
 
 - (SIXSelectTypeModel *)selectTypeModel {
     if (!_selectTypeModel) {

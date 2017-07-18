@@ -172,7 +172,7 @@
 #pragma -mark 
 #pragma -mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetX = scrollView.contentOffset.x;
+//    CGFloat offsetX = scrollView.contentOffset.x;
 //    NSLog(@"offsetX : %f", offsetX);
     
     self.viewTopTitle.contentOffset = scrollView.contentOffset;
@@ -281,8 +281,10 @@
     collectionView.height = 0;
     
     [self.selectTypeViewController.btnRightHeader startAnimation];
-    [UIView animateWithDuration:0.25 animations:^{
+    collectionView.alpha = 0.7;
+    [UIView animateWithDuration:0.16 animations:^{
         collectionView.height = [self.selectTypeViewController collectionViewHeight];
+        collectionView.alpha = 1;
         self.selectTypeViewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     } completion:^(BOOL finished) {
     }];

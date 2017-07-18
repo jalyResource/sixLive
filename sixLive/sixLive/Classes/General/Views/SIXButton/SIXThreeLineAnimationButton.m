@@ -71,7 +71,7 @@ static CGFloat const kVerticalMargin = 7.;
 - (void)startAnimation {
     self.tag = (self.tag + 1) % 2;
 
-    NSTimeInterval interval = 0.1;
+    NSTimeInterval interval = 0.08;
     
     self.userInteractionEnabled = NO;
 //    NSLog(@"tag: %ld", self.tag);
