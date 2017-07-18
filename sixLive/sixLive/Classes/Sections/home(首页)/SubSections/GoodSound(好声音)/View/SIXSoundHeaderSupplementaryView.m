@@ -12,8 +12,10 @@
 @interface SIXSoundHeaderSupplementaryView ()
 /** 所有 btn 放在此数组中  */
 @property (strong, nonatomic) NSMutableArray<UIButton *> *arrOfBtn;
-/** 分割线 */
-@property (strong, nonatomic) UILabel *lblHorizentalLine;
+/** 5 条分割线 */
+@property (strong, nonatomic) UILabel *lblHorizontalLineTop;
+@property (strong, nonatomic) UILabel *lblHorizontalLineCenter;
+@property (strong, nonatomic) UILabel *lblHorizontalLineBottom;
 @property (strong, nonatomic) UILabel *lblVerticalLeft;
 @property (strong, nonatomic) UILabel *lblVerticalRight;
 /** 按钮对应接口参数中 type 值数组 */
@@ -60,7 +62,9 @@
     // 添加分割线
     [self addSubview:self.lblVerticalLeft];
     [self addSubview:self.lblVerticalRight];
-    [self addSubview:self.lblHorizentalLine];
+    [self addSubview:self.lblHorizontalLineTop];
+    [self addSubview:self.lblHorizontalLineCenter];
+    [self addSubview:self.lblHorizontalLineBottom];
 }
 
 - (void)btnClicked:(UIButton *)sender {
@@ -91,7 +95,9 @@
         btn.frame = CGRectMake(x, y, width, height);
     }
     
-    self.lblHorizentalLine.frame = CGRectMake(10, height, self.width - 20, 0.5);
+    self.lblHorizontalLineTop.frame = CGRectMake(0, 0, self.width , 0.5);
+    self.lblHorizontalLineCenter.frame = CGRectMake(10, height, self.width - 20, 0.5);
+    self.lblHorizontalLineBottom.frame = CGRectMake(0, [[self class] viewSize].height - 0.5, self.width , 0.5);
     self.lblVerticalLeft.frame = CGRectMake(width, 0, 0.5, self.height);
     self.lblVerticalRight.frame = CGRectMake(width * 2, 0, 0.5, self.height);
     
@@ -140,12 +146,26 @@
     }
     return _lblVerticalRight;
 }
-- (UILabel *)lblHorizentalLine {
-    if (!_lblHorizentalLine) {
-        _lblHorizentalLine = [[UILabel alloc] init];
-        _lblHorizentalLine.backgroundColor = [UIColor colorWithHex:0xcccccc];
+- (UILabel *)lblHorizontalLineTop {
+    if (!_lblHorizontalLineTop) {
+        _lblHorizontalLineTop = [[UILabel alloc] init];
+        _lblHorizontalLineTop.backgroundColor = [UIColor colorWithHex:0xcccccc];
     }
-    return _lblHorizentalLine;
+    return _lblHorizontalLineTop;
+}
+- (UILabel *)lblHorizontalLineCenter {
+    if (!_lblHorizontalLineCenter) {
+        _lblHorizontalLineCenter = [[UILabel alloc] init];
+        _lblHorizontalLineCenter.backgroundColor = [UIColor colorWithHex:0xcccccc];
+    }
+    return _lblHorizontalLineCenter;
+}
+- (UILabel *)lblHorizontalLineBottom {
+    if (!_lblHorizontalLineBottom) {
+        _lblHorizontalLineBottom = [[UILabel alloc] init];
+        _lblHorizontalLineBottom.backgroundColor = [UIColor colorWithHex:0xcccccc];
+    }
+    return _lblHorizontalLineBottom;
 }
 
 @end

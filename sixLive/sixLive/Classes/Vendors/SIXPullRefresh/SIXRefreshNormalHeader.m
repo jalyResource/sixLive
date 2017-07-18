@@ -124,6 +124,8 @@ NSString *TipTextRefreshEnd = @"加载完成";
     
 }
 
+
+
 #pragma -mark 
 #pragma -mark getters
 - (UIActivityIndicatorView *)activityIndicatorView { // 20 * 20

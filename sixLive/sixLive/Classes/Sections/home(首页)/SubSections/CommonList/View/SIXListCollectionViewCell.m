@@ -19,6 +19,9 @@
 
 @property (strong, nonatomic) UILabel *lblCount;
 
+/** 放在 cell 右侧，挡住 刷新控件 */
+@property (strong, nonatomic) UIView *viewRightTemp;
+
 @end
 
 @implementation SIXListCollectionViewCell
@@ -43,6 +46,8 @@
     [self.contentView addSubview:self.lblName];
     
     [self.contentView addSubview:self.lblCount];
+    
+    [self.contentView addSubview:self.viewRightTemp];
 }
 
 - (void)setUser:(SIXUser *)user {
@@ -98,6 +103,13 @@
     // name
     labWidth = self.lblCount.frame.origin.x - 7 - 3;
     self.lblName.frame = CGRectMake(7, self.contentView.height - 7 - 16, labWidth, 16);
+    
+    // view temp
+    CGRect frameViewTemp = self.contentView.frame;
+    frameViewTemp.origin.x = frameViewTemp.size.width;
+    frameViewTemp.origin.y = 0;
+    frameViewTemp.size.width = 2;
+    self.viewRightTemp.frame = frameViewTemp;
     
     [CATransaction commit];
 }
@@ -160,6 +172,15 @@
         _lblCount.textColor = [UIColor whiteColor];
     }
     return _lblCount;
+}
+
+
+- (UIView *)viewRightTemp {
+    if (!_viewRightTemp) {
+        _viewRightTemp = [[UIView alloc] init];
+        _viewRightTemp.backgroundColor = SIX_BACKGROUND_COLOR;
+    }
+    return _viewRightTemp;
 }
 
 @end

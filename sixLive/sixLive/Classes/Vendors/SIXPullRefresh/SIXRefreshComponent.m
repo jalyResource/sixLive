@@ -78,7 +78,7 @@
 #pragma -mark 
 #pragma -mark public
 - (void)refreshHeaderContentOffsetDidChange:(CGPoint)newContentOffset {
-    DLog(@"contentInset.top: %lf   self.height:%lf", _superScrollView.contentInset.top, self.six_height);
+//    DLog(@"contentInset.top: %lf   self.height:%lf", _superScrollView.contentInset.top, self.six_height);
     CGFloat normal2RefreshContentOffsetY = -self.superScrollViewOriginInsets.top - self.six_height;
     
     if (self.state == EnumRefreshStateRefreshing) {
