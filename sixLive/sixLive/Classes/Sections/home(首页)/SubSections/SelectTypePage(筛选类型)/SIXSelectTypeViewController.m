@@ -80,6 +80,7 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         self.collectionView.height = 0;
+        self.collectionView.alpha = 0.7;
         self.view.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
