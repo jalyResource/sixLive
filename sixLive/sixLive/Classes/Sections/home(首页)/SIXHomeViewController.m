@@ -282,6 +282,7 @@
     
     [self.selectTypeViewController.btnRightHeader startAnimation];
     collectionView.alpha = 0.7;
+
     [UIView animateWithDuration:0.16 animations:^{
         collectionView.height = [self.selectTypeViewController collectionViewHeight];
         collectionView.alpha = 1;
