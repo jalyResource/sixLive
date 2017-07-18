@@ -172,7 +172,9 @@
 #pragma -mark 
 #pragma -mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat offsetX = scrollView.contentOffset.x;
+    CGFloat offsetX = scrollView.contentOffset.x;
+//    NSLog(@"offsetX : %f", offsetX);
+    
     self.viewTopTitle.contentOffset = scrollView.contentOffset;
     self.viewTopTitle.userInteractionEnabled = NO;
 }
@@ -184,7 +186,13 @@
     self.viewTopTitle.currentIndex = index;
     self.viewTopTitle.userInteractionEnabled = YES;
 }
-
+// decelerate is true if it will continue moving afterwards
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (NO == decelerate) {
+//        NSLog(@"放的正好");
+        [self scrollViewDidEndDecelerating:scrollView];
+    }
+}
 
 
 
