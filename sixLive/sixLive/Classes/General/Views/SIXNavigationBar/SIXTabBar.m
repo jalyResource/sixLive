@@ -54,18 +54,40 @@
 - (void)btnTabBarClicked:(UIButton *)sender {
     sender.userInteractionEnabled = NO;
     
-    [UIView animateWithDuration:0.12 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-        sender.transform = CGAffineTransformMakeScale(1.25, 1.25);
+    NSTimeInterval interval = 0.14;
+  
+    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        sender.transform = CGAffineTransformMakeScale(0.95, 0.95);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.32 delay:0 usingSpringWithDamping:0.18 initialSpringVelocity:5. options:UIViewAnimationOptionCurveEaseOut animations:^{
-            sender.transform = CGAffineTransformMakeScale(0.95, 0.95);
-            
+        [UIView animateWithDuration:interval delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            sender.transform = CGAffineTransformMakeScale(1.25, 1.25);
         } completion:^(BOOL finished) {
-            
-            sender.transform = CGAffineTransformIdentity;
-            sender.userInteractionEnabled = YES;
-        }];
+            [UIView animateWithDuration:interval * 1.4 delay:0 usingSpringWithDamping:0.22 initialSpringVelocity:5. options:UIViewAnimationOptionCurveEaseOut animations:^{
+                sender.transform = CGAffineTransformMakeScale(1, 1);
+                
+            } completion:^(BOOL finished) {
+                
+                //            sender.transform = CGAffineTransformIdentity;
+                sender.userInteractionEnabled = YES;
+            }];
+        }]; 
     }];
+    
+    
+    
+    
+    /*[UIView animateWithDuration:0.12 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+     sender.transform = CGAffineTransformMakeScale(1.25, 1.25);
+     } completion:^(BOOL finished) {
+     [UIView animateWithDuration:0.32 delay:0 usingSpringWithDamping:0.18 initialSpringVelocity:5. options:UIViewAnimationOptionCurveEaseOut animations:^{
+     sender.transform = CGAffineTransformMakeScale(0.95, 0.95);
+     
+     } completion:^(BOOL finished) {
+     
+     sender.transform = CGAffineTransformIdentity;
+     sender.userInteractionEnabled = YES;
+     }];
+     }];*/
 }
 
 - (void)layoutSubviews {
