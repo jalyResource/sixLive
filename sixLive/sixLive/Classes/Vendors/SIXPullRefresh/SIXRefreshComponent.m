@@ -172,7 +172,7 @@
             self.superScrollView.six_insetTop += self.insetTDelta;
 //            self.alpha = 0;
         } completion:^(BOOL finished) {
-            self.state = EnumRefreshStateNormal;
+            _state = EnumRefreshStateNormal;
             self.hidden = YES;
         }];
     }
