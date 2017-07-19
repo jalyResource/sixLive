@@ -59,6 +59,7 @@ NSString *TipTextRefreshEnd = @"加载完成";
 
 
 - (void)setState:(EnumRefreshState)state {
+    
     if (_state == state) {
         return;
     }
@@ -93,6 +94,11 @@ NSString *TipTextRefreshEnd = @"加载完成";
             } else { // 真正 刷新-->结束
                 self.lblTitle.text = TipTextRefreshEnd;
                 self.imgViewArrow.hidden = YES;
+                
+                // 0.25s 动画执行完毕后，状态恢复默认
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.state = EnumRefreshStateNormal;
+                });
             }
             
             break;

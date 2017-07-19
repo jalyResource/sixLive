@@ -78,7 +78,7 @@
 #pragma -mark 
 #pragma -mark public
 - (void)refreshHeaderContentOffsetDidChange:(CGPoint)newContentOffset {
-//    DLog(@"contentInset.top: %lf   self.height:%lf", _superScrollView.contentInset.top, self.six_height);
+    DLog(@"contentInset.top: %lf   self.height:%lf", _superScrollView.contentInset.top, self.six_height);
     CGFloat normal2RefreshContentOffsetY = -self.superScrollViewOriginInsets.top - self.six_height;
     
     if (self.state == EnumRefreshStateRefreshing) {
@@ -117,14 +117,10 @@
             }
         } else {
             // 放手时
-            //   刷新控件完全显示   --刷新
-            //   刷新控件不完全显示 --不刷新
-            if (EnumRefreshStateRefreshPulling ==  self.state) {
-                if (newContentOffset.y < normal2RefreshContentOffsetY) { // 刷新
-                    [self beganRefresh];
-                } else { // 不刷新
-                    
-                }
+            //   状态为可刷新   --刷新
+            //          否则  --不刷新
+            if (EnumRefreshStateRefreshPulling == self.state) {
+                [self beganRefresh];
             }
         }
     }
@@ -172,7 +168,6 @@
             self.superScrollView.six_insetTop += self.insetTDelta;
 //            self.alpha = 0;
         } completion:^(BOOL finished) {
-            self.state = EnumRefreshStateNormal;
             self.hidden = YES;
         }];
     }

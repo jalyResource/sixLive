@@ -33,7 +33,7 @@
     [self loadData];
     
     [self setUpHeaderBar];
-    DLog(@"---- 开始刷新  --");
+//    DLog(@"---- 开始刷新  --");
 }
 
 - (void)setUpHeaderBar {
