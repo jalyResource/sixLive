@@ -20,7 +20,6 @@
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 
-
 @end
 
 @implementation SIXTitleListView
@@ -30,6 +29,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setUp];
+        
     }
     return self;
 }
@@ -88,25 +88,15 @@
     if (contentOffset.x < 0 || contentOffset.x > (self.arrTitle.count - 1) * LOBBY_SCROLLVIEW_WIDTH) {
         return;
     }
-    CGFloat currentPageX = LOBBY_SCROLLVIEW_WIDTH * self.currentIndex;
-    // 界面滑动偏移 比率：[-1, 1],负数：左滑   整数：右滑
-    CGFloat slideRate = (contentOffset.x - currentPageX) / LOBBY_SCROLLVIEW_WIDTH;
-    
-    // 找到当前 title 的宽度
-//    NSString *currentTitle = self.arrTitle[self.currentIndex];
-    NSUInteger nextIndex = 0;
-    if (slideRate > 0) {
-        nextIndex = self.currentIndex + 1;
-    } else if (slideRate == 0) {
-        nextIndex = self.currentIndex;
-    } else {
-        nextIndex = self.currentIndex - 1;
-        slideRate = -slideRate;
-    }
-//    NSString *nextTitle = self.arrTitle[nextIndex];
-//DLog(@"current:%@   next:%@", currentTitle, nextTitle);
-    UIButton *btnCurrent = self.arrBtnTitle[self.currentIndex];
-    UIButton *btnNext = self.arrBtnTitle[nextIndex];
+    // 白色指示条，在 indexLeft indexRight 之间 
+    NSUInteger indexLeft = contentOffset.x / LOBBY_SCROLLVIEW_WIDTH;
+    NSUInteger indexRight = MIN(indexLeft + 1, self.arrTitle.count - 1);
+    // 界面滑动偏移 比率
+    CGFloat slideRate = (contentOffset.x - (indexLeft * LOBBY_SCROLLVIEW_WIDTH)) / LOBBY_SCROLLVIEW_WIDTH;
+
+
+    UIButton *btnCurrent = self.arrBtnTitle[indexLeft];
+    UIButton *btnNext = self.arrBtnTitle[indexRight];
     
     CGFloat viewXOffset = (btnNext.x - btnCurrent.x) * slideRate;
     CGFloat viewWOffset = (btnNext.width - btnCurrent.width) * slideRate;
