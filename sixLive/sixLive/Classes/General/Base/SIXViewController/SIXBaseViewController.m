@@ -32,9 +32,9 @@
     _customStatusBar.backgroundColor = SIX_BACKGROUND_COLOR;
     _customStatusBar.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_STATUSBAR_HEIGHT);
     [self.view addSubview:_customStatusBar];
-   
     
     self.view.backgroundColor = SIX_BACKGROUND_COLOR;
+    
 }
 
 - (void)viewDidLayoutSubviews {

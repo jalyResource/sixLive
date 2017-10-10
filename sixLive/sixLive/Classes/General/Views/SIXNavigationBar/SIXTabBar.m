@@ -33,6 +33,7 @@
         SIXTabBarModel *model = arrTabBarModel[i];
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.backgroundColor = [UIColor orangeColor];
         btn.adjustsImageWhenHighlighted = NO;
 
         UIImage *normalImg = [UIImage imageNamed:model.image];        

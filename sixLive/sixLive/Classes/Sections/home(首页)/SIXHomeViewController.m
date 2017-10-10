@@ -56,15 +56,121 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.view.backgroundColor = [UIColor lightGrayColor];
+
     
     [self addSubviews];
     [self configSubControllers];
     [self setUpHeaderBar];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (@available(iOS 11.0, *)) {
+        UIScrollView *scrollView = self.scrollView;
+        
+        NSLog(@"adjustedContentInset : %@", NSStringFromUIEdgeInsets(scrollView.adjustedContentInset));
+        NSLog(@"contentInset : %@", NSStringFromUIEdgeInsets(scrollView.contentInset));
+        NSLog(@"safeAreaInsets : %@", NSStringFromUIEdgeInsets(scrollView.safeAreaInsets));
+        NSLog(@"frame: %@", NSStringFromCGRect(scrollView.frame));
+    } else {
+        // Fallback on earlier versions
+    }
+}
+
+- (void)addSubviews {
+    [self.view addSubview:self.scrollView];
+   
+}
+
+- (void)configSubControllers {
+    NSDictionary *dicParamsHot = @{
+                                   @"av" : @(2.1),
+                                   @"p"  : @(0),
+                                   @"rate": @1,
+                                   @"size" : @0,
+                                   @"type" : @"", // 热门
+                                   @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                   };
+    NSDictionary *dicParamsLocal = @{       // 附近
+                                     @"p"  : @(0),
+                                     @"size" : @0,
+                                     @"padapi" : @"coop-mobile-getlivelistlocation.php",
+                                     @"pid" : @""
+                                     };
+    
+    NSDictionary *dicParamsMobileRed = @{
+                                         @"av" : @(2.1),
+                                         @"p"  : @(0),
+                                         @"rate": @1,
+                                         @"size" : @0,
+                                         @"type" : @"mlive", // 手机红人
+                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                         };
+    /*
+     好声音 type：
+     全部：u0 ,炽星 ： r10,   超星:r5,   巨星：r4, 明星 ： r1,  红人： r2
+     */
+    NSDictionary *dicParamsGoodVoice = @{
+                                         @"av" : @(2.1),
+                                         @"p"  : @(0),
+                                         @"rate": @1,
+                                         @"size" : @0,
+                                         @"type" : @"u0", // 全部
+                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                         };
+    NSDictionary *dicParamsDance = @{
+                                     @"av" : @(2.1),
+                                     @"p"  : @(0),
+                                     @"rate": @1,
+                                     @"size" : @0,
+                                     @"type" : @"u1", // 舞蹈
+                                     @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                     };
+    NSDictionary *dicParamsFunny = @{
+                                     @"av" : @(2.1),
+                                     @"p"  : @(0),
+                                     @"rate": @1,
+                                     @"size" : @0,
+                                     @"type" : @"u2", // 搞笑
+                                     @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                     };
+    NSDictionary *dicParamsChat = @{
+                                    @"av" : @(2.1),
+                                    @"p"  : @(0),
+                                    @"rate": @1,
+                                    @"size" : @0,
+                                    @"type" : @"u3", // 唠嗑
+                                    @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                    };
+    NSDictionary *dicParamsMale = @{
+                                    @"av" : @(2.1),
+                                    @"p"  : @(0),
+                                    @"rate": @1,
+                                    @"size" : @0,
+                                    @"type" : @"male",  // 男神
+                                    @"padapi" : @"coop-mobile-getlivelistnew.php"
+                                    };
+    // 热门，手机红人，附近，好声音，舞蹈，搞笑，唠嗑，男神
+    self.arrDicParams = @[dicParamsHot, dicParamsMobileRed, dicParamsLocal, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
+    
+    // 默认将“热门”添加到第一页
+    SIXHotTopicListViewController *hotTopicVC = [[SIXHotTopicListViewController alloc] initWithParams:dicParamsHot];
+    hotTopicVC.view.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
+    [self.scrollView addSubview:hotTopicVC.view];
+    [self addChildViewController:hotTopicVC];
+    self.hotTopicViewController = hotTopicVC;
+    
+    CGFloat contentWidth = self.arrDicParams.count * LOBBY_SCROLLVIEW_WIDTH;
+    self.scrollView.contentSize = CGSizeMake(contentWidth, SIX_TABBAR_HEIGHT);
+    
+   
+}
+
 
 - (void)setUpHeaderBar {
     [self.view bringSubviewToFront:self.headerBar];
     [self.view bringSubviewToFront:self.customStatusBar];
+//self.headerBar.hidden = YES;
+//self.customStatusBar.hidden = YES;
     
     NSArray<NSString *> *arrTitle = @[@"热门", @"手机红人", @"附近", @"好声音", @"舞蹈", @"搞笑", @"唠嗑", @"男神"];
     self.viewTopTitle.arrTitle = arrTitle;
@@ -81,91 +187,6 @@
     [self.headerBar.btnLeft setImage:[UIImage imageNamed:@"home_button_search_normal"] forState:UIControlStateNormal];
 }
 
-- (void)addSubviews {
-    [self.view addSubview:self.scrollView];
-}
-
-- (void)configSubControllers {
-    NSDictionary *dicParamsHot = @{
-                                         @"av" : @(2.1),
-                                         @"p"  : @(0),
-                                         @"rate": @1,
-                                         @"size" : @0,
-                                         @"type" : @"", // 热门
-                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                         };
-    NSDictionary *dicParamsLocal = @{       // 附近
-                                @"p"  : @(0),
-                                @"size" : @0,
-                                @"padapi" : @"coop-mobile-getlivelistlocation.php",
-                                @"pid" : @""
-                                };
-    
-    NSDictionary *dicParamsMobileRed = @{
-                                         @"av" : @(2.1),
-                                         @"p"  : @(0),
-                                         @"rate": @1,
-                                         @"size" : @0,
-                                         @"type" : @"mlive", // 手机红人
-                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                         };
-    /*
-     好声音 type：
-					全部：u0 ,炽星 ： r10,   超星:r5,   巨星：r4, 明星 ： r1,  红人： r2
-     */
-    NSDictionary *dicParamsGoodVoice = @{
-                                     @"av" : @(2.1),
-                                     @"p"  : @(0),
-                                     @"rate": @1,
-                                     @"size" : @0,
-                                     @"type" : @"u0", // 全部
-                                     @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                     };
-    NSDictionary *dicParamsDance = @{
-                                         @"av" : @(2.1),
-                                         @"p"  : @(0),
-                                         @"rate": @1,
-                                         @"size" : @0,
-                                         @"type" : @"u1", // 舞蹈
-                                         @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                         };
-    NSDictionary *dicParamsFunny = @{
-                                     @"av" : @(2.1),
-                                     @"p"  : @(0),
-                                     @"rate": @1,
-                                     @"size" : @0,
-                                     @"type" : @"u2", // 搞笑
-                                     @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                     };
-    NSDictionary *dicParamsChat = @{
-                                     @"av" : @(2.1),
-                                     @"p"  : @(0),
-                                     @"rate": @1,
-                                     @"size" : @0,
-                                     @"type" : @"u3", // 唠嗑
-                                     @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                     };
-    NSDictionary *dicParamsMale = @{
-                                     @"av" : @(2.1),
-                                     @"p"  : @(0),
-                                     @"rate": @1,
-                                     @"size" : @0,
-                                     @"type" : @"male",  // 男神
-                                     @"padapi" : @"coop-mobile-getlivelistnew.php"
-                                     };
-    // 热门，手机红人，附近，好声音，舞蹈，搞笑，唠嗑，男神
-    self.arrDicParams = @[dicParamsHot, dicParamsMobileRed, dicParamsLocal, dicParamsGoodVoice, dicParamsDance, dicParamsFunny, dicParamsChat, dicParamsMale];
-
-    // 默认将“热门”添加到第一页
-    SIXHotTopicListViewController *hotTopicVC = [[SIXHotTopicListViewController alloc] initWithParams:dicParamsHot];
-    hotTopicVC.view.frame = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
-    [self.scrollView addSubview:hotTopicVC.view];
-    [self addChildViewController:hotTopicVC];
-    self.hotTopicViewController = hotTopicVC;
-    
-    CGFloat contentWidth = self.arrDicParams.count * LOBBY_SCROLLVIEW_WIDTH;
-    self.scrollView.contentSize = CGSizeMake(contentWidth, SIX_TABBAR_HEIGHT);
-}
 
 
 

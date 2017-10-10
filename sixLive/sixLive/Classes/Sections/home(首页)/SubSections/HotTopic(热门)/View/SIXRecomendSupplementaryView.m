@@ -26,7 +26,7 @@
 }
 
 - (void)setUp {
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor yellowColor];
    
 }
 

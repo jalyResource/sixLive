@@ -29,10 +29,8 @@
     [self addChildControllers];
     
     [self addSubViews];
-}
+    
 
-- (void)addSubViews {
-    [self.view addSubview:self.viewTabBar];
 }
 
 
@@ -49,18 +47,13 @@
     [self.arrSubControllers addObject:navController];
     [self addChildViewController:navController];
     [self.view addSubview:navController.view];
-    
+        
     self.navControllerCurrent = navController;
 }
 
-//- (void)viewDidLayoutSubviews {
-//    [super viewDidLayoutSubviews];
-//    CGRect rect = CGRectMake(0, 0, SIX_SCREEN_WIDTH, SIX_SCREEN_HEIGHT);
-//    self.navControllerCurrent.view.frame = rect;
-//    
-//    // tabBar
-//    self.viewTabBar.frame = CGRectMake(0, self.view.height - SIX_TABBAR_HEIGHT, self.view.width, SIX_TABBAR_HEIGHT);
-//}
+- (void)addSubViews {
+    [self.view addSubview:self.viewTabBar];
+}
 
 
 

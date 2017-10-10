@@ -119,7 +119,13 @@
         WS
         _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
             [ws loadData];
-        }];   
+        }]; 
+        
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            // Fallback on earlier versions
+        }
     }
     return _collectionView;
 }
