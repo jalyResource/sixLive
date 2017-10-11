@@ -111,19 +111,21 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.contentInset = UIEdgeInsetsMake(SIX_STATUSBAR_HEIGHT + SIX_NAVIGATIONBAR_HEIGHT, 0, SIX_TABBAR_HEIGHT, 0);
-        
-        [self registerCollectionViewCellWithCollection:_collectionView];
-        
-//        WS
-//        _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
-//            [ws loadData];
-//        }]; 
-        
         if (@available(iOS 11.0, *)) {
+//            UIEdgeInsets inset = _collectionView.contentInset;
+//            inset.top -= (20);
+//            _collectionView.contentInset = inset;
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
             // Fallback on earlier versions
         }
+        
+        [self registerCollectionViewCellWithCollection:_collectionView];
+        
+        WS
+        _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
+            [ws loadData];
+        }]; 
     }
     return _collectionView;
 }

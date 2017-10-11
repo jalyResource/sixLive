@@ -17,4 +17,9 @@ FOUNDATION_EXPORT const NSUInteger SIX_UICollectionView_backgroundView_Tag;
 
 @property (assign, nonatomic) CGFloat six_insetTop;
 
+/** 
+ 实际顶部 inset
+ */
+@property (assign, nonatomic) CGFloat six_realInsetTop;
+
 @end

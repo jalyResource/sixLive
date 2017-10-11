@@ -22,8 +22,8 @@ static char KeySixHeader;
 @implementation UIScrollView (SIXRefresh)
 
 
-
-
+#pragma -mark 
+#pragma -mark getter setter
 - (void)setSix_header:(SIXRefreshComponent *)six_header {
     // 1 、先删除旧 view
     SIXRefreshComponent *oldHeader = objc_getAssociatedObject(self, &KeySixHeader);
@@ -33,9 +33,9 @@ static char KeySixHeader;
     
     // 2、添加新 view
     objc_setAssociatedObject(self, &KeySixHeader, six_header, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
-    CGFloat height = six_header.frame.size.height;
-    CGRect frameHeader = CGRectMake(0, self.six_insetTop, REFRESH_SC_WIDTH, height);
+    if (nil == six_header) {
+        return;
+    }
     
     if ([self isKindOfClass:[UICollectionView class]]) {
         UICollectionView *collectionView = (UICollectionView *)self;
@@ -44,7 +44,6 @@ static char KeySixHeader;
                 UIView *viewBg = [[UIView alloc] init];
                 viewBg.backgroundColor = [UIColor clearColor];
                 viewBg.tag = SIX_UICollectionView_backgroundView_Tag;
-//                viewBg.frame = frameHeader;
                 viewBg;
             });
         }
@@ -60,7 +59,11 @@ static char KeySixHeader;
         [self addSubview:six_header];
     }
     
-    six_header.frame = frameHeader;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGFloat height = six_header.frame.size.height;
+        CGRect frameHeader = CGRectMake(0, self.six_realInsetTop, REFRESH_SC_WIDTH, height);
+        six_header.frame = frameHeader;
+    });
 }
 
 - (SIXRefreshComponent *)six_header {
@@ -76,6 +79,41 @@ static char KeySixHeader;
     UIEdgeInsets inset = self.contentInset;
     inset.top = six_insetTop;
     self.contentInset = inset;
+}
+
+- (CGFloat)six_realInsetTop {
+    CGFloat top = self.six_insetTop;
+    
+    if (@available(iOS 11.0, *)) {        
+        switch (self.contentInsetAdjustmentBehavior) {
+            case UIScrollViewContentInsetAdjustmentNever: {
+                break;
+            }
+            default: {
+                top += self.safeAreaInsets.top;
+                break;
+            }
+        }
+        
+    }
+    return top;
+}
+
+- (void)setSix_realInsetTop:(CGFloat)six_realInsetTop {
+    if (@available(iOS 11.0, *)) {
+        switch (self.contentInsetAdjustmentBehavior) {
+            case UIScrollViewContentInsetAdjustmentNever: {
+                self.six_insetTop = six_realInsetTop;
+                break;
+            }
+            default: {
+                self.six_insetTop = six_realInsetTop - self.safeAreaInsets.top;
+                break;
+            }
+        }
+    } else {
+        self.six_insetTop = six_realInsetTop;
+    }
 }
 
 @end

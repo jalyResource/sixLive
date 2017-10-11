@@ -55,15 +55,6 @@
             [self.collectionView removeTipText];
         }
         
-        if (@available(iOS 11.0, *)) {
-            UIScrollView *scrollView = self.collectionView;
-            NSLog(@"hot:adjustedContentInset : %@", NSStringFromUIEdgeInsets(scrollView.adjustedContentInset));
-            NSLog(@"hot:contentInset : %@", NSStringFromUIEdgeInsets(scrollView.contentInset));
-            NSLog(@"hot:safeAreaInsets : %@", NSStringFromUIEdgeInsets(scrollView.safeAreaInsets));
-            NSLog(@"hot:frame: %@", NSStringFromCGRect(scrollView.frame));
-        } else {
-            // Fallback on earlier versions
-        }
     });
 }
 
@@ -75,7 +66,15 @@
     if (kind == UICollectionElementKindSectionHeader) {
         view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[SIXRecomendSupplementaryView viewReuseIdentifier] forIndexPath:indexPath];
     }
-    
+    if (@available(iOS 11.0, *)) {
+        UIScrollView *scrollView = self.collectionView;
+        NSLog(@"hot:adjustedContentInset : %@", NSStringFromUIEdgeInsets(scrollView.adjustedContentInset));
+        NSLog(@"hot:contentInset : %@", NSStringFromUIEdgeInsets(scrollView.contentInset));
+        NSLog(@"hot:safeAreaInsets : %@", NSStringFromUIEdgeInsets(scrollView.safeAreaInsets));
+        NSLog(@"hot:frame: %@", NSStringFromCGRect(scrollView.frame));
+    } else {
+        // Fallback on earlier versions
+    }
     return view;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {

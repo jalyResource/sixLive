@@ -9,6 +9,7 @@
 #import "SIXRefreshComponent.h"
 #import "UIView+SIXRefresh.h"
 
+
 @interface SIXRefreshComponent()
 @property (assign, nonatomic) CGFloat insetTDelta;
 @end
@@ -42,6 +43,7 @@
     if (scrollView) {
         _superScrollView = scrollView;
         _superScrollView.alwaysBounceVertical = YES;
+        
         self.superScrollViewOriginInsets = _superScrollView.contentInset;
         
         [self addObserver];
@@ -86,7 +88,7 @@
         
         CGFloat insetT = - self.superScrollView.contentOffset.y > self.superScrollViewOriginInsets.top ? - self.superScrollView.contentOffset.y : self.superScrollViewOriginInsets.top;
         insetT = insetT > self.six_height + self.superScrollViewOriginInsets.top ? self.six_height + self.superScrollViewOriginInsets.top : insetT;
-        self.superScrollView.six_insetTop = insetT;
+        self.superScrollView.six_realInsetTop = insetT;
         
         self.insetTDelta = self.superScrollViewOriginInsets.top - insetT;
         return;
@@ -152,7 +154,7 @@
 
             
             // 增加滚动区域top  
-            _superScrollView.six_insetTop = top;            
+            _superScrollView.six_realInsetTop = top;            
         } completion:^(BOOL finished) {
             [self handleRefreshEvent];
         }];
@@ -165,7 +167,7 @@
         // 恢复inset
         
         [UIView animateWithDuration:0.25 animations:^{
-            self.superScrollView.six_insetTop += self.insetTDelta;
+            self.superScrollView.six_realInsetTop += self.insetTDelta;
 //            self.alpha = 0;
         } completion:^(BOOL finished) {
             self.hidden = YES;
@@ -190,6 +192,26 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.state = EnumRefreshStateRefreshEnd;
     });
+}
+
+- (UIEdgeInsets)superScrollViewOriginInsets {
+    UIEdgeInsets inset;
+    if (@available(iOS 11.0, *)) {
+        switch (_superScrollView.contentInsetAdjustmentBehavior) {
+            case UIScrollViewContentInsetAdjustmentNever: {
+                inset = _superScrollViewOriginInsets;
+                break;
+            }
+            default: {
+                inset = _superScrollViewOriginInsets;
+                inset.top += _superScrollView.safeAreaInsets.top;
+                break;
+            }
+        }
+    } else {
+        inset = _superScrollViewOriginInsets;
+    }
+    return inset;
 }
 
 @end
