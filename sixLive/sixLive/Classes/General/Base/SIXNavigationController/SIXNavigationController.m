@@ -15,7 +15,6 @@
 @implementation SIXNavigationController
 
 + (void)initialize {
-    
 }
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
@@ -28,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

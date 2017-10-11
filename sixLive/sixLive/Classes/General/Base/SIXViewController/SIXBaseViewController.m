@@ -19,7 +19,12 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
-        self.automaticallyAdjustsScrollViewInsets = NO;
+        
+        if (@available(iOS 11.0, *)) {
+            
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
     }
     return self;
 }

@@ -22,8 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//   self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//    self.additionalSafeAreaInsets = UIEdgeInsetsMake(-44, 0, 0, 0);
 }
 
 - (void)loadData {
@@ -59,12 +57,10 @@
         
         if (@available(iOS 11.0, *)) {
             UIScrollView *scrollView = self.collectionView;
-            NSLog(@"self.scrollView.adjustedContentInset : %@", NSStringFromUIEdgeInsets(scrollView.adjustedContentInset));
-            NSLog(@"self.scrollView.contentInset : %@", NSStringFromUIEdgeInsets(scrollView.contentInset));
-            NSLog(@"self.scrollView.safeAreaInsets : %@", NSStringFromUIEdgeInsets(scrollView.safeAreaInsets));
-            NSLog(@"frame: %@", NSStringFromCGRect(scrollView.frame));
-            
-            
+            NSLog(@"hot:adjustedContentInset : %@", NSStringFromUIEdgeInsets(scrollView.adjustedContentInset));
+            NSLog(@"hot:contentInset : %@", NSStringFromUIEdgeInsets(scrollView.contentInset));
+            NSLog(@"hot:safeAreaInsets : %@", NSStringFromUIEdgeInsets(scrollView.safeAreaInsets));
+            NSLog(@"hot:frame: %@", NSStringFromCGRect(scrollView.frame));
         } else {
             // Fallback on earlier versions
         }

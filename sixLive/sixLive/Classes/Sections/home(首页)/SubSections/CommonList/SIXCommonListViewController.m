@@ -46,9 +46,7 @@
     self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
-- (void)loadData {
-    DLog(@"%s", __func__);
-    
+- (void)loadData {    
     [self.listModel fetchUserListWithParam:self.dicParams completedCallBack:^(EnumHttpCode code, NSString *infoString) {
         [self.collectionView.six_header endRefresh];
         
@@ -116,10 +114,10 @@
         
         [self registerCollectionViewCellWithCollection:_collectionView];
         
-        WS
-        _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
-            [ws loadData];
-        }]; 
+//        WS
+//        _collectionView.six_header = [SIXRefreshNormalHeader refreshHeaderWithBlock:^{
+//            [ws loadData];
+//        }]; 
         
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
